@@ -1,1 +1,1 @@
-# nigarhaciyeve106-cmd.github.io
+Tərlanın Saytı
