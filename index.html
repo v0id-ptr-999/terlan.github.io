@@ -2,46 +2,38 @@
 <html lang="az">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tərlanın Saytı</title>
     <style>
         body {
-            background: linear-gradient(135deg, #1a0033, #001a33, #330033);
-            color: #39FF14;
+            margin: 0;
+            background: linear-gradient(135deg, #1a0033, #001a33, #1a0500);
+            color: #FF5500;
             font-family: 'Segoe UI', sans-serif;
             text-align: center;
             min-height: 100vh;
         }
 
         header {
-            background-color: rgba(255, 0, 255, 0.1);
-            color: #FF00FF;
+            background-color: rgba(255, 85, 0, 0.1);
+            color: #FF5500;
             padding: 30px;
             font-size: 32px;
             font-weight: bold;
-            border-bottom: 3px solid #39FF14;
+            border-bottom: 3px solid #FF5500;
             text-transform: uppercase;
             letter-spacing: 5px;
-            box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+            box-shadow: 0 0 20px rgba(255, 85, 0, 0.3);
         }
 
-        h1 {
-            color: #39FF14;
-            animation: glitch 1.5s linear infinite;
-        }
+        h1 { color: #fff; text-shadow: 0 0 10px #FF5500; }
 
-        @keyframes glitch {
-            0% { text-shadow: 2px 0 #FF00FF, -2px 0 #39FF14; }
-            50% { text-shadow: -2px 0 #FF00FF, 2px 0 #39FF14; }
-            100% { text-shadow: 2px 0 #FF00FF, -2px 0 #39FF14; }
-        }
+        .hero { margin-top: 50px; }
 
-        .hero {
-            margin-top: 50px;
-        }
-
+        /* Bura düymə dizaynını əlavə etdim */
         .btn {
-            background: linear-gradient(45deg, #FF00FF, #39FF14); 
-            color: #000;
+            background: linear-gradient(45deg, #FF5500, #ff8c00);
+            color: #fff;
             padding: 15px 30px;
             text-decoration: none;
             border-radius: 50px;
@@ -51,14 +43,11 @@
             cursor: pointer;
             border: none;
             font-weight: bold;
-            box-shadow: 0 0 20px rgba(57, 255, 20, 0.6);
+            box-shadow: 0 0 20px rgba(255, 85, 0, 0.5);
             transition: 0.3s;
         }
 
-        .btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 40px rgba(255, 0, 255, 0.8);
-        }
+        .btn:hover { transform: scale(1.1); background: #fff; color: #FF5500; }
 
         .section {
             margin-top: 50px;
@@ -72,45 +61,38 @@
         .list-box {
             width: 80%;
             text-align: left;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(15px);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
             padding: 30px;
-            border: 2px solid #FF00FF;
+            border: 2px solid #FF5500;
             border-radius: 20px;
-            box-shadow: 0 0 30px rgba(255, 0, 255, 0.3);
         }
 
-        h2 { 
-            color: #FF00FF;
-            border-bottom: 2px solid #39FF14;
-            display: inline-block;
-            padding-bottom: 5px;
-        }
+        h2 { color: #fff; border-bottom: 2px solid #FF5500; display: inline-block; padding-bottom: 5px; }
 
         @media (max-width: 600px) {
-            header { font-size: 20px; padding: 20px; }
-            h1 { font-size: 22px; }
+            header { font-size: 18px; padding: 15px; }
             .list-box { width: 90%; }
         }
     </style>
 </head>
 <body>
 
-    <header>Tərlanın Sistemə Girişi</header>
+    <header>Tərlanın Sistemi</header>
 
     <div class="hero">
-        <h1>[3D Dünyasına Xoş Gəldiniz]</h1>
-        <p style="color: #fff;">Welcome To The 3D Matrix</p>
+        <h1>[3D Məlumat Mərkəzi]</h1>
+        <p style="color: #ccc;">Sürətli və Təmiz Giriş</p>
         <a href="3d.html" class="btn">PORTALA GİRİŞ</a>
         <br>
-        <button class="btn" onclick="toggleFamily()">Ailəmi Görmək</button>
+        <button class="btn" onclick="toggleFamily()">Ailəni Görmək</button>
     </div>
 
     <div class="section" id="familySection">
         <div class="list-box">
             <h2>Ailə və Qohumlar</h2>
-            <ol style="color: #fff; ">
-                <li>Nigar(Anam)</li><li>İlqar(Atam)</li><li><span style="color: #FF00FF; font-weight: bold;">Kənan(Qardaşım)</span></li>
+            <ol style="color: #eee;">
+                <li>Nigar(Anam)</li><li>İlqar(Atam)</li><li><span style="color: #FF5500; font-weight: bold;">Kənan(Qardaşım)</span></li>
                 <li>Şükran(Bacım)</li><li>Sənan(Qardaşım)</li><li>Rüfət(Əmim)</li><li>Afət(Bibim)</li><li>Hökümə</li><li>Xalidə(Nənəm)</li>
                 <li>Sabir(Babam)</li><li>Əsli(Nənəm)</li><li>Məhəmməd(Babam)</li><li>Əkbər(Babam)</li><li>Sayalı(Xalam)</li><li>Aynur(Xalam)</li>
                 <li>Süleyman(Dayım)</li><li>Ələkbər(Dayım)</li><li>Zəminə(Xalam D.D)</li><li>Aytən(Xalam D.D)</li><li>Nunuş(Xalam)</li><li>Emil(Dayım D.D)</li><li>Gülşən(Xalam Qızı)</li>
@@ -124,13 +106,13 @@
         function toggleFamily() {
             var section = document.getElementById("familySection");
             if (section.style.display === "flex") {
-                section.style.display = "none";
                 section.style.opacity = "0";
-        } else {
-            section.style.display = "flex";
-            setTimeout(() => { section.style.opacity = "1"; }, 10);
+                setTimeout(() => { section.style.display = "none"; }, 500);
+            } else {
+                section.style.display = "flex";
+                setTimeout(() => { section.style.opacity = "1"; }, 10);
+            }
         }
-    }
     </script>
 </body>
 </html>
