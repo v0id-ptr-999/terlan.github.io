@@ -167,7 +167,7 @@ layout: null
 
 <header class="hero">
   <p class="eyebrow">Tərlanın Sistemi // Portal Aktiv</p>
-  <h1>Tərlanın Ailəsi</h1>
+  <h1>Tarlan</h1>
   <p class="sub">27 ulduz, bir qalaktika. Klik et, kim olduğunu gör.</p>
 </header>
 
@@ -225,19 +225,30 @@ function closeDetail(){
   orbit.classList.remove('paused');
 }
 
-/* drag to rotate manually */
-let isDragging = false, lastX = 0, currentRotation = 0, dragRotation = 0;
+let isDragging = false, lastX = 0, dragRotation = 0, hasDragged = false;
 const wrap = document.querySelector('.scene-wrap');
-wrap.addEventListener('pointerdown', e => { isDragging = true; lastX = e.clientX; orbit.style.animationPlayState='paused'; });
-window.addEventListener('pointerup', () => { isDragging = false; });
+wrap.addEventListener('pointerdown', e => {
+  isDragging = true;
+  hasDragged = false;
+  lastX = e.clientX;
+});
+window.addEventListener('pointerup', () => {
+  isDragging = false;
+});
 window.addEventListener('pointermove', e => {
   if(!isDragging) return;
   const delta = e.clientX - lastX;
   lastX = e.clientX;
-  dragRotation += delta * 0.3;
-  orbit.style.transform = `rotateY(${dragRotation}deg)`;
+  if(Math.abs(delta) > 1){
+    if(!hasDragged){
+      hasDragged = true;
+      orbit.style.animation = 'none';
+    }
+    dragRotation += delta * 0.3;
+    orbit.style.transform = `rotateY(${dragRotation}deg)`;
+  }
 });
-
+    
 /* ============ THREE.JS SPACE BACKGROUND ============ */
 const canvas = document.getElementById('bg-canvas');
 const renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:true });
