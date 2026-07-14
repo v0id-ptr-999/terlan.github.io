@@ -262,6 +262,7 @@ layout: null
     z-index:12;
     pointer-events:none;
   }
+  .journey-label.show{ opacity:1; }
   .journey-sticky.journey-done{ opacity:0 !important; visibility:hidden !important; pointer-events:none !important; }
 
   .loader{
@@ -663,7 +664,7 @@ function journeyLoop(){
   }
 }
 journeyLoop();
-  
+
 window.addEventListener('resize', () => {
   jCamera.aspect = window.innerWidth / window.innerHeight;
   jCamera.updateProjectionMatrix();
