@@ -262,7 +262,7 @@ layout: null
     z-index:12;
     pointer-events:none;
   }
-  .journey-label.show{ opacity:1; }
+  .journey-sticky.journey-done{ opacity:0 !important; visibility:hidden !important; pointer-events:none !important; }
 
   .loader{
     position:fixed; inset:0; z-index:100;
@@ -586,33 +586,30 @@ jCamera.position.set(0, 0, 0);
 const jStars = makeStars(2200, 1800, 1.2, 0xffffff, 0.7);
 jScene.add(jStars);
 
-const planet1 = new THREE.Mesh(new THREE.SphereGeometry(14, 32, 32), new THREE.MeshBasicMaterial({ color: 0x8b5cf6 }));
-planet1.position.set(-30, 12, -70);
-jScene.add(planet1);
-const planet1Ring = new THREE.Mesh(new THREE.SphereGeometry(15.5, 32, 32), new THREE.MeshBasicMaterial({ color: 0x22d3ee, wireframe:true, transparent:true, opacity:0.25 }));
-planet1Ring.position.copy(planet1.position);
-jScene.add(planet1Ring);
+const saturn = new THREE.Mesh(new THREE.SphereGeometry(14, 32, 32), new THREE.MeshBasicMaterial({ color: 0xE3C48A }));
+saturn.position.set(-30, 12, -70);
+jScene.add(saturn);
+const saturnRing = new THREE.Mesh(new THREE.TorusGeometry(26, 2.6, 2, 80), new THREE.MeshBasicMaterial({ color: 0xC9A66B, transparent:true, opacity:0.75, side: THREE.DoubleSide }));
+saturnRing.position.copy(saturn.position);
+saturnRing.rotation.x = 1.3;
+saturnRing.rotation.y = 0.2;
+jScene.add(saturnRing);
 
-const planet2 = new THREE.Mesh(new THREE.SphereGeometry(20, 32, 32), new THREE.MeshBasicMaterial({ color: 0xf472b6 }));
-planet2.position.set(35, -18, -190);
-jScene.add(planet2);
-const planet2Ring = new THREE.Mesh(new THREE.SphereGeometry(22, 32, 32), new THREE.MeshBasicMaterial({ color: 0x8b5cf6, wireframe:true, transparent:true, opacity:0.22 }));
-planet2Ring.position.copy(planet2.position);
-jScene.add(planet2Ring);
+const jupiter = new THREE.Mesh(new THREE.SphereGeometry(22, 32, 32), new THREE.MeshBasicMaterial({ color: 0xC98A4B }));
+jupiter.position.set(35, -18, -190);
+jScene.add(jupiter);
+const jupiterBand1 = new THREE.Mesh(new THREE.TorusGeometry(19.4, 1.3, 8, 100), new THREE.MeshBasicMaterial({ color: 0xE0B27E, transparent:true, opacity:0.55 }));
+jupiterBand1.position.copy(jupiter.position);
+jupiterBand1.rotation.y = Math.PI / 2;
+jScene.add(jupiterBand1);
+const jupiterBand2 = new THREE.Mesh(new THREE.TorusGeometry(14.5, 1, 8, 100), new THREE.MeshBasicMaterial({ color: 0x8A5A2E, transparent:true, opacity:0.5 }));
+jupiterBand2.position.copy(jupiter.position);
+jupiterBand2.rotation.y = Math.PI / 2;
+jScene.add(jupiterBand2);
 
 const blackHole = new THREE.Mesh(new THREE.SphereGeometry(26, 32, 32), new THREE.MeshBasicMaterial({ color: 0x000000 }));
 blackHole.position.set(0, 0, -320);
 jScene.add(blackHole);
-
-const accretionDisk = new THREE.Mesh(new THREE.TorusGeometry(40, 6, 16, 100), new THREE.MeshBasicMaterial({ color: 0xf472b6, transparent:true, opacity:0.6 }));
-accretionDisk.position.copy(blackHole.position);
-accretionDisk.rotation.x = Math.PI / 2.4;
-jScene.add(accretionDisk);
-
-const accretionDisk2 = new THREE.Mesh(new THREE.TorusGeometry(48, 3, 16, 100), new THREE.MeshBasicMaterial({ color: 0x22d3ee, transparent:true, opacity:0.4 }));
-accretionDisk2.position.copy(blackHole.position);
-accretionDisk2.rotation.x = Math.PI / 2.4;
-jScene.add(accretionDisk2);
 
 const journeyLabels = [
   { from: 0.05, to: 0.28, text: 'Fəzada irəliləyirik...' },
@@ -623,6 +620,7 @@ const journeyLabels = [
 
 let finalRevealed = false;
 function revealFinalScene(){
+  document.querySelector('.journey-sticky').classList.add('journey-done');
   document.getElementById('bg-canvas').classList.remove('journey-hidden');
   document.querySelector('header.hero').classList.remove('journey-hidden');
   document.querySelector('.scene-wrap').classList.remove('journey-hidden');
@@ -630,6 +628,7 @@ function revealFinalScene(){
 }
 
 function journeyLoop(){
+  if(finalRevealed) return;
   requestAnimationFrame(journeyLoop);
 
   const rect = journeyEl.getBoundingClientRect();
@@ -640,10 +639,9 @@ function journeyLoop(){
   jCamera.position.z = -progress * 300;
   jCamera.rotation.y = Math.sin(progress * Math.PI * 2) * 0.03;
 
-  planet1.rotation.y += 0.002;
-  planet2.rotation.y += 0.0015;
-  accretionDisk.rotation.z += 0.01;
-  accretionDisk2.rotation.z -= 0.007;
+  saturn.rotation.y += 0.002;
+  saturnRing.rotation.z += 0.0015;
+  jupiter.rotation.y += 0.0018;
   jStars.rotation.y += 0.0001;
 
   journeyFadeEl.style.opacity = progress > 0.86 ? Math.min(1, (progress - 0.86) / 0.13) : 0;
@@ -665,7 +663,7 @@ function journeyLoop(){
   }
 }
 journeyLoop();
-
+  
 window.addEventListener('resize', () => {
   jCamera.aspect = window.innerWidth / window.innerHeight;
   jCamera.updateProjectionMatrix();
