@@ -6,7 +6,7 @@ layout: null
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tərlanın Saytı</title></title>
+<title>Tərlanın Saytı</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Caveat:wght@600;700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -192,6 +192,15 @@ layout: null
 
 <div id="warmBg"></div>
 
+<div id="loginOverlay" style="position:fixed; inset:0; z-index:999; background:#faf1e2; display:flex; align-items:center; justify-content:center;">
+  <div style="text-align:center;">
+    <h2 style="font-family:'Playfair Display', serif; color:#4a3324;">Ailə Kainatına Giriş</h2>
+    <input type="password" id="passInput" placeholder="Şifrəni yaz..." style="padding:10px; border-radius:5px; border:1px solid #c8912b;">
+    <button onclick="checkPassword()" style="padding:10px 20px; cursor:pointer;">Giriş</button>
+    <p id="errorMsg" style="color:red;"></p>
+  </div>
+</div>
+
 <div class="loader" id="loader">
   <div class="loader-inner">
     <div class="loader-title">Ailə Albomu</div>
@@ -226,7 +235,47 @@ layout: null
 </div>
 
 <script>
-/* ============ DATA ============ */
+function checkPassword() {
+  const password = document.getElementById('passInput').value;
+  if (password === "12345") { 
+    document.getElementById('loginOverlay').style.display = 'none';
+    startLoaderSequence();
+  } else {
+    document.getElementById('errorMsg').textContent = "Şifrə yanlışdır!";
+  }
+}
+
+function startLoaderSequence() {
+  const loaderStatus = document.getElementById('loaderStatus');
+  const loaderFill = document.getElementById('loaderFill');
+  const loaderPercent = document.getElementById('loaderPercent');
+  const loaderEl = document.getElementById('loader');
+  const loadingSteps = [
+    "Fotolar tozdan təmizlənir...",
+    "Albom vərəqlənir...",
+    "Ailə axtarılır...",
+    "Xatirələr toplanır...",
+    "Albom açılır..."
+  ];
+  let progress = 0;
+  let stepIndex = 0;
+  const loadingInterval = setInterval(() => {
+    progress += Math.random() * 12 + 4;
+    if(progress >= 100) progress = 100;
+    loaderFill.style.width = progress + '%';
+    loaderPercent.textContent = Math.floor(progress) + '%';
+    const newStepIndex = Math.min(loadingSteps.length - 1, Math.floor((progress / 100) * loadingSteps.length));
+    if(newStepIndex !== stepIndex){
+      stepIndex = newStepIndex;
+      loaderStatus.textContent = loadingSteps[stepIndex];
+    }
+    if(progress >= 100){
+      clearInterval(loadingInterval);
+      setTimeout(() => { loaderEl.classList.add('hide'); }, 400);
+    }
+  }, 220);
+}
+  
 const family = [
   ["Nigar","Anam"], ["İlqar","Atam"], ["Kənan","Qardaşım"], ["Şükran","Bacım"],
   ["Sənan","Qardaşım"], ["Afət","Bibim"], ["Hökümə",""], ["Gülzar","Nənəm"],
@@ -237,7 +286,6 @@ const family = [
   ["Mələk","Dayım Qızı"], ["Fidan","Xalam Qızı"], ["Ayxan","Dayım Oğlu"]
 ];
 
-/* ============ AMBIENT WARM DUST PARTICLES ============ */
 const warmBg = document.getElementById('warmBg');
 for(let i = 0; i < 26; i++){
   const m = document.createElement('div');
@@ -253,7 +301,6 @@ for(let i = 0; i < 26; i++){
   warmBg.appendChild(m);
 }
 
-/* ============ FAMILY SCROLL REVEAL ============ */
 const familyScrollEl = document.getElementById('familyScroll');
 const familyCardEl = document.getElementById('familyCard');
 const famAvatarEl = document.getElementById('famAvatar');
@@ -298,45 +345,6 @@ function updateFamilyScroll(){
   switchToMember(idx);
 }
 window.addEventListener('scroll', updateFamilyScroll, { passive:true });
-
-/* ============ LOADING SEQUENCE ============ */
-const loaderStatus = document.getElementById('loaderStatus');
-const loaderFill = document.getElementById('loaderFill');
-const loaderPercent = document.getElementById('loaderPercent');
-const loaderEl = document.getElementById('loader');
-
-const loadingSteps = [
-  "Fotolar tozdan təmizlənir...",
-  "Albom vərəqlənir...",
-  "Ailə axtarılır...",
-  "Xatirələr toplanır...",
-  "Albom açılır..."
-];
-
-let progress = 0;
-let stepIndex = 0;
-loaderStatus.textContent = loadingSteps[0];
-
-const loadingInterval = setInterval(() => {
-  progress += Math.random() * 12 + 4;
-  if(progress >= 100) progress = 100;
-
-  loaderFill.style.width = progress + '%';
-  loaderPercent.textContent = Math.floor(progress) + '%';
-
-  const newStepIndex = Math.min(loadingSteps.length - 1, Math.floor((progress / 100) * loadingSteps.length));
-  if(newStepIndex !== stepIndex){
-    stepIndex = newStepIndex;
-    loaderStatus.textContent = loadingSteps[stepIndex];
-  }
-
-  if(progress >= 100){
-    clearInterval(loadingInterval);
-    setTimeout(() => {
-      loaderEl.classList.add('hide');
-    }, 400);
-  }
-}, 220);
 </script>
 </body>
 </html>
