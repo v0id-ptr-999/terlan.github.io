@@ -123,6 +123,14 @@
     letter-spacing:.4px;
     margin-top:2px;
   }
+  .prayer-text{
+    font-family:'Caveat', cursive;
+    font-size:14px;
+    color: #4a3324;
+    margin-top:8px;
+    font-style: italic;
+    opacity: 0.8;
+  }
   .tape{
     position:absolute;
     width:70px; height:24px;
@@ -225,6 +233,7 @@
         <div class="photo-frame"><div class="photo-letter" id="famAvatar"></div></div>
         <div class="cap-name" id="famName"></div>
         <div class="cap-rel" id="famRel"></div>
+        <div id="famPrayer" class="prayer-text"></div>
       </div>
     </div>
     <div class="fam-nav">
@@ -285,6 +294,7 @@ const familyScrollEl = document.getElementById('familyScroll'),
       famAvatarEl = document.getElementById('famAvatar'),
       famNameEl = document.getElementById('famName'),
       famRelEl = document.getElementById('famRel'),
+      famPrayerEl = document.getElementById('famPrayer'),
       familyIndexEl = document.getElementById('familyIndex');
 
 let famCurrentIndex = -1;
@@ -295,13 +305,18 @@ function showFamilyMember(idx){
   famAvatarEl.textContent = person[0].charAt(0);
   famNameEl.textContent = person[0];
   
-  // Sabir babanın adı üçün xüsusi şərt
   if (person[0] === "Sabir") {
+    famNameEl.style.fontFamily = "'Playfair Display', serif";
     famNameEl.style.fontWeight = "900";
     famNameEl.style.color = "#000";
+    famNameEl.style.fontSize = "40px";
+    famPrayerEl.textContent = "Allah Rəhmət eləsin, Məkanı cənnət olsun.";
   } else {
+    famNameEl.style.fontFamily = "'Caveat', cursive";
     famNameEl.style.fontWeight = "700";
     famNameEl.style.color = "var(--brown)";
+    famNameEl.style.fontSize = "32px";
+    famPrayerEl.textContent = "";
   }
   
   famRelEl.textContent = person[1] || 'Ailə Üzvü';
