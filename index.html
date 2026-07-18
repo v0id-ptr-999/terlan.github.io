@@ -1,19 +1,19 @@
+---
+layout: null
+---
 <!DOCTYPE html>
 <html lang="az">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tərlanın Saytı</title>
+<title>Ailə Ağacı — Tərlanın Ailəsi</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Caveat:wght@600;700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --cream: #faf1e2;
-    --paper: #fffaf0;
-    --rust: #b5522f;
-    --gold: #c8912b;
-    --brown: #4a3324;
-    --muted: #8a6f56;
+    --cream:#f7f2e6;
+    --brown:#4a3324;
+    --muted:#7a6752;
   }
   *{box-sizing:border-box;}
   html,body{
@@ -21,331 +21,144 @@
     background: var(--cream);
     font-family:'Nunito', sans-serif;
     color: var(--brown);
-    overflow-x:hidden;
   }
-
-  #warmBg{
-    position:fixed; inset:0; z-index:0;
-    background:
-      radial-gradient(circle at 15% 20%, rgba(200,145,43,.16), transparent 45%),
-      radial-gradient(circle at 85% 15%, rgba(181,82,47,.14), transparent 40%),
-      radial-gradient(circle at 50% 90%, rgba(200,145,43,.12), transparent 50%),
-      var(--cream);
-    overflow:hidden;
-  }
-  .mote{
-    position:absolute;
-    border-radius:50%;
-    background: radial-gradient(circle, rgba(200,145,43,.55), rgba(200,145,43,0) 70%);
-    animation: float linear infinite;
-  }
-  @keyframes float{
-    from{ transform: translateY(0) translateX(0); }
-    to{ transform: translateY(-110vh) translateX(20px); }
-  }
-
   header.hero{
-    position:relative; z-index:2;
-    text-align:center; padding: 60px 20px 30px;
-    opacity:1; visibility:visible;
-    transition: opacity 1s ease;
-  }
-  .eyebrow{
-    font-family:'Caveat', cursive;
-    font-size:22px;
-    color: var(--rust);
-    margin:0 0 4px;
+    text-align:center; padding: 40px 20px 10px;
   }
   h1{
     font-family:'Playfair Display', serif;
     font-weight:900;
-    font-size: clamp(30px, 6vw, 54px);
+    font-size: clamp(26px, 5vw, 42px);
     margin:0;
-    color: var(--brown);
-    letter-spacing: .5px;
   }
-  .sub{
-    font-family:'Caveat', cursive;
-    font-size:20px; color:var(--muted); margin-top:10px;
-  }
+  .sub{ color:var(--muted); margin-top:6px; font-size:15px; }
 
-  #familyScroll{
-    position:relative; z-index:2;
+  .tree-wrap{
+    position:relative;
+    max-width: 1000px;
+    margin: 10px auto 60px;
+    padding: 0 10px;
   }
-  .family-sticky{
-    position:sticky; top:0; left:0;
-    width:100%; height:100vh;
-    display:flex; flex-direction:column; align-items:center; justify-content:center;
-    perspective: 1200px;
-  }
-  .family-index{
-    font-family:'Caveat', cursive;
-    font-size:20px;
-    color: var(--muted);
-    margin-bottom:14px;
-  }
+  .tree-wrap svg{ display:block; width:100%; height:auto; }
 
-  .polaroid{
-    width:min(300px, 78vw);
-    background: var(--paper);
-    padding: 18px 18px 34px;
-    border-radius: 4px;
-    box-shadow: 0 18px 40px rgba(74,51,36,.25), 0 4px 10px rgba(74,51,36,.15);
-    transform: rotate(-3deg);
-    transition: opacity .2s ease, transform .3s ease;
+  .tag{
+    position:absolute;
+    transform: translate(-50%, -50%);
+    background:#fffdf8;
+    border:1.5px solid #cbb98f;
+    border-radius: 14px;
+    padding: 5px 11px;
     text-align:center;
+    box-shadow: 0 3px 8px rgba(74,51,36,.18);
+    white-space:nowrap;
+    line-height:1.15;
   }
-  .polaroid.switching{ opacity:0; transform: rotate(-3deg) scale(.9); }
-  .photo-frame{
-    width:100%;
-    aspect-ratio: 1 / 1;
-    border-radius:2px;
-    background: linear-gradient(160deg, #e8ba7a, #b5522f);
-    display:flex; align-items:center; justify-content:center;
-    box-shadow: inset 0 0 0 1px rgba(74,51,36,.08);
+  .tag .t-name{
+    font-weight:800;
+    font-size: 12.5px;
+    color: var(--brown);
   }
-  .photo-letter{
+  .tag .t-rel{
+    font-size: 9px;
+    color: var(--muted);
+    font-weight:600;
+  }
+  .tag.wide .t-name{ font-size:12px; }
+  .tag.root .t-name{ font-size:15px; color:#7a4a1f; }
+  .tag.root{ border-color:#a97c3f; border-width:2px; }
+  .banner{
+    position:absolute;
+    top: 1%; left:50%; transform:translateX(-50%);
+    background:#fffdf8;
+    border:1.5px solid #cbb98f;
+    border-radius: 40% 40% 40% 40% / 60% 60% 60% 60%;
+    padding: 8px 26px;
     font-family:'Playfair Display', serif;
     font-weight:900;
-    font-size:80px;
-    color: rgba(255,250,240,.92);
-    text-shadow: 0 2px 6px rgba(74,51,36,.35);
-  }
-  .polaroid .cap-name{
-    font-family:'Caveat', cursive;
-    font-size:32px;
-    margin-top:16px;
-  }
-  .polaroid .cap-rel{
-    font-family:'Nunito', sans-serif;
-    font-size:13px;
-    color: var(--muted);
-    letter-spacing:.4px;
-    margin-top:2px;
-  }
-  .prayer-text{
-    font-family:'Caveat', cursive;
-    font-size:14px;
-    color: #4a3324;
-    margin-top:8px;
-    font-style: italic;
-    opacity: 0.8;
-  }
-  .tape{
-    position:absolute;
-    width:70px; height:24px;
-    background: rgba(200,145,43,.35);
-    top:-10px; left:50%;
-    transform: translateX(-50%) rotate(-2deg);
-    box-shadow: 0 2px 4px rgba(74,51,36,.15);
-  }
-  .polaroid-wrap{ position:relative; }
-
-  .fam-nav{
-    display:flex; justify-content:center; gap:14px;
-    margin-top: 30px;
-  }
-  .fam-nav-btn{
-    font-family:'Nunito', sans-serif;
-    font-weight:700;
-    font-size:13px; letter-spacing:.3px;
-    color: var(--paper);
-    background: linear-gradient(135deg, var(--rust), var(--gold));
-    border:none; border-radius:999px;
-    padding:11px 20px;
-    cursor:pointer;
-    box-shadow: 0 6px 16px rgba(181,82,47,.35);
-  }
-
-  .loader{
-    position:fixed; inset:0; z-index:100;
-    background: var(--cream);
-    display:flex; align-items:center; justify-content:center;
-    transition: opacity .8s ease, visibility .8s ease;
-  }
-  .loader.hide{ opacity:0; visibility:hidden; pointer-events:none; }
-  .loader-inner{ text-align:center; width:min(320px, 80vw); }
-  .loader-title{
-    font-family:'Playfair Display', serif;
-    font-weight:900; font-size:26px; margin-bottom:16px;
+    font-size: 16px;
     color: var(--brown);
+    box-shadow: 0 4px 10px rgba(74,51,36,.2);
   }
-  .loader-status{
-    font-family:'Caveat', cursive;
-    font-size:18px; color:var(--muted); margin-bottom:16px;
-    min-height:20px;
-  }
-  .loader-bar{
-    width:100%; height:4px; border-radius:999px; background: rgba(74,51,36,.12);
-    overflow:hidden;
-  }
-  .loader-fill{
-    height:100%; width:0%;
-    background: linear-gradient(90deg, var(--rust), var(--gold));
-    transition: width .3s ease;
-  }
-  .loader-percent{
-    margin-top:10px; font-family:'Nunito', sans-serif; font-weight:700; font-size:12px; color:var(--rust); letter-spacing:1px;
+
+  @media (max-width: 640px){
+    .tag{ padding:3px 7px; border-radius:10px; }
+    .tag .t-name{ font-size:9.5px; }
+    .tag .t-rel{ font-size:7px; }
+    .banner{ font-size:12px; padding:5px 16px; }
   }
 </style>
 </head>
 <body>
 
-<div id="warmBg"></div>
-
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-analytics.js";
-  const firebaseConfig = {
-    apiKey: "AIzaSyB5HJgThTP8L-aq2SEpRhoa80gekVD-uGg",
-    authDomain: "ailakainati.firebaseapp.com",
-    projectId: "ailakainati",
-    storageBucket: "ailakainati.firebasestorage.app",
-    messagingSenderId: "268923170773",
-    appId: "1:268923170773:web:a2dfa1bc9457af8a87975c",
-    measurementId: "G-PYYFVSPPGQ"
-  };
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
-
-<div class="loader" id="loader">
-  <div class="loader-inner">
-    <div class="loader-title">Ailə Albomu</div>
-    <div class="loader-status" id="loaderStatus">Fotolar tozdan təmizlənir...</div>
-    <div class="loader-bar"><div class="loader-fill" id="loaderFill"></div></div>
-    <div class="loader-percent" id="loaderPercent">0%</div>
-  </div>
-</div>
-
-<header class="hero" id="heroHeader">
-  <p class="eyebrow">Tərlanın Sistemi</p>
-  <h1>Ailə Albomu</h1>
-  <p class="sub">Növbəti və Əvvəlki düymələrinə basaraq ailəmi öyrən...</p>
+<header class="hero">
+  <p class="sub">Tərlanın Sistemi</p>
+  <h1>Ailə Ağacı</h1>
 </header>
 
-<div id="familyScroll" style="height:1620vh;">
-  <div class="family-sticky">
-    <div class="family-index" id="familyIndex">1 / 27</div>
-    <div class="polaroid-wrap">
-      <div class="tape"></div>
-      <div class="polaroid" id="familyCard">
-        <div class="photo-frame"><div class="photo-letter" id="famAvatar"></div></div>
-        <div class="cap-name" id="famName"></div>
-        <div class="cap-rel" id="famRel"></div>
-        <div id="famPrayer" class="prayer-text"></div>
-      </div>
-    </div>
-    <div class="fam-nav">
-      <button class="fam-nav-btn" id="famPrevBtn">← Əvvəlki</button>
-      <button class="fam-nav-btn" id="famNextBtn">Növbəti →</button>
-    </div>
-  </div>
+<div class="tree-wrap" id="treeWrap">
+  <svg viewBox="0 0 1000 900" xmlns="http://www.w3.org/2000/svg">
+    <!-- roots -->
+    <path d="M500 860 C 460 830, 430 840, 400 875" stroke="#5c4326" stroke-width="10" fill="none" stroke-linecap="round"/>
+    <path d="M500 860 C 540 830, 570 840, 600 875" stroke="#5c4326" stroke-width="10" fill="none" stroke-linecap="round"/>
+    <path d="M500 860 C 480 840, 470 850, 460 878" stroke="#5c4326" stroke-width="7" fill="none" stroke-linecap="round"/>
+    <path d="M500 860 C 520 840, 530 850, 540 878" stroke="#5c4326" stroke-width="7" fill="none" stroke-linecap="round"/>
+
+    <!-- trunk -->
+    <path d="M470 860 C 460 700, 465 560, 478 480 C 470 460, 468 440, 472 420
+             L 528 420 C 532 440, 530 460, 522 480 C 535 560, 540 700, 530 860 Z"
+          fill="#6b4a26"/>
+    <path d="M485 700 C 480 620, 484 540, 492 470" stroke="#5a3b1c" stroke-width="4" fill="none" opacity="0.5"/>
+    <path d="M515 700 C 520 620, 516 540, 508 470" stroke="#5a3b1c" stroke-width="4" fill="none" opacity="0.5"/>
+
+    <!-- branches into canopy -->
+    <path d="M500 460 L 430 340" stroke="#5c4326" stroke-width="9" fill="none" stroke-linecap="round"/>
+    <path d="M500 460 L 570 340" stroke="#5c4326" stroke-width="9" fill="none" stroke-linecap="round"/>
+    <path d="M500 460 L 500 300" stroke="#5c4326" stroke-width="10" fill="none" stroke-linecap="round"/>
+    <path d="M430 340 L 340 260" stroke="#5c4326" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <path d="M570 340 L 660 260" stroke="#5c4326" stroke-width="6" fill="none" stroke-linecap="round"/>
+
+    <!-- canopy (layered leafy blobs for texture) -->
+    <g>
+      <ellipse cx="500" cy="330" rx="330" ry="230" fill="#5a9c4a"/>
+      <ellipse cx="330" cy="380" rx="190" ry="170" fill="#4f8f41"/>
+      <ellipse cx="670" cy="380" rx="190" ry="170" fill="#4f8f41"/>
+      <ellipse cx="500" cy="190" rx="210" ry="150" fill="#6bb058"/>
+      <ellipse cx="250" cy="290" rx="140" ry="120" fill="#68a857"/>
+      <ellipse cx="750" cy="290" rx="140" ry="120" fill="#68a857"/>
+      <ellipse cx="400" cy="240" rx="120" ry="95" fill="#7cbf66" opacity="0.7"/>
+      <ellipse cx="620" cy="250" rx="120" ry="95" fill="#7cbf66" opacity="0.7"/>
+      <ellipse cx="500" cy="420" rx="260" ry="130" fill="#427a37" opacity="0.55"/>
+    </g>
+  </svg>
+
+  <div class="banner">Ailə Ağacı</div>
+
+  <!-- Generation 1: grandparents (upper canopy) -->
+  <div class="tag" style="top:16%; left:26%;"><div class="t-name">Sabir & Gülzar</div><div class="t-rel">Babam & Nənəm</div></div>
+  <div class="tag" style="top:12%; left:50%;"><div class="t-name">Əkbər & Yaqut</div><div class="t-rel">Babam & Nənəm</div></div>
+  <div class="tag" style="top:16%; left:74%;"><div class="t-name">Əsli & Məhəmməd</div><div class="t-rel">Nənəm & Babam</div></div>
+
+  <!-- Generation 2: parents / aunts / uncles (mid canopy) -->
+  <div class="tag root" style="top:38%; left:50%;"><div class="t-name">Nigar & İlqar</div><div class="t-rel">Anam & Atam</div></div>
+  <div class="tag" style="top:33%; left:15%;"><div class="t-name">Afət</div><div class="t-rel">Bibim</div></div>
+  <div class="tag" style="top:40%; left:8%;"><div class="t-name">Sayalı</div><div class="t-rel">Xalam</div></div>
+  <div class="tag" style="top:33%; left:85%;"><div class="t-name">Süleyman</div><div class="t-rel">Dayım</div></div>
+  <div class="tag" style="top:40%; left:92%;"><div class="t-name">Aynur</div><div class="t-rel">Xalam</div></div>
+  <div class="tag" style="top:47%; left:22%;"><div class="t-name">Ələkbər & Aytən</div><div class="t-rel">Dayım & Yengəm</div></div>
+  <div class="tag" style="top:47%; left:78%;"><div class="t-name">Nunuş & Emil</div><div class="t-rel">Xalam & Əri</div></div>
+
+  <!-- Generation 3: siblings & cousins (lower canopy) -->
+  <div class="tag" style="top:58%; left:42%;"><div class="t-name">Kənan</div><div class="t-rel">Qardaşım</div></div>
+  <div class="tag" style="top:58%; left:58%;"><div class="t-name">Şükran</div><div class="t-rel">Bacım</div></div>
+  <div class="tag" style="top:65%; left:50%;"><div class="t-name">Sənan & Hökümə</div><div class="t-rel">Qardaşım & Gəlinimiz</div></div>
+  <div class="tag" style="top:60%; left:12%;"><div class="t-name">Zəminə</div><div class="t-rel">Xalam Qızı</div></div>
+  <div class="tag" style="top:66%; left:20%;"><div class="t-name">Gülşən</div><div class="t-rel">Xalam Qızı</div></div>
+  <div class="tag" style="top:60%; left:28%;"><div class="t-name">Xəyal</div><div class="t-rel">Xalam Oğlu</div></div>
+  <div class="tag" style="top:60%; left:88%;"><div class="t-name">İslam</div><div class="t-rel">Xalam Oğlu</div></div>
+  <div class="tag" style="top:66%; left:80%;"><div class="t-name">Mələk</div><div class="t-rel">Dayım Qızı</div></div>
+  <div class="tag" style="top:60%; left:72%;"><div class="t-name">Fidan</div><div class="t-rel">Xalam Qızı</div></div>
+  <div class="tag" style="top:53%; left:65%;"><div class="t-name">Ayxan</div><div class="t-rel">Dayım Oğlu</div></div>
 </div>
 
-<script>
-window.onload = startLoaderSequence;
-
-function startLoaderSequence() {
-  const loaderStatus = document.getElementById('loaderStatus');
-  const loaderFill = document.getElementById('loaderFill');
-  const loaderPercent = document.getElementById('loaderPercent');
-  const loaderEl = document.getElementById('loader');
-  const loadingSteps = ["Fotolar tozdan təmizlənir...", "Albom vərəqlənir...", "Ailə axtarılır...", "Xatirələr toplanır...", "Albom açılır..."];
-  let progress = 0, stepIndex = 0;
-  const loadingInterval = setInterval(() => {
-    progress += Math.random() * 12 + 4;
-    if(progress >= 100) progress = 100;
-    loaderFill.style.width = progress + '%';
-    loaderPercent.textContent = Math.floor(progress) + '%';
-    const newStepIndex = Math.min(loadingSteps.length - 1, Math.floor((progress / 100) * loadingSteps.length));
-    if(newStepIndex !== stepIndex){ stepIndex = newStepIndex; loaderStatus.textContent = loadingSteps[stepIndex]; }
-    if(progress >= 100){ clearInterval(loadingInterval); setTimeout(() => { loaderEl.classList.add('hide'); }, 400); }
-  }, 220);
-}
-  
-const family = [
-  ["Nigar","Anam"], ["İlqar","Atam"], ["Kənan","Qardaşım"], ["Şükran","Bacım"],
-  ["Sənan","Qardaşım"], ["Afət","Bibim"], ["Hökümə",""], ["Gülzar","Nənəm"],
-  ["Sabir","Babam"], ["Əsli","Nənəm"], ["Məhəmməd","Babam"], ["Əkbər","Babam"],
-  ["Yaqut","Nənəm"], ["Sayalı","Xalam"], ["Aynur","Xalam"], ["Süleyman","Dayım"],
-  ["Ələkbər","Dayım"], ["Zəminə","Xalam D.D"], ["Aytən","Xalam D.D"], ["Nunuş","Xalam"],
-  ["Emil","Dayım D.D"], ["Gülşən","Xalam Qızı"], ["Xəyal","Xalam oğlu"], ["İslam","Xalam Oğlu"],
-  ["Mələk","Dayım Qızı"], ["Fidan","Xalam Qızı"], ["Ayxan","Dayım Oğlu"]
-];
-
-const warmBg = document.getElementById('warmBg');
-for(let i = 0; i < 26; i++){
-  const m = document.createElement('div');
-  const size = 4 + Math.random() * 8;
-  m.className = 'mote';
-  m.style.width = size + 'px';
-  m.style.height = size + 'px';
-  m.style.left = Math.random() * 100 + '%';
-  m.style.top = (100 + Math.random() * 20) + '%';
-  m.style.animationDuration = (14 + Math.random() * 16) + 's';
-  m.style.animationDelay = (Math.random() * 16) + 's';
-  m.style.opacity = 0.3 + Math.random() * 0.4;
-  warmBg.appendChild(m);
-}
-
-const familyScrollEl = document.getElementById('familyScroll'),
-      familyCardEl = document.getElementById('familyCard'),
-      famAvatarEl = document.getElementById('famAvatar'),
-      famNameEl = document.getElementById('famName'),
-      famRelEl = document.getElementById('famRel'),
-      famPrayerEl = document.getElementById('famPrayer'),
-      familyIndexEl = document.getElementById('familyIndex');
-
-let famCurrentIndex = -1;
-familyScrollEl.style.height = (family.length * 60) + 'vh';
-
-function showFamilyMember(idx){
-  const person = family[idx];
-  famAvatarEl.textContent = person[0].charAt(0);
-  famNameEl.textContent = person[0];
-  
-  if (person[0] === "Sabir") {
-    famNameEl.style.fontFamily = "'Playfair Display', serif";
-    famNameEl.style.fontWeight = "900";
-    famNameEl.style.color = "#000";
-    famNameEl.style.fontSize = "40px";
-    famPrayerEl.textContent = "Allah Rəhmət eləsin, Məkanı cənnət olsun.";
-  } else {
-    famNameEl.style.fontFamily = "'Caveat', cursive";
-    famNameEl.style.fontWeight = "700";
-    famNameEl.style.color = "var(--brown)";
-    famNameEl.style.fontSize = "32px";
-    famPrayerEl.textContent = "";
-  }
-  
-  famRelEl.textContent = person[1] || 'Ailə Üzvü';
-  familyIndexEl.textContent = (idx + 1) + ' / ' + family.length;
-  familyCardEl.style.transform = 'rotate(' + (Math.random() * 6 - 3).toFixed(1) + 'deg)';
-  famCurrentIndex = idx;
-}
-showFamilyMember(0);
-
-function switchToMember(idx){
-  idx = Math.min(family.length - 1, Math.max(0, idx));
-  if(idx === famCurrentIndex) return;
-  familyCardEl.classList.add('switching');
-  setTimeout(() => { showFamilyMember(idx); familyCardEl.classList.remove('switching'); }, 160);
-}
-
-document.getElementById('famPrevBtn').addEventListener('click', () => switchToMember(famCurrentIndex - 1));
-document.getElementById('famNextBtn').addEventListener('click', () => switchToMember(famCurrentIndex + 1));
-
-function updateFamilyScroll(){
-  const scrollable = familyScrollEl.offsetHeight - window.innerHeight;
-  if(scrollable <= 0) return;
-  const rect = familyScrollEl.getBoundingClientRect();
-  const scrolled = -rect.top;
-  const progress = Math.min(1, Math.max(0, scrolled / scrollable));
-  const idx = Math.min(family.length - 1, Math.max(0, Math.floor(progress * family.length)));
-  switchToMember(idx);
-}
-window.addEventListener('scroll', updateFamilyScroll, { passive:true });
-</script>
 </body>
 </html>
