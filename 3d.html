@@ -93,10 +93,17 @@
 
   footer.cta{ text-align:center; padding: 10px 20px 60px; }
 
-  @media (max-width: 900px){
-    .placard .t-name{ font-size:7.5px; }
-    .placard .t-rel{ font-size:5.5px; }
-    .region-label{ font-size:13px; }
+  @media (max-width: 600px){
+    .tree-wrap { 
+      transform-origin: top center; 
+      transform: scale(0.6); 
+      margin-top: -100px;
+      margin-bottom: -100px;
+    }
+    .placard .board { padding: 2px 4px; border-width: 1px; }
+    .placard .t-name { font-size: 5px !important; }
+    .placard .t-rel { font-size: 3px !important; }
+    .region-label { font-size: 8px !important; letter-spacing: 0.5px; }
   }
 </style>
 </head>
