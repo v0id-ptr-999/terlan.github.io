@@ -3,12 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tərlanın Saytı - Bakı</title>
+<title>Tərlanın Ailəsi — Bakı</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --sky-top:#bfe0e8;
+    --sky-top:#a9d8e6;
+    --sky-mid:#cfe9dd;
     --sky-bottom:#eef4e2;
     --brown:#3d2c1f;
     --muted:#6b5a45;
@@ -16,64 +17,37 @@
   *{box-sizing:border-box;}
   html,body{
     margin:0; padding:0; width:100%;
-    background: linear-gradient(180deg, var(--sky-top), var(--sky-bottom) 70%);
+    background: linear-gradient(180deg, var(--sky-top), var(--sky-mid) 45%, var(--sky-bottom) 85%);
     font-family:'Nunito', sans-serif;
     color: var(--brown);
   }
-  header.hero{
-    text-align:center; padding: 34px 20px 6px;
-  }
+  header.hero{ text-align:center; padding: 36px 20px 8px; }
   h1{
     font-family:'Playfair Display', serif;
     font-weight:900;
-    font-size: clamp(24px, 5vw, 40px);
+    font-size: clamp(26px, 6vw, 44px);
     margin:0;
   }
-  .sub{ color:var(--muted); margin-top:6px; font-size:14px; }
+  .sub{ color:var(--muted); margin-top:8px; font-size:14px; }
 
   .nav-btn{
-    display:inline-block;
-    margin-top:16px;
-    font-family:'Nunito', sans-serif;
-    font-weight:800;
-    font-size:14px;
-    letter-spacing:.3px;
+    display:inline-block; margin-top:16px;
+    font-family:'Nunito', sans-serif; font-weight:800; font-size:14px; letter-spacing:.3px;
     color:#fbf6ea;
     background: linear-gradient(135deg, #6b4a2e, #3d2c1f);
-    border:none; border-radius:999px;
-    padding:12px 26px;
-    cursor:pointer;
-    text-decoration:none;
-    box-shadow: 0 6px 16px rgba(61,44,31,.3);
+    border:none; border-radius:999px; padding:12px 26px; cursor:pointer;
+    text-decoration:none; box-shadow: 0 6px 16px rgba(61,44,31,.3);
   }
 
-  .tree-wrap{
-    position:relative;
-    max-width: 900px;
-    margin: 10px auto 10px;
-    padding: 0 10px;
-  }
+  .tree-wrap{ position:relative; max-width: 950px; margin: 10px auto 10px; padding: 0 10px; }
   .tree-wrap svg{ display:block; width:100%; height:auto; }
 
-  .placard{
-    position:absolute;
-    transform: translate(-50%, 0);
-    display:flex; flex-direction:column; align-items:center;
-  }
-  .placard .thread{
-    width:1.5px; height:16px;
-    background: #6b5a45;
-  }
+  .placard{ position:absolute; transform: translate(-50%, 0); display:flex; flex-direction:column; align-items:center; }
+  .placard .thread{ width:1.5px; height:16px; background: #6b5a45; }
   .placard .board{
-    margin-top:-1px;
-    background:#fbf6ea;
-    border:1.5px solid #8a6d45;
-    border-radius: 5px;
-    padding: 5px 10px;
-    text-align:center;
-    box-shadow: 0 3px 6px rgba(61,44,31,.25);
-    white-space:nowrap;
-    line-height:1.1;
+    margin-top:-1px; background:#fbf6ea; border:1.5px solid #8a6d45; border-radius: 5px;
+    padding: 5px 10px; text-align:center; box-shadow: 0 3px 6px rgba(61,44,31,.25);
+    white-space:nowrap; line-height:1.1;
   }
   .placard .t-name{ font-weight:800; font-size: 11.5px; color: var(--brown); }
   .placard .t-rel{ font-size: 8.3px; color: var(--muted); font-weight:600; }
@@ -82,13 +56,9 @@
   .placard.root .thread{ height:22px; }
 
   .region-label{
-    position:absolute;
-    transform: translate(-50%, -50%);
-    font-family:'Playfair Display', serif;
-    font-weight:900;
-    font-size: 20px;
-    letter-spacing:3px;
-    color: #4a3320;
+    position:absolute; transform: translate(-50%, -50%);
+    font-family:'Playfair Display', serif; font-weight:900; font-size: 20px;
+    letter-spacing:3px; color: #4a3320cc;
   }
 
   footer.cta{ text-align:center; padding: 10px 20px 60px; }
@@ -117,16 +87,33 @@
       </linearGradient>
     </defs>
 
+    <!-- clouds -->
+    <g fill="#ffffff" opacity="0.75">
+      <g transform="translate(120,60)">
+        <ellipse cx="0" cy="10" rx="40" ry="18"/>
+        <ellipse cx="34" cy="0" rx="30" ry="20"/>
+        <ellipse cx="-34" cy="4" rx="26" ry="16"/>
+      </g>
+      <g transform="translate(650,90)" opacity="0.65">
+        <ellipse cx="0" cy="8" rx="34" ry="15"/>
+        <ellipse cx="28" cy="0" rx="24" ry="17"/>
+        <ellipse cx="-28" cy="3" rx="22" ry="13"/>
+      </g>
+      <g transform="translate(760,180)" opacity="0.5">
+        <ellipse cx="0" cy="6" rx="24" ry="11"/>
+        <ellipse cx="18" cy="0" rx="16" ry="12"/>
+      </g>
+    </g>
+
     <!-- roots -->
     <path d="M450 940 C 410 910, 380 920, 350 950" stroke="#3a2818" stroke-width="8" fill="none" stroke-linecap="round"/>
     <path d="M450 940 C 490 910, 520 920, 550 950" stroke="#3a2818" stroke-width="8" fill="none" stroke-linecap="round"/>
     <path d="M450 940 C 430 922, 420 932, 412 952" stroke="#3a2818" stroke-width="5" fill="none" stroke-linecap="round"/>
     <path d="M450 940 C 470 922, 480 932, 488 952" stroke="#3a2818" stroke-width="5" fill="none" stroke-linecap="round"/>
 
-    <!-- trunk (organic tapered) -->
+    <!-- trunk -->
     <path d="M420 940 C 414 820, 417 700, 428 610 C 421 590, 419 570, 424 550
-             L 476 550 C 481 570, 479 590, 472 610 C 483 700, 486 820, 480 940 Z"
-          fill="url(#barkGrad)"/>
+             L 476 550 C 481 570, 479 590, 472 610 C 483 700, 486 820, 480 940 Z" fill="url(#barkGrad)"/>
     <path d="M436 780 C 431 700, 434 630, 441 570" stroke="#2e2015" stroke-width="3" fill="none" opacity="0.5"/>
     <path d="M462 780 C 467 700, 464 630, 457 570" stroke="#2e2015" stroke-width="3" fill="none" opacity="0.5"/>
 
@@ -136,20 +123,16 @@
       <path d="M450 550 Q 450 460, 450 300" stroke-width="28"/>
       <path d="M450 550 Q 500 460, 560 340" stroke-width="26"/>
 
-      <!-- Sabir&Gülzar to tier2 -->
       <path d="M450 300 Q 380 320, 320 380" stroke-width="16"/>
       <path d="M450 300 L 450 370" stroke-width="16"/>
       <path d="M450 300 Q 520 320, 580 380" stroke-width="16"/>
 
-      <!-- İlqar to tier3 -->
       <path d="M320 400 Q 260 440, 200 500" stroke-width="9"/>
       <path d="M320 400 Q 310 450, 320 510" stroke-width="9"/>
       <path d="M320 400 Q 370 440, 420 500" stroke-width="9"/>
-      <!-- Rüfət to tier3 -->
       <path d="M580 400 Q 590 450, 590 510" stroke-width="9"/>
     </g>
 
-    <!-- leaf layer -->
     <g id="leafLayer"></g>
   </svg>
 
@@ -204,15 +187,15 @@
   }
 
   let placed = 0, tries = 0;
-  const target = 620;
+  const target = 700;
   while(placed < target && tries < target*20){
     tries++;
     const x = 60 + Math.random()*780;
     const y = 90 + Math.random()*350;
     if(!inCrown(x,y)) continue;
-    const scale = 0.7 + Math.random()*1.1;
+    const scale = 0.65 + Math.random()*1.1;
     const angle = Math.random()*360;
-    const isAutumn = Math.random() < 0.08;
+    const isAutumn = Math.random() < 0.07;
     const palette = isAutumn ? autumn : greens;
     const color = palette[Math.floor(Math.random()*palette.length)];
     leafShape(x, y, scale, angle, color);
