@@ -64,9 +64,11 @@
   footer.cta{ text-align:center; padding: 10px 20px 60px; }
 
   @media (max-width: 640px){
-    .placard .t-name{ font-size:8px; }
-    .placard .t-rel{ font-size:5.5px; }
-    .region-label{ font-size:13px; }
+    .placard .board { padding: 3px 6px; }
+    .placard .t-name{ font-size:7px; }
+    .placard .t-rel{ font-size:5px; }
+    .placard .thread{ height: 10px; }
+    .region-label{ font-size:11px; letter-spacing: 2px; }
   }
 </style>
 </head>
@@ -187,7 +189,8 @@
   }
 
   let placed = 0, tries = 0;
-  const target = 700;
+  // Mobil ekranda yarpaq sayını azaldırıq
+  const target = window.innerWidth < 768 ? 350 : 700;
   while(placed < target && tries < target*20){
     tries++;
     const x = 60 + Math.random()*780;
