@@ -3,12 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tərlanın Saytı — Gəncə</title>
+<title>Tərlanın Ailəsi — Gəncə</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --sky-top:#bfe0e8;
+    --sky-top:#a9d8e6;
+    --sky-mid:#cfe9dd;
     --sky-bottom:#eef4e2;
     --brown:#3d2c1f;
     --muted:#6b5a45;
@@ -16,64 +17,37 @@
   *{box-sizing:border-box;}
   html,body{
     margin:0; padding:0; width:100%;
-    background: linear-gradient(180deg, var(--sky-top), var(--sky-bottom) 70%);
+    background: linear-gradient(180deg, var(--sky-top), var(--sky-mid) 45%, var(--sky-bottom) 85%);
     font-family:'Nunito', sans-serif;
     color: var(--brown);
   }
-  header.hero{
-    text-align:center; padding: 34px 20px 6px;
-  }
+  header.hero{ text-align:center; padding: 36px 20px 8px; }
   h1{
     font-family:'Playfair Display', serif;
     font-weight:900;
-    font-size: clamp(24px, 5vw, 40px);
+    font-size: clamp(26px, 6vw, 44px);
     margin:0;
   }
-  .sub{ color:var(--muted); margin-top:6px; font-size:14px; }
+  .sub{ color:var(--muted); margin-top:8px; font-size:14px; }
 
   .nav-btn{
-    display:inline-block;
-    margin-top:16px;
-    font-family:'Nunito', sans-serif;
-    font-weight:800;
-    font-size:14px;
-    letter-spacing:.3px;
+    display:inline-block; margin-top:16px;
+    font-family:'Nunito', sans-serif; font-weight:800; font-size:14px; letter-spacing:.3px;
     color:#fbf6ea;
     background: linear-gradient(135deg, #6b4a2e, #3d2c1f);
-    border:none; border-radius:999px;
-    padding:12px 26px;
-    cursor:pointer;
-    text-decoration:none;
-    box-shadow: 0 6px 16px rgba(61,44,31,.3);
+    border:none; border-radius:999px; padding:12px 26px; cursor:pointer;
+    text-decoration:none; box-shadow: 0 6px 16px rgba(61,44,31,.3);
   }
 
-  .tree-wrap{
-    position:relative;
-    max-width: 1400px;
-    margin: 10px auto 10px;
-    padding: 0 10px;
-  }
+  .tree-wrap{ position:relative; max-width: 1500px; margin: 10px auto 10px; padding: 0 10px; }
   .tree-wrap svg{ display:block; width:100%; height:auto; }
 
-  .placard{
-    position:absolute;
-    transform: translate(-50%, 0);
-    display:flex; flex-direction:column; align-items:center;
-  }
-  .placard .thread{
-    width:1.5px; height:16px;
-    background: #6b5a45;
-  }
+  .placard{ position:absolute; transform: translate(-50%, 0); display:flex; flex-direction:column; align-items:center; }
+  .placard .thread{ width:1.5px; height:16px; background: #6b5a45; }
   .placard .board{
-    margin-top:-1px;
-    background:#fbf6ea;
-    border:1.5px solid #8a6d45;
-    border-radius: 5px;
-    padding: 5px 10px;
-    text-align:center;
-    box-shadow: 0 3px 6px rgba(61,44,31,.25);
-    white-space:nowrap;
-    line-height:1.1;
+    margin-top:-1px; background:#fbf6ea; border:1.5px solid #8a6d45; border-radius: 5px;
+    padding: 5px 10px; text-align:center; box-shadow: 0 3px 6px rgba(61,44,31,.25);
+    white-space:nowrap; line-height:1.1;
   }
   .placard .t-name{ font-weight:800; font-size: 11px; color: var(--brown); }
   .placard .t-rel{ font-size: 8px; color: var(--muted); font-weight:600; }
@@ -82,28 +56,17 @@
   .placard.root .thread{ height:22px; }
 
   .region-label{
-    position:absolute;
-    transform: translate(-50%, -50%);
-    font-family:'Playfair Display', serif;
-    font-weight:900;
-    font-size: 20px;
-    letter-spacing:3px;
-    color: #4a3320;
+    position:absolute; transform: translate(-50%, -50%);
+    font-family:'Playfair Display', serif; font-weight:900; font-size: 20px;
+    letter-spacing:3px; color: #4a3320cc;
   }
 
   footer.cta{ text-align:center; padding: 10px 20px 60px; }
 
-  @media (max-width: 600px){
-    .tree-wrap { 
-      transform-origin: top center; 
-      transform: scale(0.6); 
-      margin-top: -100px;
-      margin-bottom: -100px;
-    }
-    .placard .board { padding: 2px 4px; border-width: 1px; }
-    .placard .t-name { font-size: 5px !important; }
-    .placard .t-rel { font-size: 3px !important; }
-    .region-label { font-size: 8px !important; letter-spacing: 0.5px; }
+  @media (max-width: 900px){
+    .placard .t-name{ font-size:7.5px; }
+    .placard .t-rel{ font-size:5.5px; }
+    .region-label{ font-size:13px; }
   }
 </style>
 </head>
@@ -124,6 +87,29 @@
       </linearGradient>
     </defs>
 
+    <!-- clouds -->
+    <g fill="#ffffff" opacity="0.75">
+      <g transform="translate(180,60)">
+        <ellipse cx="0" cy="10" rx="42" ry="19"/>
+        <ellipse cx="36" cy="0" rx="32" ry="21"/>
+        <ellipse cx="-36" cy="4" rx="28" ry="17"/>
+      </g>
+      <g transform="translate(750,45)" opacity="0.7">
+        <ellipse cx="0" cy="9" rx="40" ry="18"/>
+        <ellipse cx="34" cy="0" rx="30" ry="20"/>
+        <ellipse cx="-34" cy="3" rx="26" ry="16"/>
+      </g>
+      <g transform="translate(1320,70)">
+        <ellipse cx="0" cy="9" rx="38" ry="17"/>
+        <ellipse cx="32" cy="0" rx="28" ry="19"/>
+        <ellipse cx="-32" cy="3" rx="24" ry="15"/>
+      </g>
+      <g transform="translate(1000,150)" opacity="0.5">
+        <ellipse cx="0" cy="6" rx="24" ry="11"/>
+        <ellipse cx="18" cy="0" rx="16" ry="12"/>
+      </g>
+    </g>
+
     <!-- roots -->
     <path d="M750 940 C 710 910, 680 920, 650 950" stroke="#3a2818" stroke-width="8" fill="none" stroke-linecap="round"/>
     <path d="M750 940 C 790 910, 820 920, 850 950" stroke="#3a2818" stroke-width="8" fill="none" stroke-linecap="round"/>
@@ -132,8 +118,7 @@
 
     <!-- trunk -->
     <path d="M720 940 C 714 820, 717 700, 728 610 C 721 590, 719 570, 724 550
-             L 776 550 C 781 570, 779 590, 772 610 C 783 700, 786 820, 780 940 Z"
-          fill="url(#barkGrad)"/>
+             L 776 550 C 781 570, 779 590, 772 610 C 783 700, 786 820, 780 940 Z" fill="url(#barkGrad)"/>
     <path d="M736 780 C 731 700, 734 630, 741 570" stroke="#2e2015" stroke-width="3" fill="none" opacity="0.5"/>
     <path d="M762 780 C 767 700, 764 630, 757 570" stroke="#2e2015" stroke-width="3" fill="none" opacity="0.5"/>
 
@@ -142,60 +127,53 @@
       <path d="M750 550 Q 550 460, 400 330" stroke-width="28"/>
       <path d="M750 550 Q 950 460, 1100 330" stroke-width="28"/>
 
-      <!-- Əkbər&Yaqut to tier2 -->
       <path d="M400 350 Q 330 380, 270 430" stroke-width="16"/>
       <path d="M400 350 Q 470 380, 530 430" stroke-width="16"/>
-      <!-- İslam/Fidan under Nunuş&Emil -->
       <path d="M270 450 Q 240 490, 220 540" stroke-width="9"/>
       <path d="M270 450 Q 300 490, 320 550" stroke-width="9"/>
-      <!-- Ayxan/Mələk under Ələkbər&Aytən -->
       <path d="M530 450 Q 500 490, 480 540" stroke-width="9"/>
       <path d="M530 450 Q 560 490, 580 550" stroke-width="9"/>
 
-      <!-- Əsli&Məhəmməd to tier2 -->
-      <path d="M1100 350 Q 1030 380, 970 430" stroke-width="16"/>
-      <path d="M1100 350 L 1100 420" stroke-width="16"/>
-      <path d="M1100 350 Q 1170 380, 1230 430" stroke-width="16"/>
-      <!-- Xəyal/Gülşən under Aynur -->
-      <path d="M1100 440 Q 1050 480, 1020 540" stroke-width="9"/>
-      <path d="M1100 440 Q 1110 490, 1120 550" stroke-width="9"/>
-      <!-- Ömər/Uğur under Süleyman&Zəminə -->
-      <path d="M1230 450 Q 1220 490, 1220 540" stroke-width="9"/>
-      <path d="M1230 450 Q 1280 490, 1320 540" stroke-width="9"/>
+      <path d="M1100 350 Q 1000 390, 900 430" stroke-width="16"/>
+      <path d="M1100 350 Q 1060 390, 1035 430" stroke-width="16"/>
+      <path d="M1100 350 Q 1140 390, 1170 430" stroke-width="16"/>
+      <path d="M1100 350 Q 1220 390, 1305 430" stroke-width="16"/>
+      <path d="M1170 440 Q 1140 490, 1120 540" stroke-width="9"/>
+      <path d="M1170 440 Q 1200 490, 1220 550" stroke-width="9"/>
+      <path d="M1305 440 Q 1295 490, 1295 540" stroke-width="9"/>
+      <path d="M1305 440 Q 1355 490, 1395 540" stroke-width="9"/>
     </g>
 
-    <!-- leaf layer -->
     <g id="leafLayer"></g>
   </svg>
 
-  <div class="region-label" style="top:10%; left:26.7%;">GƏNCƏ</div>
-  <div class="region-label" style="top:10%; left:73.3%;">GƏNCƏ</div>
+  <div class="region-label" style="top:6%; left:26.7%;">GƏNCƏ</div>
+  <div class="region-label" style="top:6%; left:73.3%;">GƏNCƏ</div>
 
   <!-- ============ ƏKBƏR & YAQUT BRANCH ============ -->
-  <div class="placard root" style="top:20%; left:26.7%;"><div class="thread"></div><div class="board"><div class="t-name">Əkbər & Yaqut</div><div class="t-rel">Babam & Nənəm</div></div></div>
+  <div class="placard root" style="top:19%; left:26.7%;"><div class="thread"></div><div class="board"><div class="t-name">Əkbər & Yaqut</div><div class="t-rel">Babam & Nənəm</div></div></div>
 
-  <div class="placard" style="top:31%; left:18%;"><div class="thread"></div><div class="board"><div class="t-name">Nunuş & Emil</div><div class="t-rel">Xalam & Əri</div></div></div>
-  <div class="placard" style="top:31%; left:35.3%;"><div class="thread"></div><div class="board"><div class="t-name">Ələkbər & Aytən</div><div class="t-rel">Dayım & Yengəm</div></div></div>
+  <div class="placard" style="top:30%; left:18%;"><div class="thread"></div><div class="board"><div class="t-name">Nunuş & Emil</div><div class="t-rel">Xalam & Əri</div></div></div>
+  <div class="placard" style="top:30%; left:35.3%;"><div class="thread"></div><div class="board"><div class="t-name">Ələkbər & Aytən</div><div class="t-rel">Dayım & Yengəm</div></div></div>
 
-  <div class="placard" style="top:43%; left:14.7%;"><div class="thread"></div><div class="board"><div class="t-name">İslam</div><div class="t-rel">Xalam Oğlu</div></div></div>
-  <div class="placard" style="top:45%; left:21.3%;"><div class="thread"></div><div class="board"><div class="t-name">Fidan</div><div class="t-rel">Xalam Qızı</div></div></div>
-  <div class="placard" style="top:43%; left:32%;"><div class="thread"></div><div class="board"><div class="t-name">Ayxan</div><div class="t-rel">Dayım Oğlu</div></div></div>
-  <div class="placard" style="top:45%; left:38.7%;"><div class="thread"></div><div class="board"><div class="t-name">Mələk</div><div class="t-rel">Dayım Qızı</div></div></div>
+  <div class="placard" style="top:41%; left:14.7%;"><div class="thread"></div><div class="board"><div class="t-name">İslam</div><div class="t-rel">Xalam Oğlu</div></div></div>
+  <div class="placard" style="top:43%; left:21.3%;"><div class="thread"></div><div class="board"><div class="t-name">Fidan</div><div class="t-rel">Xalam Qızı</div></div></div>
+  <div class="placard" style="top:41%; left:32%;"><div class="thread"></div><div class="board"><div class="t-name">Ayxan</div><div class="t-rel">Dayım Oğlu</div></div></div>
+  <div class="placard" style="top:43%; left:38.7%;"><div class="thread"></div><div class="board"><div class="t-name">Mələk</div><div class="t-rel">Dayım Qızı</div></div></div>
 
   <!-- ============ ƏSLİ & MƏHƏMMƏD BRANCH ============ -->
-  <!-- ============ ƏSLİ & MƏHƏMMƏD BRANCH ============ -->
-  <div class="placard root" style="top:20%; left:73.3%;"><div class="thread"></div><div class="board"><div class="t-name">Əsli & Məhəmməd</div><div class="t-rel">Nənəm & Babam</div></div></div>
+  <div class="placard root" style="top:19%; left:73.3%;"><div class="thread"></div><div class="board"><div class="t-name">Əsli & Məhəmməd</div><div class="t-rel">Nənəm & Babam</div></div></div>
 
-  <div class="placard" style="top:31%; left:64.7%;"><div class="thread"></div><div class="board"><div class="t-name">Nigar</div><div class="t-rel">Anam</div></div></div>
-  <div class="placard" style="top:26%; left:73.3%;"><div class="thread"></div><div class="board"><div class="t-name">Sayalı</div><div class="t-rel">Xalam</div></div></div>
-  <div class="placard" style="top:31%; left:82%;"><div class="thread"></div><div class="board"><div class="t-name">Aynur</div><div class="t-rel">Xalam</div></div></div>
-  <div class="placard" style="top:31%; left:90.7%;"><div class="thread"></div><div class="board"><div class="t-name">Süleyman & Zəminə</div><div class="t-rel">Dayım & Yengəm</div></div></div>
+  <div class="placard" style="top:30%; left:60%;"><div class="thread"></div><div class="board"><div class="t-name">Nigar</div><div class="t-rel">Anam</div></div></div>
+  <div class="placard" style="top:27%; left:69%;"><div class="thread"></div><div class="board"><div class="t-name">Aynur</div><div class="t-rel">Xalam</div></div></div>
+  <div class="placard" style="top:27%; left:78%;"><div class="thread"></div><div class="board"><div class="t-name">Sayalı</div><div class="t-rel">Xalam</div></div></div>
+  <div class="placard" style="top:30%; left:87%;"><div class="thread"></div><div class="board"><div class="t-name">Süleyman & Zəminə</div><div class="t-rel">Dayım & Yengəm</div></div></div>
 
-  <div class="placard" style="top:43%; left:70%;"><div class="thread"></div><div class="board"><div class="t-name">Xəyal</div><div class="t-rel">Xalam Oğlu</div></div></div>
-  <div class="placard" style="top:45%; left:76.7%;"><div class="thread"></div><div class="board"><div class="t-name">Gülşən</div><div class="t-rel">Xalam Qızı</div></div></div>
-  
-  <div class="placard" style="top:43%; left:83.3%;"><div class="thread"></div><div class="board"><div class="t-name">Ömər</div><div class="t-rel">Dayım Oğlu</div></div></div>
-  <div class="placard" style="top:45%; left:90%;"><div class="thread"></div><div class="board"><div class="t-name">Uğur</div><div class="t-rel">Dayım Oğlu</div></div></div>
+  <div class="placard" style="top:43%; left:74.7%;"><div class="thread"></div><div class="board"><div class="t-name">Xəyal</div><div class="t-rel">Xalam Oğlu</div></div></div>
+  <div class="placard" style="top:45%; left:81.3%;"><div class="thread"></div><div class="board"><div class="t-name">Gülşən</div><div class="t-rel">Xalam Qızı</div></div></div>
+  <div class="placard" style="top:43%; left:86.3%;"><div class="thread"></div><div class="board"><div class="t-name">Ömər</div><div class="t-rel">Dayım Oğlu</div></div></div>
+  <div class="placard" style="top:45%; left:93%;"><div class="thread"></div><div class="board"><div class="t-name">Uğur</div><div class="t-rel">Dayım Oğlu</div></div></div>
+</div>
 
 <footer class="cta">
   <a class="nav-btn" href="./index.html">← Bakı tərəfinə qayıt</a>
@@ -237,15 +215,15 @@
   }
 
   let placed = 0, tries = 0;
-  const target = 950;
+  const target = 1100;
   while(placed < target && tries < target*20){
     tries++;
     const x = 40 + Math.random()*1420;
     const y = 100 + Math.random()*400;
     if(!inCrown(x,y)) continue;
-    const scale = 0.7 + Math.random()*1.1;
+    const scale = 0.65 + Math.random()*1.1;
     const angle = Math.random()*360;
-    const isAutumn = Math.random() < 0.08;
+    const isAutumn = Math.random() < 0.07;
     const palette = isAutumn ? autumn : greens;
     const color = palette[Math.floor(Math.random()*palette.length)];
     leafShape(x, y, scale, angle, color);
