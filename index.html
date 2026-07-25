@@ -1,648 +1,2550 @@
 <!DOCTYPE html>
 <html lang="az">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tərlanın Saytı</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
 
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-html {
-    scroll-behavior: smooth;
-}
+    <title>Tərlanın Ailəsi • TITAN CORE</title>
 
-body {
-    background:
-        radial-gradient(circle at 50% 0%, #303030 0%, #111 35%, #050505 100%);
-    color: white;
-    font-family: "Playfair Display", serif;
-    overflow-x: hidden;
-}
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap"
+          rel="stylesheet">
 
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    opacity: .13;
-    background-image:
-        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
-    background-size: 50px 50px;
-}
+    <style>
 
-/* BAŞLANĞIC */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-.hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-}
+        html {
+            scroll-behavior: smooth;
+        }
 
-.hero h1 {
-    font-family: "Cinzel", serif;
-    font-size: clamp(50px, 10vw, 145px);
-    letter-spacing: 12px;
-    text-transform: uppercase;
-    color: #e9e9e9;
-    text-shadow:
-        0 0 20px rgba(255,255,255,.15),
-        0 20px 50px black;
-    animation: appear 2s ease forwards;
-}
+        body {
 
-.hero p {
-    margin-top: 25px;
-    letter-spacing: 8px;
-    font-size: 13px;
-    color: #999;
-    text-transform: uppercase;
-}
+            background:
+                radial-gradient(
+                    circle at 50% 0%,
+                    #260020 0%,
+                    #0b0012 35%,
+                    #020206 75%,
+                    #000 100%
+                );
 
-.scroll {
-    position: absolute;
-    bottom: 35px;
-    font-size: 12px;
-    letter-spacing: 5px;
-    color: #777;
-    animation: float 2s infinite ease-in-out;
-}
+            color: white;
 
-@keyframes appear {
-    from {
-        opacity: 0;
-        transform: translateY(60px) scale(.9);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
+            font-family:
+                "Playfair Display",
+                serif;
 
-@keyframes float {
-    0%,100% { transform: translateY(0); }
-    50% { transform: translateY(12px); }
-}
+            overflow-x: hidden;
+        }
 
-/* BÖLMƏLƏR */
+        body::before {
 
-.family-section {
-    min-height: 100vh;
-    padding: 140px 20px;
-    max-width: 1500px;
-    margin: auto;
-}
+            content: "";
 
-.section-title {
-    font-family: "Cinzel", serif;
-    font-size: clamp(45px, 8vw, 110px);
-    letter-spacing: 15px;
-    text-align: center;
-    margin-bottom: 100px;
-    color: #ddd;
-}
+            position: fixed;
 
-.tree {
-    position: relative;
-    max-width: 1250px;
-    margin: auto;
-    padding: 60px 20px;
-}
+            inset: 0;
 
-/* REAL AĞACIN GÖVDƏSİ */
+            pointer-events: none;
 
-.tree::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    width: 9px;
-    transform: translateX(-50%);
-    border-radius: 50%;
-    background:
-        linear-gradient(90deg, #211810, #6d4d32, #25190f);
-    box-shadow:
-        0 0 20px rgba(100,70,40,.3),
-        inset 0 0 8px black;
-}
+            z-index: -1;
 
-.grandparents {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    justify-content: center;
-    gap: 35px;
-    margin-bottom: 120px;
-}
+            opacity: .35;
 
-.person {
-    position: relative;
-    min-width: 180px;
-    padding: 22px 28px;
-    text-align: center;
-    border: 1px solid #777;
-    background:
-        linear-gradient(145deg, #252525, #0b0b0b);
-    box-shadow:
-        0 20px 50px rgba(0,0,0,.7),
-        inset 0 0 20px rgba(255,255,255,.04);
-    transition: .5s;
-    transform-style: preserve-3d;
-}
+            background:
+                linear-gradient(
+                    115deg,
+                    transparent 25%,
+                    rgba(255, 0, 80, .08),
+                    transparent 60%
+                ),
 
-.person:hover {
-    transform: translateY(-12px) rotateX(7deg) rotateY(-7deg);
-    border-color: white;
-    box-shadow:
-        0 30px 70px rgba(0,0,0,.9),
-        0 0 30px rgba(255,255,255,.12);
-}
+                linear-gradient(
+                    65deg,
+                    transparent 20%,
+                    rgba(100, 0, 255, .1),
+                    transparent 70%
+                );
 
-.person .name {
-    font-family: "Cinzel", serif;
-    font-size: 21px;
-    letter-spacing: 2px;
-}
+            animation:
+                bgMove 8s linear infinite;
+        }
 
-.person .role {
-    display: block;
-    margin-top: 8px;
-    font-size: 12px;
-    color: #999;
-    font-style: italic;
-}
+        @keyframes bgMove {
 
-/* BAĞLANTI XƏTLƏRİ */
+            0% {
+                transform: translateX(-5%);
+            }
 
-.children {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 18px;
-    margin-bottom: 100px;
-}
+            50% {
+                transform: translateX(5%);
+            }
 
-.children::before {
-    content: "";
-    position: absolute;
-    top: -60px;
-    left: 10%;
-    right: 10%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #555, transparent);
-}
+            100% {
+                transform: translateX(-5%);
+            }
 
-.children .person {
-    min-width: 165px;
-}
+        }
 
-/* NƏSİLLƏR */
+        .hero {
 
-.generation {
-    margin: 120px auto;
-    text-align: center;
-    position: relative;
-    z-index: 3;
-}
+            min-height: 100vh;
 
-.generation h3 {
-    font-family: "Cinzel", serif;
-    font-size: 35px;
-    letter-spacing: 10px;
-    margin-bottom: 45px;
-    color: #aaa;
-}
+            display: flex;
 
-.cards {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 22px;
-}
+            align-items: center;
 
-/* RƏHMƏTLİK YAZISI */
+            justify-content: center;
 
-.memorial {
-    margin: 150px auto 50px;
-    max-width: 750px;
-    padding: 50px 35px;
-    text-align: center;
-    border-top: 1px solid #555;
-    border-bottom: 1px solid #555;
-    position: relative;
-}
+            text-align: center;
 
-.memorial h2 {
-    font-family: "Cinzel", serif;
-    letter-spacing: 5px;
-    margin-bottom: 25px;
-}
+            position: relative;
+        }
 
-.memorial p {
-    color: #aaa;
-    line-height: 2;
-    font-size: 17px;
-    font-style: italic;
-}
+        .hero h1 {
 
-/* SON */
+            font-family:
+                "Cinzel",
+                serif;
 
-footer {
-    min-height: 50vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: #555;
-    letter-spacing: 5px;
-    font-family: "Cinzel", serif;
-}
+            font-size:
+                clamp(
+                    50px,
+                    10vw,
+                    145px
+                );
 
-/* AİLƏ AĞACI BÖLMƏLƏRİ VƏ QOLLAR (YENİLƏNDİ) */
+            letter-spacing: 12px;
 
-.branch-container {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
-    margin-bottom: 100px;
-}
+            color: #eee;
 
-.branch-group {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
+            text-shadow:
+                0 0 20px #ff0055,
+                0 0 50px #7300ff;
 
-/* TELEFON */
+            animation:
+                appear 2s ease forwards;
+        }
 
-@media(max-width: 700px) {
-    .hero h1 {
-        letter-spacing: 5px;
-    }
+        .hero p {
 
-    .tree::before {
-        left: 25px;
-    }
+            margin-top: 25px;
 
-    .grandparents,
-    .children,
-    .cards,
-    .branch-container {
-        justify-content: flex-start;
-        padding-left: 45px;
-    }
+            letter-spacing: 8px;
 
-    .person {
-        min-width: 145px;
-    }
+            font-size: 13px;
 
-    .section-title {
-        letter-spacing: 7px;
-    }
-}
-</style>
+            color: #b96cff;
+
+            text-transform: uppercase;
+        }
+
+        .scroll {
+
+            position: absolute;
+
+            bottom: 35px;
+
+            color: #ff3377;
+
+            letter-spacing: 5px;
+
+            animation:
+                float 2s infinite ease-in-out;
+        }
+
+        @keyframes appear {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(60px)
+                    scale(.9);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+
+                transform:
+                    translateY(0);
+            }
+
+            50% {
+
+                transform:
+                    translateY(12px);
+            }
+
+        }
+
+        .family-section {
+
+            min-height: 100vh;
+
+            padding: 140px 20px;
+
+            max-width: 1500px;
+
+            margin: auto;
+        }
+
+        .section-title {
+
+            font-family:
+                "Cinzel",
+                serif;
+
+            font-size:
+                clamp(
+                    45px,
+                    8vw,
+                    110px
+                );
+
+            letter-spacing: 15px;
+
+            text-align: center;
+
+            margin-bottom: 100px;
+
+            color: #ddd;
+
+            text-shadow:
+                0 0 20px #ff0055,
+                0 0 40px #7300ff;
+        }
+
+        .tree {
+
+            position: relative;
+
+            max-width: 1250px;
+
+            margin: auto;
+
+            padding: 60px 20px;
+        }
+
+        .tree::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+
+            bottom: 0;
+
+            left: 50%;
+
+            width: 9px;
+
+            transform:
+                translateX(-50%);
+
+            border-radius: 50%;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #ff174f,
+                    #8a00ff,
+                    #168cff,
+                    #ff174f
+                );
+
+            box-shadow:
+                0 0 15px #ff174f,
+                0 0 35px #7900ff;
+        }
+
+        .grandparents {
+
+            position: relative;
+
+            z-index: 2;
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 35px;
+
+            margin-bottom: 120px;
+        }
+
+        .person {
+
+            position: relative;
+
+            min-width: 180px;
+
+            padding: 22px 28px;
+
+            text-align: center;
+
+            border: 1px solid #771144;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #20091e,
+                    #080008
+                );
+
+            box-shadow:
+                0 0 20px
+                rgba(
+                    255,
+                    0,
+                    100,
+                    .15
+                ),
+
+                0 20px 50px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    .7
+                );
+
+            transition: .5s;
+
+            transform-style:
+                preserve-3d;
+        }
+
+        .person:hover {
+
+            transform:
+                translateY(-12px)
+                rotateX(7deg)
+                rotateY(-7deg);
+
+            border-color:
+                #ff2d75;
+
+            box-shadow:
+                0 0 35px #ff0055,
+                0 30px 70px black;
+        }
+
+        .name {
+
+            font-family:
+                "Cinzel",
+                serif;
+
+            font-size: 21px;
+
+            letter-spacing: 2px;
+        }
+
+        .role {
+
+            display: block;
+
+            margin-top: 8px;
+
+            font-size: 12px;
+
+            color: #d66cff;
+
+            font-style: italic;
+        }
+
+        .children {
+
+            position: relative;
+
+            z-index: 2;
+
+            display: flex;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 18px;
+
+            margin-bottom: 100px;
+        }
+
+        .children::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: -60px;
+
+            left: 10%;
+
+            right: 10%;
+
+            height: 2px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    #ff1765,
+                    #8a00ff,
+                    transparent
+                );
+
+            box-shadow:
+                0 0 15px #ff1765;
+        }
+
+        .branch-container {
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 40px;
+
+            flex-wrap: wrap;
+
+            margin-bottom: 100px;
+        }
+
+        .branch-group {
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            gap: 20px;
+        }
+
+        .generation {
+
+            margin: 120px auto;
+
+            text-align: center;
+
+            position: relative;
+
+            z-index: 3;
+        }
+
+        .generation h3 {
+
+            font-family:
+                "Cinzel",
+                serif;
+
+            font-size: 35px;
+
+            letter-spacing: 10px;
+
+            margin-bottom: 45px;
+
+            color: #dcb1ff;
+        }
+
+        .cards {
+
+            display: flex;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 22px;
+        }
+
+        .memorial {
+
+            margin: 150px auto 50px;
+
+            max-width: 750px;
+
+            padding: 50px 35px;
+
+            text-align: center;
+
+            border-top: 1px solid #ff1765;
+
+            border-bottom: 1px solid #7900ff;
+        }
+
+        .memorial h2 {
+
+            font-family:
+                "Cinzel",
+                serif;
+
+            letter-spacing: 5px;
+
+            margin-bottom: 25px;
+
+            color: #ff6a9b;
+        }
+
+        .memorial p {
+
+            color: #aaa;
+
+            line-height: 2;
+
+            font-size: 17px;
+
+            font-style: italic;
+        }
+
+        .titan-panel {
+
+            min-height: 100vh;
+
+            padding: 150px 25px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    ellipse at center,
+                    #300025 0%,
+                    #08000d 45%,
+                    #000 100%
+                );
+
+            border-top: 1px solid #ff0055;
+
+            border-bottom: 1px solid #6b00ff;
+        }
+
+        .titan-panel::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: -50%;
+
+            background:
+                repeating-linear-gradient(
+                    120deg,
+                    transparent 0 100px,
+                    rgba(
+                        255,
+                        0,
+                        100,
+                        .07
+                    ) 102px,
+                    transparent 104px
+                );
+
+            transform:
+                rotate(-8deg);
+
+            animation:
+                neonLines 8s linear infinite;
+        }
+
+        @keyframes neonLines {
+
+            from {
+
+                transform:
+                    translateX(-100px)
+                    rotate(-8deg);
+            }
+
+            to {
+
+                transform:
+                    translateX(100px)
+                    rotate(-8deg);
+            }
+
+        }
+
+        .titan-header {
+
+            position: relative;
+
+            z-index: 2;
+
+            text-align: center;
+
+            margin-bottom: 60px;
+        }
+
+        .titan-header span {
+
+            font-family:
+                "Cinzel",
+                serif;
+
+            color: #ff357c;
+
+            letter-spacing: 6px;
+
+            font-size: 12px;
+        }
+
+        .titan-header h2 {
+
+            margin: 20px 0;
+
+            font-family:
+                "Cinzel",
+                serif;
+
+            font-size:
+                clamp(
+                    35px,
+                    7vw,
+                    90px
+                );
+
+            letter-spacing: 10px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #ff174f,
+                    #ff4b9b,
+                    #a100ff,
+                    #278dff,
+                    #ff174f
+                );
+
+            background-size:
+                400% auto;
+
+            -webkit-background-clip:
+                text;
+
+            color: transparent;
+
+            animation:
+                titanText 5s linear infinite;
+        }
+
+        @keyframes titanText {
+
+            to {
+
+                background-position:
+                    400% center;
+            }
+
+        }
+
+        .titan-header p {
+
+            color: #a66cff;
+
+            letter-spacing: 5px;
+
+            font-size: 12px;
+        }
+
+        .laptop-stage {
+
+            position: relative;
+
+            z-index: 2;
+
+            height: 560px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            perspective: 1400px;
+
+            margin-bottom: 60px;
+        }
+
+        .laptop {
+
+            position: relative;
+
+            width: 780px;
+
+            height: 500px;
+
+            transform-style:
+                preserve-3d;
+
+            animation:
+                laptopSpin
+                14s
+                linear
+                infinite;
+        }
+
+        @keyframes laptopSpin {
+
+            0% {
+
+                transform:
+                    rotateY(0deg)
+                    rotateX(8deg);
+            }
+
+            50% {
+
+                transform:
+                    rotateY(180deg)
+                    rotateX(8deg);
+            }
+
+            100% {
+
+                transform:
+                    rotateY(360deg)
+                    rotateX(8deg);
+            }
+
+        }
+
+        .laptop-screen {
+
+            position: absolute;
+
+            top: 0;
+
+            left: 85px;
+
+            width: 610px;
+
+            height: 370px;
+
+            border: 15px solid #111;
+
+            border-radius:
+                20px
+                20px
+                7px
+                7px;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    #46002f,
+                    #12001c 50%,
+                    #020006 100%
+                );
+
+            box-shadow:
+                0 0 25px #ff0055,
+                0 0 70px #6b00ff,
+                inset 0 0 50px #ff0055;
+
+            transform:
+                translateZ(30px);
+
+            overflow: hidden;
+        }
+
+        .laptop-screen::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    transparent 35%,
+                    rgba(
+                        255,
+                        0,
+                        90,
+                        .7
+                    ) 36%,
+                    transparent 38%
+                ),
+
+                linear-gradient(
+                    45deg,
+                    transparent 55%,
+                    rgba(
+                        100,
+                        0,
+                        255,
+                        .7
+                    ) 56%,
+                    transparent 58%
+                );
+        }
+
+        .screen-t {
+
+            position: absolute;
+
+            inset: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-family:
+                "Cinzel",
+                serif;
+
+            font-size: 190px;
+
+            font-weight: bold;
+
+            color: white;
+
+            text-shadow:
+                0 0 10px #ff0055,
+                0 0 35px #ff0055,
+                0 0 80px #7200ff;
+
+            animation:
+                screenT
+                4s
+                linear
+                infinite;
+        }
+
+        @keyframes screenT {
+
+            0% {
+
+                transform:
+                    rotateY(0deg);
+            }
+
+            50% {
+
+                transform:
+                    rotateY(180deg);
+            }
+
+            100% {
+
+                transform:
+                    rotateY(360deg);
+            }
+
+        }
+
+        .laptop-base {
+
+            position: absolute;
+
+            top: 360px;
+
+            left: 5px;
+
+            width: 770px;
+
+            height: 125px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #090909,
+                    #292929,
+                    #090909
+                );
+
+            border-radius:
+                5px
+                5px
+                22px
+                22px;
+
+            box-shadow:
+                0 15px 35px black,
+                0 0 25px #a000ff;
+
+            transform:
+                rotateX(70deg)
+                translateZ(30px);
+        }
+
+        .keyboard {
+
+            position: absolute;
+
+            top: 12px;
+
+            left: 35px;
+
+            width: 650px;
+
+            height: 210px;
+
+            padding: 14px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    14,
+                    1fr
+                );
+
+            grid-auto-rows:
+                28px;
+
+            gap: 6px;
+
+            border-radius: 12px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #181818,
+                    #050505
+                );
+
+            box-shadow:
+                inset 0 0 25px #000,
+                0 0 18px #ff0055;
+
+            transform:
+                translateZ(8px)
+                rotateX(-2deg);
+        }
+
+        .key {
+
+            min-width: 30px;
+
+            height: 28px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 5px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #3a3a3a,
+                    #090909
+                );
+
+            border: 1px solid #666;
+
+            color: #ddd;
+
+            font-family:
+                Arial,
+                sans-serif;
+
+            font-size: 9px;
+
+            font-weight: bold;
+
+            box-shadow:
+                0 4px 0 #000,
+                0 0 5px #ff0055;
+
+            transition: .15s;
+
+            animation:
+                rgbKeys
+                4s
+                linear
+                infinite;
+        }
+
+        .key:hover {
+
+            transform:
+                translateY(3px);
+
+            color: white;
+
+            box-shadow:
+                0 1px 0 #000,
+                0 0 15px #ff0055;
+        }
+
+        .key:nth-child(3n) {
+
+            animation-delay:
+                .4s;
+        }
+
+        .key:nth-child(4n) {
+
+            animation-delay:
+                .8s;
+        }
+
+        .key:nth-child(5n) {
+
+            animation-delay:
+                1.2s;
+        }
+
+        .wide {
+
+            grid-column:
+                span 2;
+        }
+
+        .space {
+
+            grid-column:
+                span 5;
+        }
+
+        @keyframes rgbKeys {
+
+            0% {
+
+                box-shadow:
+                    0 4px 0 #000,
+                    0 0 5px #ff0055;
+            }
+
+            33% {
+
+                box-shadow:
+                    0 4px 0 #000,
+                    0 0 8px #8a00ff;
+            }
+
+            66% {
+
+                box-shadow:
+                    0 4px 0 #000,
+                    0 0 8px #168cff;
+            }
+
+            100% {
+
+                box-shadow:
+                    0 4px 0 #000,
+                    0 0 5px #ff0055;
+            }
+
+        }
+
+        .touchpad {
+
+            position: absolute;
+
+            right: 55px;
+
+            top: 20px;
+
+            width: 115px;
+
+            height: 60px;
+
+            border: 1px solid #8a00ff;
+
+            border-radius: 7px;
+
+            box-shadow:
+                0 0 15px #8a00ff;
+        }
+
+        .titan-t {
+
+            position: relative;
+
+            z-index: 2;
+
+            width: 220px;
+
+            height: 220px;
+
+            margin:
+                0 auto 120px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-family:
+                "Cinzel",
+                serif;
+
+            font-size: 170px;
+
+            font-weight: bold;
+
+            color: white;
+
+            text-shadow:
+                0 0 10px #ff0055,
+                0 0 30px #ff0055,
+                0 0 60px #7200ff,
+                0 0 100px #168cff;
+
+            animation:
+                bigTSpin
+                5s
+                linear
+                infinite;
+        }
+
+        @keyframes bigTSpin {
+
+            from {
+
+                transform:
+                    rotateY(0deg)
+                    rotateX(10deg);
+            }
+
+            to {
+
+                transform:
+                    rotateY(360deg)
+                    rotateX(10deg);
+            }
+
+        }
+
+        .titan-stats {
+
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 1200px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    4,
+                    1fr
+                );
+
+            gap: 20px;
+        }
+
+        .titan-card {
+
+            position: relative;
+
+            padding: 35px 20px;
+
+            min-height: 220px;
+
+            text-align: center;
+
+            border: 1px solid #681040;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #200018,
+                    #070007
+                );
+
+            box-shadow:
+                0 0 20px
+                rgba(
+                    255,
+                    0,
+                    100,
+                    .1
+                ),
+
+                0 20px 50px black;
+
+            transition: .5s;
+        }
+
+        .titan-card:hover {
+
+            transform:
+                translateY(-15px)
+                scale(1.03);
+
+            border-color:
+                #ff1765;
+
+            box-shadow:
+                0 0 35px #ff0055,
+                0 30px 70px black;
+        }
+
+        .titan-icon {
+
+            font-size: 35px;
+
+            margin-bottom: 20px;
+
+            color: #ff3377;
+
+            text-shadow:
+                0 0 20px #ff0055;
+        }
+
+        .titan-card h3 {
+
+            font-family:
+                "Cinzel",
+                serif;
+
+            font-size: 17px;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 15px;
+        }
+
+        .titan-card strong {
+
+            display: block;
+
+            font-family:
+                "Cinzel",
+                serif;
+
+            font-size: 28px;
+
+            text-shadow:
+                0 0 15px #a000ff;
+        }
+
+        .titan-card span {
+
+            display: block;
+
+            margin-top: 12px;
+
+            font-size: 10px;
+
+            letter-spacing: 3px;
+
+            color: #b76cff;
+        }
+
+        .overboost {
+
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 1000px;
+
+            margin:
+                100px auto 0;
+
+            padding: 30px;
+
+            border: 1px solid #78004c;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #0b0009,
+                    #19000f,
+                    #0b0009
+                );
+        }
+
+        .overboost-title {
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            font-family:
+                "Cinzel",
+                serif;
+
+            letter-spacing: 3px;
+
+            color: #ff4c91;
+        }
+
+        #powerText {
+
+            color: white;
+
+            font-size: 20px;
+        }
+
+        .power-bar {
+
+            height: 12px;
+
+            margin:
+                25px 0 15px;
+
+            background: #18000f;
+
+            overflow: hidden;
+        }
+
+        .power-fill {
+
+            height: 100%;
+
+            width: 0%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #ff0055,
+                    #8a00ff,
+                    #168cff,
+                    #ff0055
+                );
+
+            background-size:
+                300% 100%;
+
+            animation:
+                powerLoad
+                3s
+                ease
+                forwards,
+
+                powerFlow
+                2s
+                linear
+                infinite;
+
+            box-shadow:
+                0 0 20px #ff0055;
+        }
+
+        @keyframes powerLoad {
+
+            to {
+
+                width: 100%;
+            }
+
+        }
+
+        @keyframes powerFlow {
+
+            to {
+
+                background-position:
+                    300% 0;
+            }
+
+        }
+
+        .power-info {
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            color: #a66cff;
+
+            font-size: 10px;
+
+            letter-spacing: 3px;
+        }
+
+        .cooling-system {
+
+            position: relative;
+
+            z-index: 2;
+
+            height: 350px;
+
+            max-width: 900px;
+
+            margin:
+                120px auto 0;
+
+            border: 1px solid #71004d;
+
+            background:
+                radial-gradient(
+                    circle,
+                    #26001f 0%,
+                    #08000c 65%
+                );
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            overflow: hidden;
+
+            box-shadow:
+                inset 0 0 50px
+                rgba(
+                    255,
+                    0,
+                    100,
+                    .2
+                );
+        }
+
+        .cooling-center {
+
+            position: relative;
+
+            z-index: 3;
+
+            text-align: center;
+        }
+
+        .cooling-center span {
+
+            display: block;
+
+            font-size: 11px;
+
+            letter-spacing: 5px;
+
+            color: #ff3f85;
+        }
+
+        .cooling-center strong {
+
+            display: block;
+
+            margin:
+                15px 0;
+
+            font-family:
+                "Cinzel",
+                serif;
+
+            font-size: 28px;
+
+            letter-spacing: 5px;
+
+            text-shadow:
+                0 0 20px #8a00ff;
+        }
+
+        .cooling-center small {
+
+            color: #a66cff;
+
+            letter-spacing: 3px;
+        }
+
+        .cooling-fan {
+
+            position: absolute;
+
+            width: 260px;
+
+            height: 260px;
+
+            border: 1px solid #ff1765;
+
+            border-radius: 50%;
+
+            opacity: .45;
+
+            animation:
+                spin
+                8s
+                linear
+                infinite;
+
+            box-shadow:
+                0 0 25px #7200ff;
+        }
+
+        .cooling-fan::before,
+        .cooling-fan::after {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 20px;
+
+            border: 1px dashed #a000ff;
+
+            border-radius: 50%;
+        }
+
+        .cooling-fan::after {
+
+            inset: 55px;
+
+            border: 2px solid #168cff;
+        }
+
+        .fan-one {
+
+            left: 8%;
+        }
+
+        .fan-two {
+
+            right: 8%;
+
+            animation-direction:
+                reverse;
+        }
+
+        @keyframes spin {
+
+            to {
+
+                transform:
+                    rotate(360deg);
+            }
+
+        }
+
+        footer {
+
+            min-height: 50vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            color: #a66cff;
+
+            letter-spacing: 5px;
+
+            font-family:
+                "Cinzel",
+                serif;
+        }
+
+        @media (max-width: 900px) {
+
+            .titan-stats {
+
+                grid-template-columns:
+                    repeat(
+                        2,
+                        1fr
+                    );
+            }
+
+            .laptop {
+
+                transform:
+                    scale(.8);
+            }
+
+        }
+
+        @media (max-width: 700px) {
+
+            .hero h1 {
+
+                letter-spacing: 5px;
+            }
+
+            .tree::before {
+
+                left: 25px;
+            }
+
+            .grandparents,
+            .children,
+            .cards,
+            .branch-container {
+
+                justify-content:
+                    flex-start;
+
+                padding-left: 45px;
+            }
+
+            .person {
+
+                min-width: 145px;
+            }
+
+            .section-title {
+
+                letter-spacing: 7px;
+            }
+
+            .laptop {
+
+                transform:
+                    scale(.55);
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .titan-stats {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+            .titan-header h2 {
+
+                letter-spacing: 4px;
+            }
+
+            .cooling-fan {
+
+                opacity: .15;
+            }
+
+            .fan-one {
+
+                left: -25%;
+            }
+
+            .fan-two {
+
+                right: -25%;
+            }
+
+        }
+
+    </style>
+
 </head>
 
 <body>
 
-<!-- BAŞLANĞIC -->
+    <section class="hero">
 
-<section class="hero">
-    <div>
-        <h1>Tərlanın Ailəsi</h1>
-        <p>Bir ailə • Bir tarix • Bir ağac</p>
-    </div>
+        <div>
 
-    <div class="scroll">AŞAĞI SÜRÜŞDÜR ↓</div>
-</section>
-
-
-<!-- BAKILILAR -->
-
-<section class="family-section">
-
-    <h2 class="section-title">BAKI</h2>
-
-    <div class="tree">
-
-        <!-- ƏN YUXARI -->
-
-        <div class="grandparents">
-            <div class="person">
-                <div class="name">Sabir</div>
-                <span class="role">Baba</span>
-            </div>
-
-            <div class="person">
-                <div class="name">Gülzar</div>
-                <span class="role">Nənə</span>
-            </div>
-        </div>
-
-        <!-- ƏSAS ÖVLADLAR VƏ ONLARIN ALTINDAKİLƏR -->
-
-        <div class="branch-container">
-
-            <!-- AFƏT VƏ SƏNAN -->
-            <div class="branch-group">
-                <div class="person">
-                    <div class="name">Afət</div>
-                    <span class="role">Bibim</span>
-                </div>
-                <div class="person">
-                    <div class="name">Sənan</div>
-                </div>
-            </div>
-
-            <!-- İLQAR, ŞÜKRAN VƏ KƏNAN -->
-            <div class="branch-group">
-                <div class="person">
-                    <div class="name">İlqar</div>
-                    <span class="role">Atam</span>
-                </div>
-                <div class="person">
-                    <div class="name">Şükran</div>
-                </div>
-                <div class="person">
-                    <div class="name">Kənan</div>
-                    <span class="role">Əmim oğlu</span>
-                </div>
-            </div>
-
-            <!-- RÜFƏT VƏ RƏVAN -->
-            <div class="branch-group">
-                <div class="person">
-                    <div class="name">Rüfət</div>
-                    <span class="role">Əmim</span>
-                </div>
-                <div class="person">
-                    <div class="name">Rəvan</div>
-                    <span class="role">Əmim oğlu</span>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- DİGƏR QOHUMLAR -->
-
-        <div class="children">
-
-            <div class="person">
-                <div class="name">Hökümə</div>
-            </div>
-
-        </div>
-
-        <!-- SABİR BABA ÜÇÜN XÜSUSİ YAZI -->
-
-        <div class="memorial">
-
-            <h2>Sabir Babamın Xatirəsinə</h2>
+            <h1>
+                Tərlanın Ailəsi
+            </h1>
 
             <p>
-                Sabir babam ailəmizin köklərində yaşayan,
-                hər zaman hörmət və sevgi ilə xatırlanan dəyərli bir insandır.
-                Onun xatirəsi ailəmizin tarixində və qəlbimizdə daim yaşayacaq.
-                Ruhu şad, məkanı cənnət olsun.
+                Bir ailə • Bir tarix • Bir ağac
             </p>
 
         </div>
 
-    </div>
+        <div class="scroll">
 
-</section>
+            AŞAĞI SÜRÜŞDÜR ↓
+
+        </div>
+
+    </section>
 
 
-<!-- GƏNCƏ 1 -->
+    <section class="family-section">
 
-<section class="family-section">
+        <h2 class="section-title">
 
-    <h2 class="section-title">GƏNCƏ 1</h2>
+            BAKI
 
-    <div class="tree">
+        </h2>
 
-        <div class="grandparents">
+        <div class="tree">
 
-            <div class="person">
-                <div class="name">Əsli</div>
-                <span class="role">Baba</span>
+            <div class="grandparents">
+
+                <div class="person">
+
+                    <div class="name">
+                        Sabir
+                    </div>
+
+                    <span class="role">
+                        Baba
+                    </span>
+
+                </div>
+
+                <div class="person">
+
+                    <div class="name">
+                        Gülzar
+                    </div>
+
+                    <span class="role">
+                        Nənə
+                    </span>
+
+                </div>
+
             </div>
 
-            <div class="person">
-                <div class="name">Məhəmməd</div>
-                <span class="role">Nənə</span>
+
+            <div class="branch-container">
+
+                <div class="branch-group">
+
+                    <div class="person">
+
+                        <div class="name">
+                            Afət
+                        </div>
+
+                        <span class="role">
+                            Bibim
+                        </span>
+
+                    </div>
+
+                    <div class="person">
+
+                        <div class="name">
+                            Sənan
+                        </div>
+
+                        <span class="role">
+                            Qardaşım
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="branch-group">
+
+                    <div class="person">
+
+                        <div class="name">
+                            İlqar
+                        </div>
+
+                        <span class="role">
+                            Atam
+                        </span>
+
+                    </div>
+
+                    <div class="person">
+
+                        <div class="name">
+                            Şükran
+                        </div>
+
+                        <span class="role">
+                            Bacım
+                        </span>
+
+                    </div>
+
+                    <div class="person">
+
+                        <div class="name">
+                            Kənan
+                        </div>
+
+                        <span class="role">
+                            Qardaşım
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="branch-group">
+
+                    <div class="person">
+
+                        <div class="name">
+                            Rüfət
+                        </div>
+
+                        <span class="role">
+                            Əmim
+                        </span>
+
+                    </div>
+
+                    <div class="person">
+
+                        <div class="name">
+                            Rəvan
+                        </div>
+
+                        <span class="role">
+                            Əmim oğlu
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="children">
+
+                <div class="person">
+
+                    <div class="name">
+                        Hökümə
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="memorial">
+
+                <h2>
+                    Sabir Babamın Xatirəsinə
+                </h2>
+
+                <p>
+
+                    Sabir babam ailəmizin köklərində yaşayan,
+                    hər zaman hörmət və sevgi ilə xatırlanan
+                    dəyərli bir insandır.
+
+                    Onun xatirəsi ailəmizin tarixində və
+                    qəlbimizdə daim yaşayacaq.
+
+                    Ruhu şad, məkanı cənnət olsun.
+
+                </p>
+
             </div>
 
         </div>
 
-        <div class="children">
+    </section>
 
-            <div class="person">
-                <div class="name">Nigar</div>
-                <span class="role">Anam</span>
+
+    <section class="family-section">
+
+        <h2 class="section-title">
+
+            GƏNCƏ 1
+
+        </h2>
+
+        <div class="tree">
+
+            <div class="grandparents">
+
+                <div class="person">
+
+                    <div class="name">
+                        Əsli
+                    </div>
+
+                    <span class="role">
+                        Nənə
+                    </span>
+
+                </div>
+
+                <div class="person">
+
+                    <div class="name">
+                        Məhəmməd
+                    </div>
+
+                    <span class="role">
+                        Baba
+                    </span>
+
+                </div>
+
             </div>
 
-            <div class="person">
-                <div class="name">Aynur</div>
-                <span class="role">Xalam</span>
+
+            <div class="children">
+
+                <div class="person">
+
+                    <div class="name">
+                        Nigar
+                    </div>
+
+                    <span class="role">
+                        Anam
+                    </span>
+
+                </div>
+
+                <div class="person">
+
+                    <div class="name">
+                        Aynur
+                    </div>
+
+                    <span class="role">
+                        Xalam
+                    </span>
+
+                </div>
+
+                <div class="person">
+
+                    <div class="name">
+                        Süleyman
+                    </div>
+
+                    <span class="role">
+                        Dayım
+                    </span>
+
+                </div>
+
+                <div class="person">
+
+                    <div class="name">
+                        Sayalı
+                    </div>
+
+                    <span class="role">
+                        Xalam
+                    </span>
+
+                </div>
+
+                <div class="person">
+
+                    <div class="name">
+                        Zəminə
+                    </div>
+
+                    <span class="role">
+                        Yengə
+                    </span>
+
+                </div>
+
             </div>
 
-            <div class="person">
-                <div class="name">Süleyman</div>
-                <span class="role">Dayım</span>
-            </div>
 
-            <div class="person">
-                <div class="name">Sayalı</div>
-                <span class="role">Xalam</span>
-            </div>
+            <div class="generation">
 
-            <div class="person">
-                <div class="name">Zəminə</div>
-                <span class="role">Yengə</span>
+                <h3>
+                    NÖVBƏTİ NƏSİL
+                </h3>
+
+                <div class="cards">
+
+                    <div class="person">
+
+                        <div class="name">
+                            Gülşən
+                        </div>
+
+                        <span class="role">
+                            Xalam qızı
+                        </span>
+
+                    </div>
+
+                    <div class="person">
+
+                        <div class="name">
+                            Xəyal
+                        </div>
+
+                        <span class="role">
+                            Xalam oğlu
+                        </span>
+
+                    </div>
+
+                    <div class="person">
+
+                        <div class="name">
+                            Ömər
+                        </div>
+
+                        <span class="role">
+                            Dayım oğlu
+                        </span>
+
+                    </div>
+
+                    <div class="person">
+
+                        <div class="name">
+                            Uğur
+                        </div>
+
+                        <span class="role">
+                            Dayım oğlu
+                        </span>
+
+                    </div>
+
+                </div>
+
             </div>
 
         </div>
 
-        <div class="generation">
+    </section>
 
-            <h3>NÖVBƏTİ NƏSİL</h3>
 
-            <div class="cards">
+    <section class="family-section">
+
+        <h2 class="section-title">
+
+            GƏNCƏ 2
+
+        </h2>
+
+        <div class="tree">
+
+            <div class="grandparents">
 
                 <div class="person">
-                    <div class="name">Gülşən</div>
-                    <span class="role">Xalam qızı</span>
+
+                    <div class="name">
+                        Əkbər
+                    </div>
+
+                    <span class="role">
+                        Baba
+                    </span>
+
                 </div>
 
                 <div class="person">
-                    <div class="name">Xəyal</div>
-                    <span class="role">Xalam oğlu</span>
+
+                    <div class="name">
+                        Yaqut
+                    </div>
+
+                    <span class="role">
+                        Nənə
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="children">
+
+                <div class="person">
+
+                    <div class="name">
+                        Nunuş
+                    </div>
+
+                    <span class="role">
+                        Xalam
+                    </span>
+
                 </div>
 
                 <div class="person">
-                    <div class="name">Ömər</div>
-                    <span class="role">Dayım oğlu</span>
+
+                    <div class="name">
+                        Ələkbər
+                    </div>
+
+                    <span class="role">
+                        Dayım
+                    </span>
+
                 </div>
 
                 <div class="person">
-                    <div class="name">Uğur</div>
-                    <span class="role">Dayım oğlu</span>
+
+                    <div class="name">
+                        Aytən
+                    </div>
+
+                    <span class="role">
+                        Xalam
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="generation">
+
+                <h3>
+                    NÖVBƏTİ NƏSİL
+                </h3>
+
+                <div class="cards">
+
+                    <div class="person">
+
+                        <div class="name">
+                            Ayxan
+                        </div>
+
+                        <span class="role">
+                            Dayım oğlu
+                        </span>
+
+                    </div>
+
+                    <div class="person">
+
+                        <div class="name">
+                            Mələk
+                        </div>
+
+                        <span class="role">
+                            Dayım qızı
+                        </span>
+
+                    </div>
+
+                    <div class="person">
+
+                        <div class="name">
+                            İslam
+                        </div>
+
+                        <span class="role">
+                            Xalam oğlu
+                        </span>
+
+                    </div>
+
                 </div>
 
             </div>
 
         </div>
 
-    </div>
-
-</section>
+    </section>
 
 
-<!-- GƏNCƏ 2 -->
+    <section class="titan-panel">
 
-<section class="family-section">
+        <div class="titan-header">
 
-    <h2 class="section-title">GƏNCƏ 2</h2>
+            <span>
+                TITAN INSPIRED SYSTEM
+            </span>
 
-    <div class="tree">
+            <h2>
+                TƏRLAN // TITAN CORE
+            </h2>
 
-        <div class="grandparents">
+            <p>
+                AİLƏMİZİN GÜCÜ • SİSTEM ONLAYN
+            </p>
 
-            <div class="person">
-                <div class="name">Əkbər</div>
-                <span class="role">Baba</span>
-            </div>
+        </div>
 
-            <div class="person">
-                <div class="name">Yaqut</div>
-                <span class="role">Nənə</span>
+
+        <div class="laptop-stage">
+
+            <div class="laptop">
+
+                <div class="laptop-screen">
+
+                    <div class="screen-t">
+                        T
+                    </div>
+
+                </div>
+
+
+                <div class="laptop-base">
+
+                    <div class="keyboard">
+
+                        <div class="key">ESC</div>
+
+                        <div class="key">F1</div>
+                        <div class="key">F2</div>
+                        <div class="key">F3</div>
+                        <div class="key">F4</div>
+                        <div class="key">F5</div>
+                        <div class="key">F6</div>
+                        <div class="key">F7</div>
+                        <div class="key">F8</div>
+                        <div class="key">F9</div>
+                        <div class="key">F10</div>
+                        <div class="key">F11</div>
+                        <div class="key">F12</div>
+
+                        <div class="key">Q</div>
+                        <div class="key">W</div>
+                        <div class="key">E</div>
+                        <div class="key">R</div>
+                        <div class="key">T</div>
+                        <div class="key">Y</div>
+                        <div class="key">U</div>
+                        <div class="key">I</div>
+                        <div class="key">O</div>
+                        <div class="key">P</div>
+
+                        <div class="key">A</div>
+                        <div class="key">S</div>
+                        <div class="key">D</div>
+                        <div class="key">F</div>
+                        <div class="key">G</div>
+                        <div class="key">H</div>
+                        <div class="key">J</div>
+                        <div class="key">K</div>
+                        <div class="key">L</div>
+
+                        <div class="key">Z</div>
+                        <div class="key">X</div>
+                        <div class="key">C</div>
+                        <div class="key">V</div>
+                        <div class="key">B</div>
+                        <div class="key">N</div>
+                        <div class="key">M</div>
+
+                        <div class="key wide">
+                            SHIFT
+                        </div>
+
+                        <div class="key">
+                            CTRL
+                        </div>
+
+                        <div class="key">
+                            ALT
+                        </div>
+
+                        <div class="key space">
+                            SPACE
+                        </div>
+
+                        <div class="key wide">
+                            ENTER
+                        </div>
+
+                    </div>
+
+
+                    <div class="touchpad"></div>
+
+                </div>
+
             </div>
 
         </div>
 
-        <div class="children">
 
-            <div class="person">
-                <div class="name">Nunuş</div>
-                <span class="role">Xalam</span>
+        <div class="titan-t">
+            T
+        </div>
+
+
+        <div class="titan-stats">
+
+            <div class="titan-card">
+
+                <div class="titan-icon">
+                    ◈
+                </div>
+
+                <h3>
+                    4K MINI LED
+                </h3>
+
+                <strong>
+                    120 Hz
+                </strong>
+
+                <span>
+                    18" UHD+ DISPLAY
+                </span>
+
             </div>
 
-            <div class="person">
-                <div class="name">Ələkbər</div>
-                <span class="role">Dayım</span>
+
+            <div class="titan-card">
+
+                <div class="titan-icon">
+                    ⚡
+                </div>
+
+                <h3>
+                    RTX 4090
+                </h3>
+
+                <strong>
+                    16 GB
+                </strong>
+
+                <span>
+                    FULL POWER GPU
+                </span>
+
             </div>
 
-            <div class="person">
-                <div class="name">Aytən</div>
-                <span class="role">Xalam</span>
+
+            <div class="titan-card">
+
+                <div class="titan-icon">
+                    ◉
+                </div>
+
+                <h3>
+                    i9-14900HX
+                </h3>
+
+                <strong>
+                    24 CORE
+                </strong>
+
+                <span>
+                    5.8 GHz TURBO
+                </span>
+
+            </div>
+
+
+            <div class="titan-card">
+
+                <div class="titan-icon">
+                    ⟁
+                </div>
+
+                <h3>
+                    OVERBOOST
+                </h3>
+
+                <strong>
+                    270 W
+                </strong>
+
+                <span>
+                    MAX SYSTEM POWER
+                </span>
+
             </div>
 
         </div>
 
-        <div class="generation">
 
-            <h3>NÖVBƏTİ NƏSİL</h3>
+        <div class="overboost">
 
-            <div class="cards">
+            <div class="overboost-title">
 
-                <div class="person">
-                    <div class="name">Ayxan</div>
-                    <span class="role">Dayım oğlu</span>
-                </div>
+                <span>
+                    OVERBOOST ULTRA
+                </span>
 
-                <div class="person">
-                    <div class="name">Mələk</div>
-                    <span class="role">Dayım qızı</span>
-                </div>
+                <span id="powerText">
+                    270W
+                </span>
 
-                <div class="person">
-                    <div class="name">İslam</div>
-                    <span class="role">Xalam oğlu</span>
-                </div>
+            </div>
+
+
+            <div class="power-bar">
+
+                <div class="power-fill"></div>
+
+            </div>
+
+
+            <div class="power-info">
+
+                <span>
+                    CPU
+                </span>
+
+                <span>
+                    GPU
+                </span>
+
+                <span>
+                    FAMILY CORE
+                </span>
 
             </div>
 
         </div>
 
-    </div>
 
-</section>
+        <div class="cooling-system">
 
+            <div class="cooling-fan fan-one"></div>
 
-<footer>
-    TƏRLANIN AİLƏSİ • AİLƏMİZİN TARİXİ 🌳
-</footer>
+            <div class="cooling-fan fan-two"></div>
 
 
-<script>
+            <div class="cooling-center">
 
-/* MOUSE İLƏ 3D HƏRƏKƏT */
+                <span>
+                    VAPOR CHAMBER
+                </span>
 
-document.addEventListener("mousemove", function(e) {
+                <strong>
+                    COOLING SYSTEM
+                </strong>
 
-    const x = (window.innerWidth / 2 - e.clientX) / 70;
-    const y = (window.innerHeight / 2 - e.clientY) / 70;
+                <small>
+                    THERMAL CONTROL ACTIVE
+                </small>
 
-    document.querySelectorAll(".person").forEach((card, index) => {
+            </div>
 
-        const power = (index % 3) + 1;
+        </div>
 
-        card.style.transform =
-            `perspective(900px)
-             rotateY(${x * power * 0.2}deg)
-             rotateX(${y * power * 0.2}deg)`;
-
-    });
-
-});
+    </section>
 
 
-/* SCROLLDA GÖRÜNƏNDƏ ANİMASİYA */
+    <footer>
 
-const observer = new IntersectionObserver((entries) => {
+        TƏRLANIN AİLƏSİ • AİLƏMİZİN TARİXİ 🌳
 
-    entries.forEach(entry => {
-
-        if (entry.isIntersecting) {
-
-            entry.target.style.opacity = "1";
-            entry.target.style.transform = "translateY(0)";
-
-        }
-
-    });
-
-}, { threshold: 0.15 });
+    </footer>
 
 
-document.querySelectorAll(".person, .memorial, .section-title").forEach(el => {
+    <script>
 
-    el.style.opacity = "0";
-    el.style.transform = "translateY(50px)";
-    el.style.transition = "1s ease";
+        const observer =
+            new IntersectionObserver(
 
-    observer.observe(el);
+                entries => {
 
-});
+                    entries.forEach(
 
-</script>
+                        entry => {
+
+                            if (
+                                entry.isIntersecting
+                            ) {
+
+                                entry.target.style.opacity =
+                                    "1";
+
+                                entry.target.style.transform =
+                                    "translateY(0)";
+
+                            }
+
+                        }
+
+                    );
+
+                },
+
+                {
+                    threshold: .15
+                }
+
+            );
+
+
+        document
+            .querySelectorAll(
+                ".person, " +
+                ".memorial, " +
+                ".section-title, " +
+                ".titan-card, " +
+                ".overboost, " +
+                ".cooling-system"
+            )
+            .forEach(
+
+                element => {
+
+                    observer.observe(
+                        element
+                    );
+
+                }
+
+            );
+
+
+        const powerText =
+            document.getElementById(
+                "powerText"
+            );
+
+
+        let power = 0;
+
+
+        const powerAnimation =
+            setInterval(
+
+                () => {
+
+                    if (
+                        power < 270
+                    ) {
+
+                        power += 3;
+
+                        powerText.innerText =
+                            power + "W";
+
+                    }
+
+                    else {
+
+                        clearInterval(
+                            powerAnimation
+                        );
+
+                    }
+
+                },
+
+                30
+
+            );
+
+    </script>
 
 </body>
+
 </html>
