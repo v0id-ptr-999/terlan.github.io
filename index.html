@@ -272,6 +272,23 @@ footer {
     font-family: "Cinzel", serif;
 }
 
+/* AİLƏ AĞACI BÖLMƏLƏRİ VƏ QOLLAR (YENİLƏNDİ) */
+
+.branch-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-bottom: 100px;
+}
+
+.branch-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
 /* TELEFON */
 
 @media(max-width: 700px) {
@@ -285,7 +302,8 @@ footer {
 
     .grandparents,
     .children,
-    .cards {
+    .cards,
+    .branch-container {
         justify-content: flex-start;
         padding-left: 45px;
     }
@@ -337,42 +355,53 @@ footer {
             </div>
         </div>
 
-        <!-- SABİR VƏ GÜLZARIN ÖVLADLARI -->
+        <!-- ƏSAS ÖVLADLAR VƏ ONLARIN ALTINDAKİLƏR -->
+
+        <div class="branch-container">
+
+            <!-- AFƏT VƏ SƏNAN -->
+            <div class="branch-group">
+                <div class="person">
+                    <div class="name">Afət</div>
+                    <span class="role">Bibim</span>
+                </div>
+                <div class="person">
+                    <div class="name">Sənan</div>
+                </div>
+            </div>
+
+            <!-- İLQAR, ŞÜKRAN VƏ KƏNAN -->
+            <div class="branch-group">
+                <div class="person">
+                    <div class="name">İlqar</div>
+                    <span class="role">Atam</span>
+                </div>
+                <div class="person">
+                    <div class="name">Şükran</div>
+                </div>
+                <div class="person">
+                    <div class="name">Kənan</div>
+                    <span class="role">Əmim oğlu</span>
+                </div>
+            </div>
+
+            <!-- RÜFƏT VƏ RƏVAN -->
+            <div class="branch-group">
+                <div class="person">
+                    <div class="name">Rüfət</div>
+                    <span class="role">Əmim</span>
+                </div>
+                <div class="person">
+                    <div class="name">Rəvan</div>
+                    <span class="role">Əmim oğlu</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- DİGƏR QOHUMLAR -->
 
         <div class="children">
-
-            <div class="person">
-                <div class="name">İlqar</div>
-                <span class="role">Atam</span>
-            </div>
-
-            <div class="person">
-                <div class="name">Afət</div>
-                <span class="role">Bibim</span>
-            </div>
-
-            <div class="person">
-                <div class="name">Rüfət</div>
-                <span class="role">Əmim</span>
-            </div>
-
-            <div class="person">
-                <div class="name">Kənan</div>
-                <span class="role">Əmim oğlu</span>
-            </div>
-
-            <div class="person">
-                <div class="name">Rəvan</div>
-                <span class="role">Əmim oğlu</span>
-            </div>
-
-            <div class="person">
-                <div class="name">Sənan</div>
-            </div>
-
-            <div class="person">
-                <div class="name">Şükran</div>
-            </div>
 
             <div class="person">
                 <div class="name">Hökümə</div>
