@@ -1,397 +1,1176 @@
 <!DOCTYPE html>
 <html lang="az">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tərlanın Ailəsi</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>AI Universe Pro</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
 <style>
-  :root{
-    --sky-top:#a9d8e6;
-    --sky-mid:#cfe9dd;
-    --sky-bottom:#eef4e2;
-    --brown:#3d2c1f;
-    --muted:#6b5a45;
-  }
-  *{box-sizing:border-box;}
-  html,body{
-    margin:0; padding:0; width:100%;
-    max-width:100vw;
-    background: linear-gradient(180deg, var(--sky-top), var(--sky-mid) 45%, var(--sky-bottom) 85%);
-    font-family:'Nunito', sans-serif;
-    color: var(--brown);
-    overflow-x:hidden;
-    position:relative;
-  }
-  header.hero{ text-align:center; padding: 15px 20px 2px; }
-  h1{
-    font-family:'Playfair Display', serif;
-    font-weight:900;
-    font-size: clamp(22px, 4.5vw, 36px);
-    margin:0;
-  }
-  .sub{ color:var(--muted); margin-top:2px; font-size:12px; }
 
-  .nav-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin: 10px 0;
-    z-index: 20;
-    position: relative;
-    flex-wrap: wrap;
-  }
-  .nav-btn {
-    background: #fbf6ea;
-    border: 2px solid #5c7a3f;
-    border-radius: 6px;
-    padding: 5px 14px;
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    font-size: 13px;
-    color: var(--brown);
-    cursor: pointer;
-    box-shadow: 0 2px 5px rgba(61,44,31,.2);
-    text-decoration: none;
-    transition: all 0.2s ease;
-  }
-  .nav-btn.active, .nav-btn:hover {
-    background: #5c7a3f;
-    color: #fff;
-  }
-
-  .tree-clip{ 
-    width: 100%; 
-    max-width: 1000px; 
-    margin: 0 auto; 
-    overflow: visible; 
-    position: relative;
-  }
-  .tree-wrap{ 
-    position: relative; 
-    width: 100%; 
-    height: auto; 
-  }
-  .tree-wrap svg{ 
-    display: block; 
-    width: 100%; 
-    height: auto; 
-    overflow: visible; 
-  }
-
-  .placard{
-    position:absolute; 
-    transform: translate(-50%, 0);
-    display:flex; 
-    flex-direction:column; 
-    align-items:center;
-    z-index: 5;
-  }
-  .placard .thread{ width:1px; height:10px; background: #6b5a45; }
-  .placard .board{
-    margin-top:-1px; background:#fbf6ea; border:1px solid #8a6d45; border-radius: 4px;
-    padding: 3px 6px; text-align:center; box-shadow: 0 2px 4px rgba(61,44,31,.2);
-    white-space:nowrap; line-height:1.1;
-  }
-  .placard .t-name{ font-weight:800; font-size: clamp(6px, 0.85vw, 10px); color: var(--brown); }
-  .placard .t-rel{ font-size: clamp(4.5px, 0.6vw, 7.5px); color: var(--muted); font-weight:600; }
-  
-  .placard.root .board{ border-width:2px; border-color:#5e4020; padding: 5px 10px; }
-  .placard.root .t-name{ font-size: clamp(9px, 1.2vw, 13px); color:#4a3320; }
-  .placard.root .thread{ height:14px; }
-
-  @keyframes rainbowShift {
-    0% { filter: hue-rotate(0deg); }
-    100% { filter: hue-rotate(360deg); }
-  }
-
-  .rainbow-text {
-    background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: 900 !important;
-    animation: rainbowShift 4s linear infinite;
-  }
-
-  .region-label{
-    position:absolute; transform: translate(-50%, -50%);
-    font-family:'Playfair Display', serif; font-weight:900; font-size: clamp(14px, 2.5vw, 22px);
-    letter-spacing:2px; color: #4a3320cc;
-    z-index: 4;
-  }
-
-  .banner{
-    position:relative;
-    width: max-content;
-    margin: 10px auto 20px auto;
-    background:#fbf6ea;
-    border:2px solid #5c7a3f;
-    border-radius: 8px;
-    padding: 6px 20px;
-    font-family:'Playfair Display', serif;
-    font-weight:900;
-    font-size: clamp(14px, 3vw, 20px);
-    color: var(--brown);
-    box-shadow: 0 4px 10px rgba(61,44,31,.25);
-    z-index:10;
-    text-align: center;
-  }
-</style>
-</head>
-<body>
-
-<header class="hero">
-  <p class="sub">Tərlanın Sistemi</p>
-  <h1>Ailə Ağacı</h1>
-</header>
-
-<div class="nav-buttons">
-  <button class="nav-btn" onclick="switchBranch('baki')">Bakı</button>
-  <button class="nav-btn" onclick="switchBranch('genca1')">Gəncə 1</button>
-  <button class="nav-btn active" onclick="switchBranch('genca2')">Gəncə 2</button>
-</div>
-
-<div class="tree-clip">
-<div class="tree-wrap" id="treeWrap">
-  <svg viewBox="0 0 1000 1150" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <linearGradient id="barkGrad" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%" stop-color="#8a8368"/>
-        <stop offset="35%" stop-color="#b8ab84"/>
-        <stop offset="60%" stop-color="#9c8e6a"/>
-        <stop offset="100%" stop-color="#78714f"/>
-      </linearGradient>
-    </defs>
-
-    <path d="M500 1040 C 470 1010, 440 1020, 410 1050" stroke="#6b6248" stroke-width="9" fill="none" stroke-linecap="round"/>
-    <path d="M500 1040 C 530 1010, 560 1020, 590 1050" stroke="#6b6248" stroke-width="9" fill="none" stroke-linecap="round"/>
-    <path d="M500 1040 C 485 1022, 475 1032, 468 1052" stroke="#6b6248" stroke-width="6" fill="none" stroke-linecap="round"/>
-    <path d="M500 1040 C 515 1022, 525 1032, 532 1052" stroke="#6b6248" stroke-width="6" fill="none" stroke-linecap="round"/>
-
-    <path d="M470 1040 C 464 900, 466 750, 478 620 C 470 590, 468 560, 474 540
-            L 526 540 C 532 560, 530 590, 522 620 C 534 750, 538 900, 530 1040 Z" fill="url(#barkGrad)"/>
-
-    <g id="barkPatches"></g>
-
-    <g stroke="url(#barkGrad)" fill="none" stroke-linecap="round">
-      <path d="M500 540 Q 500 400, 500 280" stroke-width="45"/>
-      <path d="M500 320 Q 420 330, 350 380" stroke-width="16"/>
-      <path d="M500 320 Q 580 330, 650 380" stroke-width="16"/>
-    </g>
-
-    <g id="leafLayer"></g>
-  </svg>
-
-  <div id="branchTitle" class="region-label" style="top:6%; left:50%;">GƏNCƏ 2</div>
-
-  <div id="contentContainer"></div>
-</div>
-</div>
-
-<div id="bannerText" class="banner">Tərlanın Çinarı — Gəncə 2</div>
-
-<script>
-const branches = {
-  baki: {
-    title: "BAKI",
-    banner: "Tərlanın Çinarı — Bakı",
-    placards: [
-      { top: "15%", left: "50%", root: true, name: "Sabir & Gülzar", rel: "Babam & Nənəm" },
-      { top: "25%", left: "28%", name: "İlqar", rel: "Atam" },
-      { top: "21%", left: "50%", name: "Afət", rel: "Bibim" },
-      { top: "25%", left: "72%", name: "Rüfət", rel: "Əmim" },
-      { top: "36%", left: "20%", name: "Kənan", rel: "Qardaşım" },
-      { top: "36%", left: "36%", name: "Şükran", rel: "Bacım" },
-      { top: "35%", left: "50%", name: "Sənan", rel: "Qardaşım" },
-      { top: "47%", left: "50%", name: "Hökümə", rel: "Gəlinim" },
-      { top: "58%", left: "43%", name: "Məryəm", rel: "Qohum" },
-      { top: "58%", left: "57%", name: "Qumru", rel: "Qohum" },
-      { top: "36%", left: "72%", name: "Rəvan", rel: "Əmim Oğlu" }
-    ]
-  },
-  genca1: {
-    title: "GƏNCƏ",
-    banner: "Tərlanın Çinarı — Gəncə",
-    placards: [
-      { top: "15%", left: "50%", root: true, name: "Əkbər & Yaqut", rel: "Babam & Nənəm" },
-      { top: "25%", left: "35%", name: "Nunuş & Emil", rel: "Xalam & Əri" },
-      { top: "25%", left: "65%", name: "Ələkbər & Aytən", rel: "Dayım & Yengəm" },
-      { top: "37%", left: "28%", name: "İslam", rel: "Xalam Oğlu" },
-      { top: "39%", left: "42%", name: "Fidan", rel: "Xalam Qızı" },
-      { top: "37%", left: "58%", name: "Ayxan", rel: "Dayım Oğlu" },
-      { top: "39%", left: "72%", name: "Mələk", rel: "Dayım Qızı" }
-    ]
-  },
-  genca2: {
-    title: "GƏNCƏ 2",
-    banner: "Tərlanın Çinarı — Gəncə 2",
-    placards: [
-      /* Kök: Əsli & Məhəmməd (mərkəzə daha yaxın) */
-      { top: "12%", left: "45%", root: true, name: "Əsli", rel: "Nənəm" },
-      { top: "12%", left: "55%", root: true, name: "Məhəmməd", rel: "Babam" },
-
-      /* Övladlar (Ağacın daxilində - 25% ilə 75% arası) */
-      { top: "22%", left: "30%", name: "Nigar", rel: "Anam" },
-      { top: "22%", left: "43%", name: "Süleyman", rel: "Dayım" },
-      { top: "22%", left: "57%", name: "Sayalı", rel: "Xalam" },
-      { top: "22%", left: "70%", name: "Aynur", rel: "Xalam" },
-
-      /* Nigarın altı */
-      { top: "33%", left: "30%", name: "Tərlan", rel: "Saytın Yaradıcısı", rainbow: true },
-
-      /* Süleymanın altı */
-      { top: "33%", left: "39%", name: "Ömər", rel: "Dayım Oğlu" },
-      { top: "33%", left: "47%", name: "Uğur", rel: "Dayım Oğlu" },
-
-      /* Sayalının altı */
-      { top: "33%", left: "53%", name: "Xəyal", rel: "Xalam Oğlu" },
-      { top: "33%", left: "61%", name: "Gülşən", rel: "Xalam Qızı" },
-
-      /* Aynurun altı */
-      { top: "33%", left: "67%", name: "Əli", rel: "Xalam Oğlu" },
-      { top: "33%", left: "75%", name: "Tunar", rel: "Xalam Oğlu" }
-    ]
-  }
-};
-
-function switchBranch(branchKey) {
-  document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-  event.target.classList.add('active');
-
-  const data = branches[branchKey];
-  document.getElementById('branchTitle').innerText = data.title;
-  document.getElementById('bannerText').innerText = data.banner;
-
-  const container = document.getElementById('contentContainer');
-  container.innerHTML = '';
-
-  data.placards.forEach(item => {
-    const div = document.createElement('div');
-    div.className = item.root ? 'placard root' : 'placard';
-    div.style.top = item.top;
-    div.style.left = item.left;
-    div.innerHTML = `
-      <div class="thread"></div>
-      <div class="board">
-        <div class="t-name ${item.rainbow ? 'rainbow-text' : ''}">${item.name}</div>
-        <div class="t-rel">${item.rel}</div>
-      </div>
-    `;
-    container.appendChild(div);
-  });
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Inter,sans-serif;
 }
 
-window.onload = function() {
-  const container = document.getElementById('contentContainer');
-  branches.genca2.placards.forEach(item => {
-    const div = document.createElement('div');
-    div.className = item.root ? 'placard root' : 'placard';
-    div.style.top = item.top;
-    div.style.left = item.left;
-    div.innerHTML = `
-      <div class="thread"></div>
-      <div class="board">
-        <div class="t-name ${item.rainbow ? 'rainbow-text' : ''}">${item.name}</div>
-        <div class="t-rel">${item.rel}</div>
-      </div>
-    `;
-    container.appendChild(div);
-  });
-};
+html{
 
-(function(){
-  const svgNS = "http://www.w3.org/2000/svg";
-  const leafLayer = document.getElementById('leafLayer');
-  const barkPatchLayer = document.getElementById('barkPatches');
+scroll-behavior:smooth;
 
-  const greens = ['#5a8f3e','#6ba84c','#4f7d36','#7cbf5e','#3f6b2c'];
-  const autumn = ['#c9a13a','#b8863a'];
+}
 
-  function palmateLeaf(x, y, scale, angleDeg, color){
-    const g = document.createElementNS(svgNS, 'g');
-    g.setAttribute('transform', `translate(${x} ${y}) rotate(${angleDeg}) scale(${scale})`);
+body{
 
-    const path = document.createElementNS(svgNS, 'path');
-    path.setAttribute('d', `
-      M0,0
-      C -2,-6 -5,-9 -11,-16
-      C -6,-15 -3,-13 0,-10
-      C -1,-15 -3,-20 -6,-27
-      C -2,-23 1,-19 2,-14
-      C 3,-19 6,-23 10,-27
-      C 7,-20 5,-15 4,-10
-      C 7,-13 10,-15 15,-16
-      C 9,-9 6,-6 4,0
-      C 6,4 9,7 15,10
-      C 10,9 7,7 4,4
-      C 5,9 7,14 10,20
-      C 6,16 3,13 2,9
-      C 1,13 -2,16 -6,20
-      C -3,14 -1,9 0,4
-      C -3,7 -6,9 -11,10
-      C -5,7 -2,4 0,0
-      Z`);
-    path.setAttribute('fill', color);
-    path.setAttribute('opacity', 0.92);
+background:#05030f;
+overflow-x:hidden;
+color:white;
 
-    const vein = document.createElementNS(svgNS, 'line');
-    vein.setAttribute('x1', 0); vein.setAttribute('y1', 0);
-    vein.setAttribute('x2', 0); vein.setAttribute('y2', -18);
-    vein.setAttribute('stroke', 'rgba(0,0,0,.15)');
-    vein.setAttribute('stroke-width', 0.8);
+}
 
-    g.appendChild(path);
-    g.appendChild(vein);
-    leafLayer.appendChild(g);
-  }
+/* Parallax Animated Background */
 
-  function inCrown(x, y){
-    const lobes = [
-      [500, 270, 320, 250]
-    ];
-    for(const [lx,ly,rx,ry] of lobes){
-      const dx=(x-lx)/rx, dy=(y-ly)/ry;
-      if(dx*dx+dy*dy<=1) return true;
-    }
-    return false;
-  }
+body::before{
 
-  let placed = 0, tries = 0;
-  const target = 1400;
-  while(placed < target && tries < target*20){
-    tries++;
-    const x = 180 + Math.random()*640;
-    const y = 70 + Math.random()*520;
-    if(!inCrown(x,y)) continue;
-    const scale = 0.9 + Math.random() * 1.3;
-    const angle = Math.random()*360;
-    const isAutumn = Math.random() < 0.09;
-    const palette = isAutumn ? autumn : greens;
-    const color =palette[Math.floor(Math.random()*palette.length)];
-    palmateLeaf(x, y, scale, angle, color);
-    placed++;
-  }
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
 
-  const barkColors = ['#c9bd94','#8f8564','#6f6748','#b3a476','#5e5738'];
-  const trunkXCenters = [480, 490, 500, 515, 525];
-  for(let i = 0; i < 45; i++){
-    const cx = trunkXCenters[Math.floor(Math.random()*trunkXCenters.length)] + (Math.random()*20 - 10);
-    const cy = 600 + Math.random() * 420;
-    const rx = 8 + Math.random() * 16;
-    const ry = 10 + Math.random() * 20;
-    const ellipse = document.createElementNS(svgNS, 'ellipse');
-    ellipse.setAttribute('cx', cx);
-    ellipse.setAttribute('cy', cy);
-    ellipse.setAttribute('rx', rx);
-    ellipse.setAttribute('ry', ry);
-    ellipse.setAttribute('fill', barkColors[Math.floor(Math.random()*barkColors.length)]);
-    ellipse.setAttribute('opacity', 0.5 + Math.random()*0.3);
-    ellipse.setAttribute('transform', `rotate(${Math.random()*30-15} ${cx} ${cy})`);
-    barkPatchLayer.appendChild(ellipse);
-  }
-})();
+background:
+
+radial-gradient(circle at var(--x, 20%) var(--y, 30%),rgba(255,0,170,.25),transparent 30%),
+
+radial-gradient(circle at calc(100% - var(--x, 20%)) calc(100% - var(--y, 30%)),rgba(0,200,255,.25),transparent 30%),
+
+radial-gradient(circle at 50% 80%,rgba(120,0,255,.25),transparent 30%),
+
+linear-gradient(160deg,#05030f,#0b0520,#12051e);
+
+z-index:-3;
+
+transition: background 0.2s ease-out;
+
+}
+
+/* Stars */
+
+.stars{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+overflow:hidden;
+
+z-index:-2;
+
+}
+
+.star{
+
+position:absolute;
+
+background:white;
+
+border-radius:50%;
+
+opacity:.7;
+
+animation:twinkle linear infinite;
+
+}
+
+@keyframes twinkle{
+
+0%{
+
+opacity:.2;
+
+transform:scale(.5);
+
+}
+
+50%{
+
+opacity:1;
+
+transform:scale(1);
+
+}
+
+100%{
+
+opacity:.2;
+
+transform:scale(.5);
+
+}
+
+}
+
+/* Navbar */
+
+nav{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:75px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+padding:0 40px;
+
+background:rgba(20,15,40,.55);
+
+backdrop-filter:blur(20px);
+
+border-bottom:1px solid rgba(255,255,255,.08);
+
+z-index:1000;
+
+}
+
+.logo{
+
+font-size:30px;
+
+font-weight:900;
+
+background:linear-gradient(90deg,#ff0080,#7a5cff,#00d4ff);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+}
+
+nav ul{
+
+display:flex;
+
+gap:22px;
+
+list-style:none;
+
+}
+
+nav a{
+
+text-decoration:none;
+
+color:white;
+
+font-weight:600;
+
+font-size:14px;
+
+transition:.35s;
+
+}
+
+nav a:hover{
+
+color:#ff3eb5;
+
+}
+
+.hero{
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+flex-direction:column;
+
+height:100vh;
+
+text-align:center;
+
+padding:20px;
+
+}
+
+.hero h1{
+
+font-size:72px;
+
+font-weight:900;
+
+line-height:1.1;
+
+background:linear-gradient(90deg,#ff00b3,#00e5ff,#8f6bff);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+}
+
+.hero p{
+
+margin-top:25px;
+
+font-size:20px;
+
+max-width:850px;
+
+color:#ccccdd;
+
+line-height:1.8;
+
+}
+
+.searchBox{
+
+margin-top:50px;
+
+width:min(750px,90%);
+
+position:relative;
+
+}
+
+.searchBox input{
+
+width:100%;
+
+padding:20px 25px;
+
+font-size:18px;
+
+border:none;
+
+outline:none;
+
+border-radius:18px;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(25px);
+
+color:white;
+
+box-shadow:
+
+0 0 30px rgba(255,0,180,.25);
+
+}
+
+.searchBox input::placeholder{
+
+color:#b8b8c9;
+
+}
+
+.grid{
+
+width:min(1500px,95%);
+
+margin:auto;
+
+padding:80px 0;
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+gap:30px;
+
+}
+
+.card{
+
+background:rgba(255,255,255,.05);
+
+backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:25px;
+
+padding:25px;
+
+transition:.4s;
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.card:hover{
+
+transform:translateY(-12px);
+
+box-shadow:
+
+0 0 40px rgba(255,0,180,.25);
+
+}
+
+.card::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:4px;
+
+background:
+
+linear-gradient(90deg,#ff0080,#00e5ff,#7a5cff);
+
+}
+
+.icon{
+
+width:70px;
+
+height:70px;
+
+border-radius:20px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:32px;
+
+font-weight:900;
+
+background:linear-gradient(135deg,#ff0080,#7a5cff,#00d4ff);
+
+color:white;
+
+margin-bottom:20px;
+
+box-shadow:0 0 25px rgba(255,0,170,.35);
+
+transition:.4s;
+
+}
+
+.card:hover .icon{
+
+transform:rotate(8deg) scale(1.1);
+
+}
+
+.card h2{
+
+margin-top:20px;
+
+font-size:28px;
+
+}
+
+.card p{
+
+margin-top:18px;
+
+line-height:1.7;
+
+color:#d0d0df;
+
+}
+
+.tag{
+
+display:inline-block;
+
+margin-top:20px;
+
+padding:8px 18px;
+
+border-radius:12px;
+
+background:#ff008022;
+
+border:1px solid #ff008077;
+
+}
+
+.button{
+
+display:inline-block;
+
+margin-top:25px;
+
+padding:12px 25px;
+
+border-radius:14px;
+
+text-decoration:none;
+
+color:white;
+
+font-weight:700;
+
+background:linear-gradient(90deg,#ff0080,#7a5cff);
+
+}
+
+footer{
+
+padding:70px;
+
+text-align:center;
+
+color:#aaa;
+
+border-top:1px solid rgba(255,255,255,.08);
+
+}
+
+.title{
+
+text-align:center;
+
+font-size:55px;
+
+margin-bottom:20px;
+
+font-weight:900;
+
+background:linear-gradient(90deg,#ff0080,#00e5ff,#7a5cff);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+}
+
+.subtitle{
+
+text-align:center;
+
+color:#bfbfd2;
+
+margin-bottom:70px;
+
+font-size:20px;
+
+}
+
+.categoryGrid{
+
+width:min(1400px,95%);
+
+margin:auto;
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+gap:30px;
+
+padding-bottom:50px;
+
+}
+
+.cat{
+
+background:rgba(255,255,255,.05);
+
+border:1px solid rgba(255,255,255,.08);
+
+backdrop-filter:blur(18px);
+
+padding:40px;
+
+border-radius:24px;
+
+text-align:center;
+
+transition:.4s;
+
+cursor:pointer;
+
+}
+
+.cat:hover{
+
+transform:translateY(-12px);
+
+box-shadow:0 0 40px rgba(255,0,180,.35);
+
+}
+
+.emoji{
+
+font-size:65px;
+
+margin-bottom:20px;
+
+}
+
+.cat h2{
+
+font-size:28px;
+
+}
+
+.section-box {
+width: min(1500px, 95%);
+margin: auto;
+padding: 100px 0;
+text-align: center;
+}
+
+/* Stats Section */
+.stats-grid {
+width: min(1300px, 95%);
+margin: auto;
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+gap: 30px;
+}
+
+.stat-card {
+background: rgba(255,255,255,.04);
+border: 1px solid rgba(255,255,255,.08);
+backdrop-filter: blur(15px);
+padding: 40px 20px;
+border-radius: 20px;
+text-align: center;
+transition: .3s;
+}
+
+.stat-card:hover {
+transform: translateY(-8px);
+border-color: rgba(255,0,128,0.4);
+box-shadow: 0 0 30px rgba(255,0,128,0.2);
+}
+
+.stat-number {
+font-size: 45px;
+font-weight: 900;
+background: linear-gradient(90deg, #ff0080, #00e5ff);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+margin-bottom: 10px;
+}
+
+.stat-label {
+font-size: 18px;
+color: #b8b8c9;
+font-weight: 600;
+}
+
+/* Top AI & Showcase Grid Tags */
+.showcase-chips {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 15px;
+width: min(1200px, 95%);
+margin: auto;
+}
+
+.chip {
+background: rgba(255, 255, 255, 0.05);
+border: 1px solid rgba(255, 255, 255, 0.1);
+padding: 15px 30px;
+border-radius: 50px;
+font-size: 18px;
+font-weight: 700;
+backdrop-filter: blur(10px);
+transition: 0.3s;
+cursor: pointer;
+}
+
+.chip:hover {
+background: linear-gradient(90deg, #ff0080, #7a5cff);
+transform: translateY(-5px);
+box-shadow: 0 0 25px rgba(255, 0, 128, 0.4);
+}
+
+/* Contact Form */
+.contact-form {
+width: min(650px, 90%);
+margin: auto;
+background: rgba(255, 255, 255, 0.04);
+border: 1px solid rgba(255, 255, 255, 0.08);
+backdrop-filter: blur(20px);
+padding: 40px;
+border-radius: 25px;
+display: flex;
+flex-direction: column;
+gap: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+width: 100%;
+padding: 18px 20px;
+border-radius: 14px;
+border: none;
+outline: none;
+background: rgba(255, 255, 255, 0.07);
+color: white;
+font-size: 16px;
+border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contact-form textarea {
+resize: vertical;
+min-height: 140px;
+}
+
+.contact-form button {
+padding: 15px;
+border-radius: 14px;
+border: none;
+font-size: 18px;
+font-weight: 700;
+color: white;
+background: linear-gradient(90deg, #ff0080, #7a5cff);
+cursor: pointer;
+transition: 0.3s;
+}
+
+.contact-form button:hover {
+opacity: 0.9;
+box-shadow: 0 0 30px rgba(255, 0, 128, 0.4);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="stars" id="stars"></div>
+
+<nav>
+
+<div class="logo">
+AI Universe
+</div>
+
+<ul>
+
+<li><a href="#hero">Ana</a></li>
+
+<li><a href="#categories">Kateqoriyalar</a></li>
+
+<li><a href="#topai">Top AI</a></li>
+
+<li><a href="#stats">Statistika</a></li>
+
+<li><a href="#parallax">Parallax</a></li>
+
+<li><a href="#showcase">Showcase</a></li>
+
+<li><a href="#gence1">Gəncə 1</a></li>
+
+<li><a href="#gence2">Gəncə 2</a></li>
+
+<li><a href="#baki">Bakı</a></li>
+
+<li><a href="#contact">Əlaqə</a></li>
+
+</ul>
+
+</nav>
+
+<section class="hero" id="hero">
+
+<h1>
+
+AI Universe Pro
+
+</h1>
+
+<p>
+
+Dünyanın ən böyük Süni İntellekt kataloqu.
+
+100+ AI aləti.
+
+Premium dizayn.
+
+Neon effektlər.
+
+Canlı axtarış.
+
+Kateqoriyalar.
+
+Animasiyalar.
+
+</p>
+
+<div class="searchBox">
+
+<input
+type="text"
+id="searchInput"
+placeholder="AI axtar...">
+
+</div>
+
+</section>
+
+<section id="categories">
+<div class="section-box">
+<h1 class="title">AI Kateqoriyaları</h1>
+<p class="subtitle">İstədiyin AI növünü seç.</p>
+<div class="categoryGrid">
+
+<div class="cat" onclick="showCategory('Mətn AI')">
+<div class="emoji">💬</div>
+<h2>Mətn AI</h2>
+</div>
+
+<div class="cat" onclick="showCategory('Kod AI')">
+<div class="emoji">💻</div>
+<h2>Kod AI</h2>
+</div>
+
+<div class="cat" onclick="showCategory('Şəkil AI')">
+<div class="emoji">🎨</div>
+<h2>Şəkil AI</h2>
+</div>
+
+<div class="cat" onclick="showCategory('Video AI')">
+<div class="emoji">🎥</div>
+<h2>Video AI</h2>
+</div>
+
+<div class="cat" onclick="showCategory('Səs AI')">
+<div class="emoji">🎵</div>
+<h2>Səs AI</h2>
+</div>
+
+<div class="cat" onclick="showCategory('Research AI')">
+<div class="emoji">🔬</div>
+<h2>Research AI</h2>
+</div>
+
+<div class="cat" onclick="showCategory('Business AI')">
+<div class="emoji">📈</div>
+<h2>Business AI</h2>
+</div>
+
+<div class="cat" onclick="showCategory('Robot AI')">
+<div class="emoji">🤖</div>
+<h2>Robot AI</h2>
+</div>
+
+</div>
+</div>
+</section>
+
+<section id="topai">
+<div class="section-box">
+<h1 class="title">Top AI Alətləri</h1>
+<p class="subtitle">Ən populyar və seçilən süni intellektlər</p>
+<div class="showcase-chips">
+<div class="chip">ChatGPT</div>
+<div class="chip">Claude</div>
+<div class="chip">Gemini</div>
+<div class="chip">DeepSeek</div>
+<div class="chip">Cursor</div>
+<div class="chip">Copilot</div>
+<div class="chip">Perplexity</div>
+<div class="chip">Midjourney</div>
+<div class="chip">Runway</div>
+<div class="chip">Leonardo</div>
+</div>
+</div>
+</section>
+
+<section id="stats">
+<div class="section-box">
+<h1 class="title">Statistika</h1>
+<p class="subtitle">Rəqəmlərlə AI Universe</p>
+<div class="stats-grid">
+<div class="stat-card">
+<div class="stat-number">120+</div>
+<div class="stat-label">AI</div>
+</div>
+<div class="stat-card">
+<div class="stat-number">40+</div>
+<div class="stat-label">Kateqoriya</div>
+</div>
+<div class="stat-card">
+<div class="stat-number">24/7</div>
+<div class="stat-label">Online</div>
+</div>
+<div class="stat-card">
+<div class="stat-number">100000+</div>
+<div class="stat-label">İstifadəçi</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="parallax">
+<div class="section-box">
+<h1 class="title">Parallax İşıq Effekti</h1>
+<p class="subtitle">Mouse hərəkəti ilə arxa fon işıqlarını idarə edin.</p>
+</div>
+</section>
+
+<section id="showcase">
+<div class="section-box">
+<h1 class="title">Bakı</h1>
+<p class="subtitle">Bakı komandası və iştirakçılar</p>
+<div class="showcase-chips">
+<div class="chip">Sabir</div>
+<div class="chip">Gülzar</div>
+<div class="chip">İlqar</div>
+<div class="chip">Afət</div>
+<div class="chip">Rüfət</div>
+<div class="chip">Kənan</div>
+<div class="chip">Sənan</div>
+<div class="chip">Şükran</div>
+<div class="chip">Hökümə</div>
+<div class="chip">Rəvan</div>
+</div>
+</div>
+</section>
+
+<section class="grid" id="grid">
+
+<!-- 100 AI kartları dinamik yüklənir -->
+
+</section>
+
+<section id="gence1">
+<div class="section-box">
+<h1 class="title">Gəncə 1</h1>
+<p class="subtitle">Gəncə 1 komandası</p>
+<div class="showcase-chips">
+<div class="chip">Əkbər</div>
+<div class="chip">Yaqut</div>
+<div class="chip">Nunuş</div>
+<div class="chip">Emil</div>
+<div class="chip">Əkbər</div>
+<div class="chip">Aytən</div>
+<div class="chip">İslam</div>
+<div class="chip">Fidan</div>
+<div class="chip">Ayxan</div>
+<div class="chip">Mələk</div>
+</div>
+</div>
+</section>
+
+<section id="gence2">
+<div class="section-box">
+<h1 class="title">Gəncə 2</h1>
+<p class="subtitle">Gəncə 2 komandası</p>
+<div class="showcase-chips">
+<div class="chip">Məhəmməd</div>
+<div class="chip">Əsli</div>
+<div class="chip">Nigar</div>
+<div class="chip">Süleyman</div>
+<div class="chip">Səyalı</div>
+<div class="chip">Aynur</div>
+<div class="chip">Tərlan</div>
+<div class="chip">Ömər</div>
+<div class="chip">Uğur</div>
+<div class="chip">Xəyal</div>
+<div class="chip">Gülsən</div>
+<div class="chip">Əli</div>
+<div class="chip">Tunar</div>
+</div>
+</div>
+</section>
+
+<section id="baki">
+<div class="section-box">
+<h1 class="title">Bakı Mərkəzi</h1>
+<p class="subtitle">Paytaxt layihə mərkəzi bölməsi.</p>
+</div>
+</section>
+
+<section id="contact">
+<div class="section-box">
+<h1 class="title">Əlaqə</h1>
+<p class="subtitle">Bizimlə əlaqə saxlayın.</p>
+<form class="contact-form" onsubmit="event.preventDefault(); alert('Mesajınız göndərildi!');">
+<input type="text" placeholder="Ad" required>
+<input type="email" placeholder="E-mail" required>
+<textarea placeholder="Mesaj" required></textarea>
+<button type="submit">Göndər</button>
+</form>
+</div>
+</section>
+
+<footer>
+
+AI Universe Pro<br>
+© 2026<br>
+Made by Tərlan
+
+</footer>
+
+
+<script>
+
+// Stars Generator
+const stars=document.getElementById("stars");
+
+for(let i=0;i<250;i++){
+
+const s=document.createElement("span");
+
+s.className="star";
+
+const size=Math.random()*3+1;
+
+s.style.width=size+"px";
+
+s.style.height=size+"px";
+
+s.style.left=Math.random()*100+"%";
+
+s.style.top=Math.random()*100+"%";
+
+s.style.animationDuration=(Math.random()*4+2)+"s";
+
+stars.appendChild(s);
+
+}
+
+// Parallax Mouse Effect
+window.addEventListener("mousemove", (e) => {
+const x = (e.clientX / window.innerWidth) * 100;
+const y = (e.clientY / window.innerHeight) * 100;
+document.body.style.setProperty('--x', x + '%');
+document.body.style.setProperty('--y', y + '%');
+});
+
+// 100 Real AI Tools Database
+const tools=[
+/* Mətn AI (20) */
+{name:"ChatGPT", category:"Mətn AI", desc:"Kod yazmaq, məqalə hazırlamaq və sualları cavablandırmaq üçün güclü AI.", url:"https://chatgpt.com"},
+{name:"Claude", category:"Mətn AI", desc:"Uzun sənədləri analiz edən və proqramlaşdırmada qabaqcıl AI modeli.", url:"https://claude.ai"},
+{name:"Gemini", category:"Mətn AI", desc:"Google tərəfindən hazırlanmış çoxfunksiyalı süni intellekt modeli.", url:"https://gemini.google.com"},
+{name:"DeepSeek", category:"Mətn AI", desc:"Yüksək sürətli məntiqi mühakimə və kodlaşdırma qabiliyyətinə malik AI.", url:"https://chat.deepseek.com"},
+{name:"Grok", category:"Mətn AI", desc:"xAI tərəfindən hazırlanmış real vaxt məlumat erişimi olan chatbot.", url:"https://grok.x.ai"},
+{name:"Perplexity", category:"Mətn AI", desc:"İnternetdən canlı məlumat toplayan AI axtarış köməkçisi.", url:"https://perplexity.ai"},
+{name:"Microsoft Copilot", category:"Mətn AI", desc:"Windows və Office inteqrasiyalı süni intellekt köməkçisi.", url:"https://copilot.microsoft.com"},
+{name:"Meta AI", category:"Mətn AI", desc:"Meta tərəfindən sosial şəbəkələr və tətbiqlər üçün AI.", url:"https://www.meta.ai"},
+{name:"Pi AI", category:"Mətn AI", desc:"İnsan kimi səmimi ünsiyyət quran emosional dəstək və söhbət AI.", url:"https://pi.ai"},
+{name:"Mistral Le Chat", category:"Mətn AI", desc:"Avropa mənşəli qabaqcıl dil modeli və söhbət sistemi.", url:"https://chat.mistral.ai"},
+{name:"Qwen Chat", category:"Mətn AI", desc:"Alibaba tərəfindən yaradılmış güclü dil və məntiq modeli.", url:"https://chat.qwenlm.ai"},
+{name:"Poe", category:"Mətn AI", desc:"Quora tərəfindən yaradılmış müxtəlif AI botlarını bir araya gətirən platforma.", url:"https://poe.com"},
+{name:"You.com AI", category:"Mətn AI", desc:"Fərdiləşdirilmiş AI axtarış və söhbət mühiti.", url:"https://you.com"},
+{name:"Character.AI", category:"Mətn AI", desc:"Fərqli personajlar və tarixi şəxsiyyətlərlə söhbət etmə imkanı.", url:"https://character.ai"},
+{name:"Jasper", category:"Mətn AI", desc:"Marketinq və reklam mətnləri üçün xüsusi AI yaradıcısı.", url:"https://www.jasper.ai"},
+{name:"Writesonic", category:"Mətn AI", desc:"SEO uyğun məqalələr və kontentlər hazırlayan AI.", url:"https://writesonic.com"},
+{name:"Rytr", category:"Mətn AI", desc:"Sürətli və keyfiyyətli mətn generasiya vasitəsi.", url:"https://rytr.me"},
+{name:"Notion AI", category:"Mətn AI", desc:"Qeydləriniz və sənədləriniz içində birbaşa işləyən köməkçi.", url:"https://www.notion.so"},
+{name:"QuillBot", category:"Mətn AI", desc:"Mətnləri parafraz edən, yoxlayan və təkmilləşdirən alət.", url:"https://quillbot.com"},
+{name:"Copy.ai", category:"Mətn AI", desc:"Satış və kopiraytinq üçün avtomatlaşdırılmış mətn yaradıcısı.", url:"https://www.copy.ai"},
+
+/* Kod AI (15) */
+{name:"GitHub Copilot", category:"Kod AI", desc:"Visual Studio Code və GitHub üçün AI proqramlaşdırma köməkçisi.", url:"https://github.com/features/copilot"},
+{name:"Cursor", category:"Kod AI", desc:"AI ilə işləyən müasir və sürətli kod redaktoru.", url:"https://cursor.com"},
+{name:"Windsurf", category:"Kod AI", desc:"Cascade AI texnologiyalı qabaqcıl proqramlaşdırma mühiti.", url:"https://windsurf.com"},
+{name:"Blackbox AI", category:"Kod AI", desc:"Kod yazmaq, izah etmək və tapmaq üçün sürətli AI.", url:"https://www.blackbox.ai"},
+{name:"Bolt.new", category:"Kod AI", desc:"Brauzerdə tam veb tətbiqlər yaradan və icra edən AI.", url:"https://bolt.new"},
+{name:"Lovable", category:"Kod AI", desc:"Promptlar vasitəsilə tam veb tətbiqləri hazırlayan platforma.", url:"https://lovable.dev"},
+{name:"Replit AI", category:"Kod AI", desc:"Bulud əsaslı interaktiv AI proqramlaşdırma mühiti.", url:"https://replit.com"},
+{name:"Codeium", category:"Kod AI", desc:"Sürətli və pulsuz AI kod tamamlama köməkçisi.", url:"https://codeium.com"},
+{name:"Tabnine", category:"Kod AI", desc:"Komandalar üçün təhlükəsiz AI əsaslı kod tamamlama sistemi.", url:"https://www.tabnine.com"},
+{name:"Amazon Q Developer", category:"Kod AI", desc:"Amazon-un bulud və proqramlaşdırma üçün AI köməkçisi.", url:"https://aws.amazon.com/q/developer"},
+{name:"Cody", category:"Kod AI", desc:"Sourcegraph tərəfindən hazırlanmış AI əsaslı kod köməkçisi.", url:"https://sourcegraph.com/cody"},
+{name:"Continue.dev", category:"Kod AI", desc:"VS Code üçün açıq mənbəli fərdiləşdirilə bilən AI köməkçisi.", url:"https://www.continue.dev"},
+{name:"Sourcegraph Cody", category:"Kod AI", desc:"Böyük kod bazalarını anlayan və dəyişən AI köməkçisi.", url:"https://sourcegraph.com/cody"},
+{name:"Devin", category:"Kod AI", desc:"Tam funksional ilk müstəqil AI proqram mühəndisi.", url:"https://devin.ai"},
+{name:"Aider", category:"Kod AI", desc:"Terminal üzərindən Git layihələrində AI ilə kod yazma sistemi.", url:"https://aider.chat"},
+
+/* Şəkil AI (20) */
+{name:"Midjourney", category:"Şəkil AI", desc:"Bədii və foto-realistik yüksək keyfiyyətli AI şəkilləri yaradır.", url:"https://midjourney.com"},
+{name:"Leonardo AI", category:"Şəkil AI", desc:"Oyun assetləri və dizayn üçün peşəkar şəkil generatoru.", url:"https://leonardo.ai"},
+{name:"FLUX", category:"Şəkil AI", desc:"Müasir dövrün ən realistik şəkil yaradan modellərindən biri.", url:"https://fluxai.imagegenerator.com"},
+{name:"Stable Diffusion", category:"Şəkil AI", desc:"Açıq mənbəli güclü şəkil generasiya texnologiyası.", url:"https://stability.ai"},
+{name:"Ideogram", category:"Şəkil AI", desc:"Şəkillərin üzərində qüsursuz mətn və dizayn yazan AI.", url:"https://ideogram.ai"},
+{name:"Adobe Firefly", category:"Şəkil AI", desc:"Təhlükəsiz və peşəkar dizaynerlər üçün Adobe AI aləti.", url:"https://www.adobe.com/products/firefly.html"},
+{name:"DALL·E", category:"Şəkil AI", desc:"OpenAI tərəfindən yaradılmış mətnlərdən şəkil yaradan model.", url:"https://openai.com/index/dall-e-3"},
+{name:"Playground AI", category:"Şəkil AI", desc:"Asan interfeys ilə müxtəlif üslublarda şəkillər yaradın.", url:"https://playground.com"},
+{name:"DreamStudio", category:"Şəkil AI", desc:"Stable Diffusion əsaslı rəsmi şəkil yaratma platforması.", url:"https://dreamstudio.ai"},
+{name:"Recraft", category:"Şəkil AI", desc:"Vektor qrafika, illüstrasiya və ikonlar üçün xüsusi AI.", url:"https://recraft.ai"},
+{name:"Craiyon", category:"Şəkil AI", desc:"Sadə və pulsuz mətn-şəkil çevirici alət.", url:"https://www.craiyon.com"},
+{name:"Canva AI", category:"Şəkil AI", desc:"Canva daxilində quraşdırılmış süni intellekt dizayn alətləri.", url:"https://www.canva.com"},
+{name:"Bing Image Creator", category:"Şəkil AI", desc:"DALL-E 3 texnologiyası ilə işləyən pulsuz şəkil generatoru.", url:"https://www.bing.com/create"},
+{name:"Krea AI", category:"Şəkil AI", desc:"Real vaxtda eskizləri və şəkilləri təkmilləşdirən AI.", url:"https://www.krea.ai"},
+{name:"Mage.space", category:"Şəkil AI", desc:"Limitsiz və müxtəlif üslublu AI şəkil yaratma mühiti.", url:"https://www.mage.space"},
+{name:"PixAI", category:"Şəkil AI", desc:"Anime və yapon üslubunda rəsmlər çəkən AI.", url:"https://pixai.art"},
+{name:"Artbreeder", category:"Şəkil AI", desc:"Şəkilləri birləşdirərək yeni obrazlar yaradan platforma.", url:"https://www.artbreeder.com"},
+{name:"NightCafe", category:"Şəkil AI", desc:"Bədii sənət əsərləri yaradan populyar AI studiyası.", url:"https://creator.nightcafe.studio"},
+{name:"Imagine AI", category:"Şəkil AI", desc:"Mobil və web üçün yaradıcı şəkil generatoru.", url:"https://www.imagine.art"},
+{name:"Tensor.Art", category:"Şəkil AI", desc:"AI modellərini paylaşmaq və işlətmək üçün platforma.", url:"https://tensor.art"},
+
+/* Video AI (15) */
+{name:"Runway", category:"Video AI", desc:"Kinematik keyfiyyətdə video yaratmaq və montaj etmək üçün AI.", url:"https://runwayml.com"},
+{name:"Pika", category:"Video AI", desc:"Mətn və şəkillərdən hərəkətli animasiya videoları yaradır.", url:"https://pika.art"},
+{name:"Kling AI", category:"Video AI", desc:"Yüksək fiziki dəqiqliyə malik realistik video generatoru.", url:"https://klingai.com"},
+{name:"Luma Dream Machine", category:"Video AI", desc:"Sürətli və keyfiyyətli 3D hərəkətli videolar yaradan AI.", url:"https://lumalabs.ai/dream-machine"},
+{name:"Veo", category:"Video AI", desc:"Google tərəfindən hazırlanmış yüksək dəqiqlikli video modeli.", url:"https://deepmind.google/technologies/veo"},
+{name:"Synthesia", category:"Video AI", desc:"Real insan avatarları ilə təqdimat videoları hazırlayan AI.", url:"https://www.synthesia.io"},
+{name:"HeyGen", category:"Video AI", desc:"Video tərcümə və danışan avatar generatoru.", url:"https://www.heygen.com"},
+{name:"InVideo AI", category:"Video AI", desc:"Sadə promptla tam sosial media videoları hazırlayan alət.", url:"https://invideo.io"},
+{name:"Filmora AI", category:"Video AI", desc:"Video montaj proqramında süni intellekt alətləri.", url:"https://filmora.wondershare.net"},
+{name:"PixVerse", category:"Video AI", desc:"Yaradıcı və fantastik videolar istehsal edən AI platforması.", url:"https://pixverse.ai"},
+{name:"Haiper", category:"Video AI", desc:"Vizual olaraq zəngin video və animasiyalar yaradan AI.", url:"https://haiper.ai"},
+{name:"Higgsfield", category:"Video AI", desc:"Kino səviyyəsində dinamik videolar yaradan platforma.", url:"https://higgsfield.ai"},
+{name:"Hailuo AI", category:"Video AI", desc:"MiniMax tərəfindən yaradılmış təsirli video generatoru.", url:"https://hailuoai.video"},
+{name:"Vidu", category:"Video AI", desc:"Sürətli və hekayəvi videolar yaradan video AI modeli.", url:"https://www.vidu.studio"},
+{name:"Colossyan", category:"Video AI", desc:"Təlim və korporativ videolar üçün süni intellekt avatarları.", url:"https://www.colossyan.com"},
+
+/* Səs AI (10) */
+{name:"ElevenLabs", category:"Səs AI", desc:"Ultra realistik və emosional süni intellekt səsləri.", url:"https://elevenlabs.io"},
+{name:"Suno", category:"Səs AI", desc:"Mətn təsvirlərindən tam musiqi və mahnılar bəstələyən AI.", url:"https://suno.com"},
+{name:"Udio", category:"Səs AI", desc:"Peşəkar səviyyədə musiqi və trekər yaradan platforma.", url:"https://www.udio.com"},
+{name:"Murf AI", category:"Səs AI", desc:"Səsləndirmə və diktor xidmətləri üçün peşəkar AI.", url:"https://murf.ai"},
+{name:"Speechify", category:"Səs AI", desc:"Mətnləri təbii səslə oxuyan oxuma köməkçisi.", url:"https://speechify.com"},
+{name:"PlayHT", category:"Səs AI", desc:"Real vaxtda səs sintezi və podkast səsləndirmə aləti.", url:"https://play.ht"},
+{name:"Resemble AI", category:"Səs AI", desc:"Səs klonlama və real vaxt səs dəyişdirmə texnologiyası.", url:"https://www.resemble.ai"},
+{name:"Coqui", category:"Səs AI", desc:"Dərin öyrənmə əsaslı səs və danışıq texnologiyası.", url:"https://coqui.ai"},
+{name:"LOVO AI", category:"Səs AI", desc:"Oyun və reklamlar üçün süni intellekt səs studiyası.", url:"https://lovo.ai"},
+{name:"Descript", category:"Səs AI", desc:"Audio və videoları mətn kimi redaktə edən səs AI aləti.", url:"https://www.descript.com"},
+
+/* Business AI (10) */
+{name:"Gamma", category:"Səs AI", desc:"Təqdimat, sənəd və səhifələri saniyələr içində dizayn edən AI.", url:"https://gamma.app"},
+{name:"Tome", category:"Business AI", desc:"Süni intellekt ilə hekayə və təqdimatlar yaradan platforma.", url:"https://tome.app"},
+{name:"Beautiful.ai", category:"Business AI", desc:"Avtomatik dizayn olunan peşəkar təqdimat slaydları.", url:"https://www.beautiful.ai"},
+{name:"Napkin AI", category:"Business AI", desc:"Mətnləri avtomatik vizual diaqramlara çevirən alət.", url:"https://www.napkin.ai"},
+{name:"Glean", category:"Business AI", desc:"Şirkət daxili məlumatlar üçün qabaqcıl AI Axtarış sistemi.", url:"https://www.glean.com"},
+{name:"Otter.ai", category:"Business AI", desc:"İclasları yazan, dinləyən və avtomatik xülasə edən AI.", url:"https://otter.ai"},
+{name:"Fireflies.ai", category:"Business AI", desc:"Toplantıları qeyd edən və təhlil edən köməkçi bot.", url:"https://fireflies.ai"},
+{name:"ClickUp AI", category:"Business AI", desc:"Layihə idarəetmə sistemində tapşırıqları idarə edən AI.", url:"https://clickup.com/ai"},
+{name:"HubSpot AI", category:"Business AI", desc:"Satış və müştəri xidmətləri üçün marketinq AI aləti.", url:"https://www.hubspot.com"},
+{name:"Salesforce Einstein", category:"Business AI", desc:"Müştəri münasibətləri və satış analitikası üçün biznes AI.", url:"https://www.salesforce.com/artificial-intelligence"},
+
+/* Research AI (10) */
+{name:"Elicit", category:"Research AI", desc:"Elmi məqalələri oxuyan və tədqiqatlara kömək edən AI.", url:"https://elicit.com"},
+{name:"Consensus", category:"Research AI", desc:"Elmi araşdırmalardan cavablar tapan süni intellekt.", url:"https://consensus.app"},
+{name:"Scite", category:"Research AI", desc:"Elmi sitatları və mənbələrin etibarlılığını yoxlayan AI.", url:"https://scite.ai"},
+{name:"Semantic Scholar AI", category:"Research AI", desc:"Akademik tədqiqatlar üçün süni intellekt axtarış mühərriki.", url:"https://www.semanticscholar.org"},
+{name:"NotebookLM", category:"Research AI", desc:"Şəxsi qeydləriniz və sənədləriniz üzərində işləyən Google AI.", url:"https://notebooklm.google.com"},
+{name:"Connected Papers", category:"Research AI", desc:"Elmi məqalələr arasındakı əlaqələri qrafik şəkildə göstərən AI.", url:"https://www.connectedpapers.com"},
+{name:"SciSpace", category:"Research AI", desc:"Elmi sənədləri başa düşməyə kömək edən oxuma platforması.", url:"https://typeset.io"},
+{name:"Explainpaper", category:"Research AI", desc:"Çətin elmi məqalələri sadə dildə izah edən AI.", url:"https://www.explainpaper.com"},
+{name:"ResearchRabbit", category:"Research AI", desc:"Elmi ədəbiyyatı araşdırmaq üçün vizual tədqiqat aləti.", url:"https://www.researchrabbit.ai"},
+{name:"Storm AI", category:"Research AI", desc:"Stanford tərəfindən hazırlanmış avtomatlaşdırılmış tədqiqat yazarı.", url:"https://storm.cs.stanford.edu"}
+];
+
+const grid=document.getElementById("grid");
+
+function render(list){
+
+grid.innerHTML="";
+
+list.forEach(tool=>{
+
+grid.innerHTML+=`
+
+<div class="card">
+
+<div class="icon">
+
+${tool.name.charAt(0)}
+
+</div>
+
+<h2>${tool.name}</h2>
+
+<p>${tool.desc}</p>
+
+<div class="tag">${tool.category}</div>
+
+<br>
+
+<a
+class="button"
+target="_blank"
+href="${tool.url}">
+
+Aç
+
+</a>
+
+</div>
+
+`;
+
+});
+
+}
+
+render(tools);
+
+function showCategory(category){
+
+const result=tools.filter(t=>t.category.toLowerCase()===category.toLowerCase());
+
+render(result);
+
+document.getElementById("grid").scrollIntoView({behavior:"smooth"});
+
+}
+
+searchInput.addEventListener("input",()=>{
+
+const value=searchInput.value.toLowerCase();
+
+const result=tools.filter(t=>
+
+t.name.toLowerCase().includes(value)||
+
+t.category.toLowerCase().includes(value)||
+
+t.desc.toLowerCase().includes(value)
+
+);
+
+render(result);
+
+});
+
 </script>
 
 </body>
+
 </html>
