@@ -1204,33 +1204,59 @@ z-index:-1;
 
 position:fixed;
 
-right:12%;
+right:10%;
 
 top:50%;
 
-width:220px;
-
-height:220px;
-
 transform:translateY(-50%);
+
+width:240px;
+
+height:240px;
 
 border-radius:50%;
 
 background:#000;
 
-box-shadow:
-
-0 0 80px rgba(0,0,0,.95),
-
-0 0 150px rgba(0,229,255,.25),
-
-0 0 220px rgba(122,92,255,.18);
-
-z-index:2;
+overflow:hidden;
 
 pointer-events:none;
 
-overflow:hidden;
+z-index:5;
+
+box-shadow:
+
+0 0 120px rgba(0,0,0,.95),
+
+0 0 200px rgba(140,0,255,.35),
+
+0 0 260px rgba(0,229,255,.25);
+
+animation:
+
+blackPulse 4s infinite,
+
+glowPulse 3s infinite;
+
+}
+
+@keyframes blackPulse{
+
+0%,100%{
+
+transform:
+translateY(-50%)
+scale(1);
+
+}
+
+50%{
+
+transform:
+translateY(-50%)
+scale(1.04);
+
+}
 
 }
 
@@ -1244,27 +1270,59 @@ left:50%;
 
 top:50%;
 
-width:320px;
+width:360px;
 
-height:320px;
+height:90px;
 
 transform:
 
-translate(-50%,-50%);
+translate(-50%,-50%)
+
+rotate(25deg);
 
 border-radius:50%;
 
-border:
+background:
 
-3px solid rgba(0,229,255,.25);
+linear-gradient(
 
-border-top-color:#ff0080;
+90deg,
 
-border-right-color:#7a5cff;
+transparent,
+
+#00e5ff,
+
+#7a5cff,
+
+#ff0080,
+
+#ff9900,
+
+transparent
+
+);
+
+filter:
+
+blur(10px);
 
 animation:
 
-blackHoleSpin 12s linear infinite;
+diskRotate 6s linear infinite;
+
+}
+
+@keyframes diskRotate{
+
+100%{
+
+transform:
+
+translate(-50%,-50%)
+
+rotate(385deg);
+
+}
 
 }
 
@@ -1278,9 +1336,9 @@ left:50%;
 
 top:50%;
 
-width:120px;
+width:170px;
 
-height:120px;
+height:170px;
 
 transform:
 
@@ -1292,19 +1350,33 @@ background:#000;
 
 box-shadow:
 
-0 0 50px #000 inset;
+0 0 30px #000 inset,
+
+0 0 25px #00e5ff,
+
+0 0 50px #7a5cff,
+
+0 0 100px rgba(255,0,180,.35);
 
 }
 
-@keyframes blackHoleSpin{
+@keyframes glowPulse{
 
-100%{
+0%,100%{
 
-transform:
+filter:
 
-translate(-50%,-50%)
+drop-shadow(0 0 20px #00e5ff);
 
-rotate(360deg);
+}
+
+50%{
+
+filter:
+
+drop-shadow(0 0 60px #7a5cff)
+
+drop-shadow(0 0 100px #ff0080);
 
 }
 
@@ -2123,6 +2195,36 @@ render(result);
 
 // Call scroll event once to apply initial state to sections
 window.dispatchEvent(new Event('scroll'));
+
+setInterval(()=>{
+
+document.querySelector(".blackHoleCenter").animate([
+
+{
+
+filter:"brightness(1)"
+
+},
+
+{
+
+filter:"brightness(1.5)"
+
+},
+
+{
+
+filter:"brightness(1)"
+
+}
+
+],{
+
+duration:1800
+
+});
+
+},2500);
 
 </script>
 
