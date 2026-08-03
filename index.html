@@ -1202,13 +1202,13 @@ z-index:-1;
 
 .blackHoleCenter{
 
-position:fixed;
+position:absolute;
 
-right:10%;
+right:5%;
 
-top:50%;
+top:120px;
 
-transform:translateY(-50%);
+transform:none;
 
 width:240px;
 
@@ -1245,7 +1245,6 @@ glowPulse 3s infinite;
 0%,100%{
 
 transform:
-translateY(-50%)
 scale(1);
 
 }
@@ -1253,7 +1252,6 @@ scale(1);
 50%{
 
 transform:
-translateY(-50%)
 scale(1.04);
 
 }
@@ -1466,6 +1464,9 @@ AI Universe
 
 <section class="hero reveal" id="hero">
 
+<!-- Black Hole Center -->
+<div class="blackHoleCenter"></div>
+
 <h1>
 
 AI Universe Pro
@@ -1500,9 +1501,6 @@ placeholder="AI axtar...">
 </div>
 
 </section>
-
-<!-- Black Hole Center -->
-<div class="blackHoleCenter"></div>
 
 <section id="categories" class="reveal">
 <div class="section-box">
