@@ -30,8 +30,12 @@ scroll-behavior:smooth;
 
 body{
 
-background:#05030f;
+background:
+
+radial-gradient(circle at top,#17002f,#05030f);
+
 overflow-x:hidden;
+
 color:white;
 
 }
@@ -125,13 +129,157 @@ transform:scale(.5);
 
 }
 
+/* Neon Orb */
+.cursorGlow{
+
+position:fixed;
+
+width:320px;
+
+height:320px;
+
+border-radius:50%;
+
+background:radial-gradient(circle,
+rgba(0,229,255,.18),
+transparent 70%);
+
+pointer-events:none;
+
+transform:translate(-50%,-50%);
+
+z-index:-1;
+
+transition:
+left .08s linear,
+top .08s linear;
+
+}
+
+/*=========================
+        METEOR X
+=========================*/
+
+.meteor{
+
+position:fixed;
+
+top:-150px;
+
+width:3px;
+
+height:180px;
+
+border-radius:10px;
+
+background:linear-gradient(
+
+to bottom,
+
+rgba(255,255,255,1),
+
+rgba(0,229,255,.9),
+
+transparent
+
+);
+
+box-shadow:
+
+0 0 10px #fff,
+
+0 0 20px #00e5ff,
+
+0 0 40px #00e5ff;
+
+pointer-events:none;
+
+z-index:-1;
+
+transform:rotate(45deg);
+
+animation:meteorMove 2.6s linear forwards;
+
+}
+
+@keyframes meteorMove{
+
+0%{
+
+transform:
+translate(0,0)
+rotate(45deg);
+
+opacity:1;
+
+}
+
+100%{
+
+transform:
+translate(-1800px,1800px)
+rotate(45deg);
+
+opacity:0;
+
+}
+
+}
+
+/* Top Contact Bar */
+.top-contact{
+
+width:100%;
+
+padding:10px 25px;
+
+background:linear-gradient(90deg,#ff0080,#7a5cff,#00d4ff);
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+gap:40px;
+
+flex-wrap:wrap;
+
+font-size:15px;
+
+font-weight:600;
+
+color:white;
+
+position:relative;
+
+z-index:1001;
+
+}
+
+.top-contact div{
+
+opacity:.95;
+
+transition:.3s;
+
+}
+
+.top-contact div:hover{
+
+transform:scale(1.05);
+
+opacity:1;
+
+}
+
 /* Navbar */
 
 nav{
 
 position:fixed;
 
-top:0;
+top:45px;
 
 left:0;
 
@@ -154,6 +302,22 @@ backdrop-filter:blur(20px);
 border-bottom:1px solid rgba(255,255,255,.08);
 
 z-index:1000;
+
+transition: height 0.4s, background 0.4s;
+
+}
+
+nav.scrolled{
+
+height:60px;
+
+background:rgba(15,15,30,.75);
+
+backdrop-filter:blur(30px);
+
+box-shadow:0 10px 30px rgba(0,0,0,.35);
+
+transition:.4s;
 
 }
 
@@ -202,6 +366,10 @@ color:#ff3eb5;
 }
 
 .hero{
+
+position:relative;
+
+overflow:hidden;
 
 display:flex;
 
@@ -319,7 +487,7 @@ border-radius:25px;
 
 padding:25px;
 
-transition:.4s;
+transition:transform 0.1s ease, box-shadow 0.4s;
 
 position:relative;
 
@@ -329,11 +497,25 @@ overflow:hidden;
 
 .card:hover{
 
-transform:translateY(-12px);
+transform:
+
+perspective(1200px)
+
+rotateX(6deg)
+
+rotateY(-6deg)
+
+translateY(-15px)
+
+scale(1.03);
 
 box-shadow:
 
-0 0 40px rgba(255,0,180,.25);
+0 0 25px rgba(0,229,255,.4),
+
+0 0 60px rgba(255,0,180,.3),
+
+0 0 120px rgba(122,92,255,.25);
 
 }
 
@@ -671,13 +853,512 @@ opacity: 0.9;
 box-shadow: 0 0 30px rgba(255, 0, 128, 0.4);
 }
 
+/* Music Button Style */
+#musicBtn{
+
+position:fixed;
+
+right:25px;
+
+bottom:25px;
+
+width:60px;
+
+height:60px;
+
+border:none;
+
+border-radius:50%;
+
+background:linear-gradient(135deg,#ff0080,#7a5cff);
+
+color:white;
+
+font-size:26px;
+
+cursor:pointer;
+
+z-index:9999;
+
+box-shadow:0 0 25px rgba(255,0,180,.4);
+
+}
+
+/* 1. Loading Screen CSS */
+#loader{
+
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+
+background:#05030f;
+
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+
+z-index:999999;
+transition: opacity 0.7s ease;
+
+}
+
+.loadingBar{
+
+width:320px;
+height:8px;
+
+background:#222;
+
+border-radius:20px;
+
+overflow:hidden;
+
+margin:25px 0;
+
+}
+
+.loadingFill{
+
+width:0%;
+
+height:100%;
+
+background:linear-gradient(90deg,#00e5ff,#ff0080);
+
+animation:load 2.2s forwards;
+
+}
+
+@keyframes load{
+
+to{
+
+width:100%;
+
+}
+
+}
+
+/* 2. Scroll Progress CSS */
+#progress{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+height:4px;
+
+width:0;
+
+background:linear-gradient(90deg,#00e5ff,#ff0080);
+
+z-index:999999;
+
+}
+
+/* 3. Reveal Animation CSS */
+.reveal{
+
+opacity:0;
+
+transform:translateY(70px);
+
+transition:1s;
+
+}
+
+.reveal.active{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+/* 5. Mouse Trail CSS */
+.trail{
+
+position:fixed;
+
+width:10px;
+
+height:10px;
+
+border-radius:50%;
+
+background:#00e5ff;
+
+pointer-events:none;
+
+animation:fade .8s linear forwards;
+
+}
+
+@keyframes fade{
+
+to{
+
+opacity:0;
+
+transform:scale(4);
+
+}
+}
+
+/*=============================
+        AURORA PRO
+=============================*/
+
+.aurora{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+overflow:hidden;
+
+pointer-events:none;
+
+z-index:-2;
+
+}
+
+.aurora-layer{
+
+position:absolute;
+
+width:900px;
+
+height:900px;
+
+border-radius:50%;
+
+filter:blur(140px);
+
+mix-blend-mode:screen;
+
+opacity:.25;
+
+animation:auroraFloat 18s ease-in-out infinite alternate;
+
+}
+
+.a1{
+
+background:#00e5ff;
+
+top:-250px;
+
+left:-250px;
+
+}
+
+.a2{
+
+background:#ff0080;
+
+bottom:-250px;
+
+right:-250px;
+
+animation-delay:6s;
+
+}
+
+.a3{
+
+background:#7a5cff;
+
+top:30%;
+
+left:30%;
+
+animation-delay:12s;
+
+}
+
+@keyframes auroraFloat{
+
+0%{
+
+transform:
+
+translate(0,0)
+
+scale(1)
+
+rotate(0deg);
+
+}
+
+50%{
+
+transform:
+
+translate(120px,-60px)
+
+scale(1.15)
+
+rotate(8deg);
+
+}
+
+100%{
+
+transform:
+
+translate(-120px,70px)
+
+scale(1.3)
+
+rotate(-8deg);
+
+}
+
+}
+
+/*=========================
+   GLASS REFLECTION PRO
+=========================*/
+
+.card{
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.card::after{
+
+content:"";
+
+position:absolute;
+
+top:-150%;
+
+left:-70%;
+
+width:45%;
+
+height:400%;
+
+background:linear-gradient(
+
+90deg,
+
+transparent,
+
+rgba(255,255,255,.45),
+
+transparent
+
+);
+
+transform:rotate(25deg);
+
+transition:1.2s;
+
+pointer-events:none;
+
+}
+
+.card:hover::after{
+
+left:170%;
+
+}
+
+/*=========================
+     BLACK HOLE PRO
+=========================*/
+
+#blackHoleCanvas{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+pointer-events:none;
+
+z-index:-1;
+
+}
+
+.blackHoleCenter{
+
+position:fixed;
+
+right:12%;
+
+top:50%;
+
+width:220px;
+
+height:220px;
+
+transform:translateY(-50%);
+
+border-radius:50%;
+
+background:#000;
+
+box-shadow:
+
+0 0 80px rgba(0,0,0,.95),
+
+0 0 150px rgba(0,229,255,.25),
+
+0 0 220px rgba(122,92,255,.18);
+
+z-index:2;
+
+pointer-events:none;
+
+overflow:hidden;
+
+}
+
+.blackHoleCenter::before{
+
+content:"";
+
+position:absolute;
+
+left:50%;
+
+top:50%;
+
+width:320px;
+
+height:320px;
+
+transform:
+
+translate(-50%,-50%);
+
+border-radius:50%;
+
+border:
+
+3px solid rgba(0,229,255,.25);
+
+border-top-color:#ff0080;
+
+border-right-color:#7a5cff;
+
+animation:
+
+blackHoleSpin 12s linear infinite;
+
+}
+
+.blackHoleCenter::after{
+
+content:"";
+
+position:absolute;
+
+left:50%;
+
+top:50%;
+
+width:120px;
+
+height:120px;
+
+transform:
+
+translate(-50%,-50%);
+
+border-radius:50%;
+
+background:#000;
+
+box-shadow:
+
+0 0 50px #000 inset;
+
+}
+
+@keyframes blackHoleSpin{
+
+100%{
+
+transform:
+
+translate(-50%,-50%)
+
+rotate(360deg);
+
+}
+
+}
+
 </style>
 
 </head>
 
 <body>
 
+<!-- Aurora Pro -->
+<div class="aurora">
+
+<div class="aurora-layer a1"></div>
+
+<div class="aurora-layer a2"></div>
+
+<div class="aurora-layer a3"></div>
+
+</div>
+
+<!-- Black Hole Canvas -->
+<canvas id="blackHoleCanvas"></canvas>
+
+<!-- Loading Screen -->
+<div id="loader">
+
+<h1>AI Universe</h1>
+
+<div class="loadingBar">
+<div class="loadingFill"></div>
+</div>
+
+<p>Loading AI Systems...</p>
+
+</div>
+
+<!-- Scroll Progress -->
+<div id="progress"></div>
+
 <div class="stars" id="stars"></div>
+
+<div class="cursorGlow"></div>
+
+<section class="top-contact reveal">
+
+<div>📍 Ünvan: Bakı şəhəri, Qız Qalasının yanı</div>
+
+<div>📧 Email: terlanhacizada999@gmail.com</div>
+
+<div>📞 Telefon: Yoxumdu 😢</div>
+
+</section>
 
 <nav>
 
@@ -711,7 +1392,7 @@ AI Universe
 
 </nav>
 
-<section class="hero" id="hero">
+<section class="hero reveal" id="hero">
 
 <h1>
 
@@ -748,7 +1429,10 @@ placeholder="AI axtar...">
 
 </section>
 
-<section id="categories">
+<!-- Black Hole Center -->
+<div class="blackHoleCenter"></div>
+
+<section id="categories" class="reveal">
 <div class="section-box">
 <h1 class="title">AI Kateqoriyaları</h1>
 <p class="subtitle">İstədiyin AI növünü seç.</p>
@@ -798,7 +1482,7 @@ placeholder="AI axtar...">
 </div>
 </section>
 
-<section id="topai">
+<section id="topai" class="reveal">
 <div class="section-box">
 <h1 class="title">Top AI Alətləri</h1>
 <p class="subtitle">Ən populyar və seçilən süni intellektlər</p>
@@ -817,7 +1501,7 @@ placeholder="AI axtar...">
 </div>
 </section>
 
-<section id="stats">
+<section id="stats" class="reveal">
 <div class="section-box">
 <h1 class="title">Statistika</h1>
 <p class="subtitle">Rəqəmlərlə AI Universe</p>
@@ -842,14 +1526,14 @@ placeholder="AI axtar...">
 </div>
 </section>
 
-<section id="parallax">
+<section id="parallax" class="reveal">
 <div class="section-box">
 <h1 class="title">Parallax İşıq Effekti</h1>
 <p class="subtitle">Mouse hərəkəti ilə arxa fon işıqlarını idarə edin.</p>
 </div>
 </section>
 
-<section id="showcase">
+<section id="showcase" class="reveal">
 <div class="section-box">
 <h1 class="title">Bakı</h1>
 <p class="subtitle">Bakı komandası və iştirakçılar</p>
@@ -868,13 +1552,13 @@ placeholder="AI axtar...">
 </div>
 </section>
 
-<section class="grid" id="grid">
+<section class="grid reveal" id="grid">
 
 <!-- 100 AI kartları dinamik yüklənir -->
 
 </section>
 
-<section id="gence1">
+<section id="gence1" class="reveal">
 <div class="section-box">
 <h1 class="title">Gəncə 1</h1>
 <p class="subtitle">Gəncə 1 komandası</p>
@@ -893,7 +1577,7 @@ placeholder="AI axtar...">
 </div>
 </section>
 
-<section id="gence2">
+<section id="gence2" class="reveal">
 <div class="section-box">
 <h1 class="title">Gəncə 2</h1>
 <p class="subtitle">Gəncə 2 komandası</p>
@@ -915,14 +1599,14 @@ placeholder="AI axtar...">
 </div>
 </section>
 
-<section id="baki">
+<section id="baki" class="reveal">
 <div class="section-box">
 <h1 class="title">Bakı Mərkəzi</h1>
 <p class="subtitle">Paytaxt layihə mərkəzi bölməsi.</p>
 </div>
 </section>
 
-<section id="contact">
+<section id="contact" class="reveal">
 <div class="section-box">
 <h1 class="title">Əlaqə</h1>
 <p class="subtitle">Bizimlə əlaqə saxlayın.</p>
@@ -943,13 +1627,126 @@ Made by Tərlan
 
 </footer>
 
+<button id="musicBtn">
+
+🎵
+
+</button>
+
+<audio id="music" loop>
+
+<source src="music.mp3" type="audio/mpeg">
+
+</audio>
 
 <script>
 
+const canvas=document.getElementById("blackHoleCanvas");
+
+const ctx=canvas.getContext("2d");
+
+function resizeBH(){
+
+canvas.width=window.innerWidth;
+
+canvas.height=window.innerHeight;
+
+}
+
+resizeBH();
+
+window.addEventListener("resize",resizeBH);
+
+// Loading Screen Logic
+window.onload=()=>{
+
+setTimeout(()=>{
+
+loader.style.opacity="0";
+
+setTimeout(()=>{
+
+loader.remove();
+
+},700);
+
+},2300);
+
+}
+
+// Scroll Progress Bar
+window.addEventListener("scroll",()=>{
+
+const h=document.documentElement;
+
+const p=(h.scrollTop/(h.scrollHeight-h.clientHeight))*100;
+
+progress.style.width=p+"%";
+
+});
+
+// Reveal Animation
+const reveals=document.querySelectorAll("section");
+
+window.addEventListener("scroll",()=>{
+
+reveals.forEach(r=>{
+
+const top=r.getBoundingClientRect().top;
+
+if(top<window.innerHeight-120){
+
+r.classList.add("active");
+
+}
+
+});
+
+});
+
+// Glass Navbar Scroll Toggle
+window.addEventListener("scroll",()=>{
+
+if(window.scrollY>60){
+
+document.querySelector("nav").classList.add("scrolled");
+
+}else{
+
+document.querySelector("nav").classList.remove("scrolled");
+
+}
+
+});
+
+// Mouse Trail Effect
+document.addEventListener("mousemove",e=>{
+
+const t=document.createElement("div");
+
+t.className="trail";
+
+t.style.left=e.clientX+"px";
+
+t.style.top=e.clientY+"px";
+
+document.body.appendChild(t);
+
+setTimeout(()=>t.remove(),800);
+
+});
+
 // Stars Generator
 const stars=document.getElementById("stars");
+const starCount=
 
-for(let i=0;i<250;i++){
+window.innerWidth<768
+
+?80
+
+:140;
+
+for(let i=0;i<starCount;i++){
 
 const s=document.createElement("span");
 
@@ -978,6 +1775,124 @@ const y = (e.clientY / window.innerHeight) * 100;
 document.body.style.setProperty('--x', x + '%');
 document.body.style.setProperty('--y', y + '%');
 });
+
+// Neon Orb Cursor Follower
+const glow=document.querySelector(".cursorGlow");
+
+document.addEventListener("mousemove",(e)=>{
+
+glow.style.left=e.clientX+"px";
+
+glow.style.top=e.clientY+"px";
+
+});
+
+/*=========================
+        METEOR X
+=========================*/
+
+function createMeteor(){
+
+const meteor=document.createElement("div");
+
+meteor.className="meteor";
+
+meteor.style.left=Math.random()*window.innerWidth+"px";
+
+meteor.style.top=(-100-Math.random()*200)+"px";
+
+meteor.style.animationDuration=
+(1.8+Math.random()*1.2)+"s";
+
+document.body.appendChild(meteor);
+
+setTimeout(()=>{
+
+meteor.remove();
+
+},3000);
+
+}
+
+function meteorLoop(){
+
+createMeteor();
+
+const next=
+
+8000+
+
+Math.random()*7000;
+
+setTimeout(meteorLoop,next);
+
+}
+
+meteorLoop();
+
+/* 🌠 Bonus: Nadir "Super Meteor" */
+function createSuperMeteor(){
+
+const meteor=document.createElement("div");
+
+meteor.className="meteor";
+
+meteor.style.width="6px";
+
+meteor.style.height="320px";
+
+meteor.style.left=Math.random()*window.innerWidth+"px";
+
+meteor.style.top="-250px";
+
+meteor.style.boxShadow=`
+
+0 0 20px #fff,
+
+0 0 50px #00e5ff,
+
+0 0 120px #7a5cff
+
+`;
+
+meteor.style.animationDuration="2.8s";
+
+document.body.appendChild(meteor);
+
+setTimeout(()=>meteor.remove(),3200);
+
+}
+
+setInterval(createSuperMeteor,60000);
+
+// Music Player Control
+const music=document.getElementById("music");
+
+const musicBtn=document.getElementById("musicBtn");
+
+let playing=false;
+
+musicBtn.onclick=()=>{
+
+if(!playing){
+
+music.play();
+
+musicBtn.innerHTML="⏸";
+
+playing=true;
+
+}else{
+
+music.pause();
+
+musicBtn.innerHTML="🎵";
+
+playing=false;
+
+}
+
+};
 
 // 100 Real AI Tools Database
 const tools=[
@@ -1137,6 +2052,43 @@ Aç
 
 });
 
+// 3D Tilt Effect Initialization for dynamic cards
+document.querySelectorAll(".card").forEach(card=>{
+
+card.addEventListener("mousemove",e=>{
+
+const rect=card.getBoundingClientRect();
+
+const x=e.clientX-rect.left;
+
+const y=e.clientY-rect.top;
+
+const rotateY=(x-rect.width/2)/18;
+
+const rotateX=(rect.height/2-y)/18;
+
+card.style.transform=`
+
+perspective(1200px)
+
+rotateX(${rotateX}deg)
+
+rotateY(${rotateY}deg)
+
+scale(1.04)
+
+`;
+
+});
+
+card.addEventListener("mouseleave",()=>{
+
+card.style.transform="";
+
+});
+
+});
+
 }
 
 render(tools);
@@ -1168,6 +2120,9 @@ t.desc.toLowerCase().includes(value)
 render(result);
 
 });
+
+// Call scroll event once to apply initial state to sections
+window.dispatchEvent(new Event('scroll'));
 
 </script>
 
