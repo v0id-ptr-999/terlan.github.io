@@ -1711,6 +1711,11 @@ Made by Tərlan
 
 <script>
 
+// URL-dən #baki və ya digər hash-ləri təmizləmək
+if(window.location.hash){
+history.replaceState(null, null, window.location.pathname + window.location.search);
+}
+
 const canvas=document.getElementById("blackHoleCanvas");
 
 const ctx=canvas.getContext("2d");
@@ -1729,6 +1734,12 @@ window.addEventListener("resize",resizeBH);
 
 // Loading Screen Logic
 window.onload=()=>{
+
+window.scrollTo({
+top:0,
+left:0,
+behavior:"instant"
+});
 
 setTimeout(()=>{
 
