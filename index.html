@@ -156,6 +156,31 @@ top .08s linear;
 
 }
 
+/* Neon Mouse Trail */
+.cursor{
+
+position:fixed;
+
+width:12px;
+
+height:12px;
+
+border-radius:50%;
+
+background:#00e5ff;
+
+pointer-events:none;
+
+z-index:999999;
+
+box-shadow:
+
+0 0 20px #00e5ff,
+
+0 0 40px #7a5cff;
+
+}
+
 /*=========================
       METEOR X PRO
 =========================*/
@@ -253,13 +278,19 @@ nav{
 
 position:fixed;
 
-top:45px;
+top:0;
 
 left:0;
+
+right:0;
+
+margin:0;
 
 width:100%;
 
 height:75px;
+
+z-index:99999;
 
 display:flex;
 
@@ -274,8 +305,6 @@ background:rgba(20,15,40,.55);
 backdrop-filter:blur(20px);
 
 border-bottom:1px solid rgba(255,255,255,.08);
-
-z-index:1000;
 
 transition: height 0.4s, background 0.4s;
 
@@ -355,9 +384,13 @@ flex-direction:column;
 
 height:100vh;
 
+padding-top:75px;
+
 text-align:center;
 
-padding:20px;
+padding-left:20px;
+padding-right:20px;
+padding-bottom:20px;
 
 }
 
@@ -827,6 +860,99 @@ opacity: 0.9;
 box-shadow: 0 0 30px rgba(255, 0, 128, 0.4);
 }
 
+/* BlackSea AI Section */
+.blacksea-ai{
+
+padding:120px 20px;
+
+text-align:center;
+
+}
+
+.ai-buttons{
+
+display:flex;
+
+justify-content:center;
+
+flex-wrap:wrap;
+
+gap:15px;
+
+margin:40px 0;
+
+}
+
+.ai-buttons button{
+
+padding:15px 28px;
+
+border:none;
+
+border-radius:15px;
+
+background:linear-gradient(90deg,#00e5ff,#7a5cff);
+
+color:white;
+
+font-size:17px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.ai-buttons button:hover{
+
+transform:scale(1.08);
+
+}
+
+#chatArea{
+
+max-width:900px;
+
+margin:auto;
+
+}
+
+#messages{
+
+height:300px;
+
+overflow:auto;
+
+background:rgba(255,255,255,.05);
+
+padding:20px;
+
+border-radius:15px;
+
+margin-bottom:20px;
+
+text-align:left;
+
+}
+
+#userInput{
+
+width:100%;
+
+padding:18px;
+
+border-radius:12px;
+
+border:none;
+
+outline:none;
+
+font-size:16px;
+background: rgba(255, 255, 255, 0.08);
+color: white;
+
+}
+
 /* Music Button Style */
 #musicBtn{
 
@@ -954,34 +1080,69 @@ transform:translateY(0);
 
 }
 
-/* 5. Mouse Trail CSS */
-.trail{
+/* Planet Saturn */
+.saturn{
 
 position:fixed;
 
-width:10px;
+left:8%;
 
-height:10px;
+bottom:8%;
+
+width:120px;
+
+height:120px;
 
 border-radius:50%;
 
-background:#00e5ff;
+background:
 
-pointer-events:none;
+radial-gradient(circle,#ffd27a,#c58a30);
 
-animation:fade .8s linear forwards;
+box-shadow:
+
+0 0 40px orange;
+
+animation:
+
+planetFloat 8s ease-in-out infinite;
+
+z-index: -1;
+
+}
+
+.saturn::after{
+
+content:"";
+
+position:absolute;
+
+left:-20px;
+
+top:50px;
+
+width:160px;
+
+height:22px;
+
+border-radius:50%;
+
+border:4px solid rgba(255,255,255,.5);
+
+transform:rotate(-18deg);
 
 }
 
-@keyframes fade{
+@keyframes planetFloat{
 
-to{
+50%{
 
-opacity:0;
+transform:
 
-transform:scale(4);
+translateY(-20px);
 
 }
+
 }
 
 /*=========================
@@ -1154,35 +1315,33 @@ position:absolute;
 
 top:-150%;
 
-left:-70%;
+left:-50%;
 
-width:45%;
+width:40%;
 
-height:400%;
+height:350%;
 
-background:linear-gradient(
+background:
 
-90deg,
+rgba(255,255,255,.18);
 
-transparent,
+transform:
 
-rgba(255,255,255,.45),
+rotate(25deg);
 
-transparent
+animation:
 
-);
-
-transform:rotate(25deg);
-
-transition:1.2s;
-
-pointer-events:none;
+glassMove 6s infinite;
 
 }
 
-.card:hover::after{
+@keyframes glassMove{
 
-left:170%;
+100%{
+
+left:160%;
+
+}
 
 }
 
@@ -1461,6 +1620,9 @@ box-shadow:
 
 </div>
 
+<!-- Planet Saturn -->
+<div class="planet saturn"></div>
+
 <!-- Black Hole Canvas -->
 <canvas id="blackHoleCanvas"></canvas>
 
@@ -1484,6 +1646,8 @@ box-shadow:
 
 <div class="cursorGlow"></div>
 
+<div class="cursor"></div>
+
 <section class="top-contact reveal">
 
 <div>📍 Ünvan: Bakı şəhəri, Qız Qalasının yanı</div>
@@ -1503,6 +1667,8 @@ AI Universe
 <ul>
 
 <li><a href="#hero">Ana</a></li>
+
+<li><a href="#blacksea-ai">BlackSea AI</a></li>
 
 <li><a href="#categories">Kateqoriyalar</a></li>
 
@@ -1569,6 +1735,49 @@ Animasiyalar.
 type="text"
 id="searchInput"
 placeholder="AI axtar...">
+
+</div>
+
+</section>
+
+<!-- BlackSea AI bölməsi -->
+<section id="blacksea-ai" class="blacksea-ai reveal">
+
+<h1>🤖 BlackSea AI</h1>
+
+<p>
+Azərbaycan dilini dəstəkləyən yeni nəsil Süni İntellekt.
+Kod yazır, sualları cavablandırır, ideya verir və gələcəkdə
+şəkil, video və səs də yarada biləcək.
+</p>
+
+<div class="ai-buttons">
+
+<button id="chatBtn">💬 Danış</button>
+
+<button>💻 Kod Yaz</button>
+
+<button>🎨 Şəkil Yarat</button>
+
+<button>🎬 Video Yarat</button>
+
+<button>🎤 Səs AI</button>
+
+</div>
+
+<div id="chatArea">
+
+<div id="messages"></div>
+
+<input
+id="userInput"
+placeholder="BlackSea AI ilə danış...">
+
+<button class="button" onclick="sendMessage()">
+
+Göndər
+
+</button>
 
 </div>
 
@@ -1872,20 +2081,14 @@ document.querySelector("nav").classList.remove("scrolled");
 
 });
 
-// Mouse Trail Effect
-document.addEventListener("mousemove",e=>{
+// Neon Mouse Trail
+const cursor=document.querySelector(".cursor");
 
-const t=document.createElement("div");
+window.addEventListener("mousemove",e=>{
 
-t.className="trail";
+cursor.style.left=e.clientX+"px";
 
-t.style.left=e.clientX+"px";
-
-t.style.top=e.clientY+"px";
-
-document.body.appendChild(t);
-
-setTimeout(()=>t.remove(),800);
+cursor.style.top=e.clientY+"px";
 
 });
 
@@ -2137,6 +2340,29 @@ a.style.transform=
 });
 
 });
+
+// BlackSea AI Chat Demo Script
+function sendMessage(){
+
+const input=document.getElementById("userInput");
+
+const messages=document.getElementById("messages");
+
+if(input.value==="") return;
+
+messages.innerHTML+=`
+<p><b>Sən:</b> ${input.value}</p>
+`;
+
+messages.innerHTML+=`
+<p><b>BlackSea AI:</b> Bu hələ demo versiyadır. Gələcəkdə əsl AI modeli qoşulacaq.</p>
+`;
+
+input.value="";
+
+messages.scrollTop=messages.scrollHeight;
+
+}
 
 // Music Player Control
 const music=document.getElementById("music");
