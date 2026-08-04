@@ -157,72 +157,46 @@ top .08s linear;
 }
 
 /*=========================
-        METEOR X
+      METEOR X PRO
 =========================*/
 
 .meteor{
 
 position:fixed;
 
-top:-150px;
-
 width:3px;
 
-height:180px;
+height:220px;
 
-border-radius:10px;
+pointer-events:none;
 
-background:linear-gradient(
+z-index:3;
+
+background:
+
+linear-gradient(
 
 to bottom,
 
-rgba(255,255,255,1),
+#ffffff,
 
-rgba(0,229,255,.9),
+#00e5ff,
 
 transparent
 
 );
 
+border-radius:100px;
+
 box-shadow:
 
-0 0 10px #fff,
+0 0 15px #fff,
 
-0 0 20px #00e5ff,
+0 0 35px #00e5ff,
 
-0 0 40px #00e5ff;
+0 0 70px #7a5cff;
 
-pointer-events:none;
-
-z-index:-1;
-
-transform:rotate(45deg);
-
-animation:meteorMove 2.6s linear forwards;
-
-}
-
-@keyframes meteorMove{
-
-0%{
-
-transform:
-translate(0,0)
-rotate(45deg);
-
-opacity:1;
-
-}
-
-100%{
-
-transform:
-translate(-1800px,1800px)
-rotate(45deg);
-
-opacity:0;
-
-}
+transform-origin:center;
 
 }
 
@@ -1010,29 +984,31 @@ transform:scale(4);
 }
 }
 
-/*=============================
-        AURORA PRO
-=============================*/
+/*=========================
+      AURORA PRO X
+=========================*/
 
 .aurora{
 
 position:fixed;
 
 top:0;
+
 left:0;
 
 width:100%;
+
 height:100%;
 
-overflow:hidden;
-
 pointer-events:none;
+
+overflow:hidden;
 
 z-index:-2;
 
 }
 
-.aurora-layer{
+.aurora span{
 
 position:absolute;
 
@@ -1046,43 +1022,45 @@ filter:blur(140px);
 
 mix-blend-mode:screen;
 
-opacity:.25;
+animation:auroraFloat linear infinite;
 
-animation:auroraFloat 18s ease-in-out infinite alternate;
+opacity:.45;
 
 }
 
-.a1{
+.aurora span:nth-child(1){
 
 background:#00e5ff;
 
-top:-250px;
-
 left:-250px;
 
-}
+top:-200px;
 
-.a2{
-
-background:#ff0080;
-
-bottom:-250px;
-
-right:-250px;
-
-animation-delay:6s;
+animation-duration:18s;
 
 }
 
-.a3{
+.aurora span:nth-child(2){
 
 background:#7a5cff;
 
-top:30%;
+right:-250px;
 
-left:30%;
+top:120px;
 
-animation-delay:12s;
+animation-duration:22s;
+
+}
+
+.aurora span:nth-child(3){
+
+background:#ff0080;
+
+left:35%;
+
+bottom:-350px;
+
+animation-duration:26s;
 
 }
 
@@ -1094,9 +1072,17 @@ transform:
 
 translate(0,0)
 
-scale(1)
+scale(1);
 
-rotate(0deg);
+}
+
+25%{
+
+transform:
+
+translate(120px,-80px)
+
+scale(1.08);
 
 }
 
@@ -1104,11 +1090,19 @@ rotate(0deg);
 
 transform:
 
-translate(120px,-60px)
+translate(-80px,120px)
 
-scale(1.15)
+scale(.95);
 
-rotate(8deg);
+}
+
+75%{
+
+transform:
+
+translate(150px,60px)
+
+scale(1.12);
 
 }
 
@@ -1116,11 +1110,25 @@ rotate(8deg);
 
 transform:
 
-translate(-120px,70px)
+translate(0,0)
 
-scale(1.3)
+scale(1);
 
-rotate(-8deg);
+}
+
+}
+
+@media(max-width:768px){
+
+.aurora span{
+
+width:450px;
+
+height:450px;
+
+filter:blur(80px);
+
+opacity:.28;
 
 }
 
@@ -1238,6 +1246,14 @@ blackPulse 4s infinite,
 
 glowPulse 3s infinite;
 
+filter:
+
+drop-shadow(0 0 30px #00e5ff)
+
+drop-shadow(0 0 70px #7a5cff)
+
+drop-shadow(0 0 140px #ff0080);
+
 }
 
 @keyframes blackPulse{
@@ -1255,106 +1271,6 @@ transform:
 scale(1.04);
 
 }
-
-}
-
-.blackHoleCenter::before{
-
-content:"";
-
-position:absolute;
-
-left:50%;
-
-top:50%;
-
-width:360px;
-
-height:90px;
-
-transform:
-
-translate(-50%,-50%)
-
-rotate(25deg);
-
-border-radius:50%;
-
-background:
-
-linear-gradient(
-
-90deg,
-
-transparent,
-
-#00e5ff,
-
-#7a5cff,
-
-#ff0080,
-
-#ff9900,
-
-transparent
-
-);
-
-filter:
-
-blur(10px);
-
-animation:
-
-diskRotate 6s linear infinite;
-
-}
-
-@keyframes diskRotate{
-
-100%{
-
-transform:
-
-translate(-50%,-50%)
-
-rotate(385deg);
-
-}
-
-}
-
-.blackHoleCenter::after{
-
-content:"";
-
-position:absolute;
-
-left:50%;
-
-top:50%;
-
-width:170px;
-
-height:170px;
-
-transform:
-
-translate(-50%,-50%);
-
-border-radius:50%;
-
-background:#000;
-
-box-shadow:
-
-0 0 30px #000 inset,
-
-0 0 25px #00e5ff,
-
-0 0 50px #7a5cff,
-
-0 0 100px rgba(255,0,180,.35);
 
 }
 
@@ -1380,20 +1296,168 @@ drop-shadow(0 0 100px #ff0080);
 
 }
 
+/*=========================
+ GRAVITATIONAL LENSING
+=========================*/
+
+.lens{
+
+position:absolute;
+
+left:50%;
+
+top:50%;
+
+width:290px;
+
+height:290px;
+
+transform:translate(-50%,-50%);
+
+border-radius:50%;
+
+pointer-events:none;
+
+background:
+
+radial-gradient(
+
+circle,
+
+transparent 42%,
+
+rgba(255,255,255,.10) 48%,
+
+rgba(0,229,255,.12) 52%,
+
+rgba(122,92,255,.08) 56%,
+
+transparent 66%
+
+);
+
+animation:lensPulse 5s ease-in-out infinite;
+
+filter:blur(3px);
+
+}
+
+@keyframes lensPulse{
+
+0%,100%{
+
+transform:
+
+translate(-50%,-50%)
+
+scale(1);
+
+opacity:.7;
+
+}
+
+50%{
+
+transform:
+
+translate(-50%,-50%)
+
+scale(1.08);
+
+opacity:1;
+
+}
+
+}
+
+/* Orbit Ring */
+.ring{
+
+position:absolute;
+
+left:50%;
+
+top:50%;
+
+width:340px;
+
+height:120px;
+
+transform:
+
+translate(-50%,-50%)
+
+rotate(22deg);
+
+border-radius:50%;
+
+border:
+
+3px solid rgba(255,255,255,.18);
+
+border-top-color:#00e5ff;
+
+border-right-color:#ff0080;
+
+filter:blur(1px);
+
+animation:ringOrbit 7s linear infinite;
+
+}
+
+@keyframes ringOrbit{
+
+100%{
+
+transform:
+
+translate(-50%,-50%)
+
+rotate(382deg);
+
+}
+
+}
+
+/* Hadisə Üfüqü (Event Horizon) */
+.core{
+
+background:#000;
+
+border-radius:50%;
+
+width: 100%;
+height: 100%;
+position: absolute;
+left: 0;
+top: 0;
+
+box-shadow:
+
+0 0 40px #000 inset,
+
+0 0 20px #00e5ff,
+
+0 0 45px #7a5cff,
+
+0 0 80px rgba(255,0,180,.25);
+
+}
+
 </style>
 
 </head>
 
 <body>
 
-<!-- Aurora Pro -->
+<!-- Aurora Pro X -->
 <div class="aurora">
 
-<div class="aurora-layer a1"></div>
+<span></span>
 
-<div class="aurora-layer a2"></div>
+<span></span>
 
-<div class="aurora-layer a3"></div>
+<span></span>
 
 </div>
 
@@ -1465,7 +1529,15 @@ AI Universe
 <section class="hero reveal" id="hero">
 
 <!-- Black Hole Center -->
-<div class="blackHoleCenter"></div>
+<div class="blackHoleCenter">
+
+<div class="lens"></div>
+
+<div class="ring"></div>
+
+<div class="core"></div>
+
+</div>
 
 <h1>
 
@@ -1869,82 +1941,202 @@ glow.style.top=e.clientY+"px";
 });
 
 /*=========================
-        METEOR X
+ BLACK HOLE PARTICLES
 =========================*/
 
-function createMeteor(){
+const particles=[];
+
+for(let i=0;i<350;i++){
+
+particles.push({
+
+angle:Math.random()*Math.PI*2,
+
+distance:120+Math.random()*500,
+
+speed:0.002+Math.random()*0.004,
+
+size:1+Math.random()*2,
+
+color:`hsl(${180+Math.random()*120},100%,70%)`
+
+});
+
+}
+
+function drawBlackHoleParticles(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+const holeX=canvas.width*0.90;
+
+const holeY=canvas.height*0.50;
+
+particles.forEach(p=>{
+
+p.angle+=p.speed;
+
+p.distance-=0.18; // Daha güclü qravitasiya (0.18)
+
+if(p.distance<90){
+
+p.distance=450+Math.random()*250;
+
+p.angle=Math.random()*Math.PI*2;
+
+}
+
+const x=
+
+holeX+
+
+Math.cos(p.angle)*p.distance;
+
+const y=
+
+holeY+
+
+Math.sin(p.angle)*p.distance;
+
+ctx.beginPath();
+
+ctx.fillStyle=p.color;
+
+ctx.arc(
+
+x,
+
+y,
+
+p.size,
+
+0,
+
+Math.PI*2
+
+);
+
+ctx.fill();
+
+if(p.distance<180){
+
+ctx.beginPath();
+
+ctx.arc(x,y,p.size*4,0,Math.PI*2);
+
+ctx.fillStyle="rgba(255,255,255,.08)";
+
+ctx.fill();
+
+}
+
+});
+
+requestAnimationFrame(drawBlackHoleParticles);
+
+}
+
+drawBlackHoleParticles();
+
+/*=========================
+      METEOR X PRO
+=========================*/
+
+function spawnMeteor(){
 
 const meteor=document.createElement("div");
 
 meteor.className="meteor";
 
-meteor.style.left=Math.random()*window.innerWidth+"px";
-
-meteor.style.top=(-100-Math.random()*200)+"px";
-
-meteor.style.animationDuration=
-(1.8+Math.random()*1.2)+"s";
-
 document.body.appendChild(meteor);
 
-setTimeout(()=>{
+let x=window.innerWidth+200;
+
+let y=Math.random()*250;
+
+let vx=-14;
+
+let vy=6;
+
+const holeX=window.innerWidth*0.90;
+
+const holeY=window.innerHeight*0.50;
+
+function animate(){
+
+const dx=holeX-x;
+
+const dy=holeY-y;
+
+const dist=Math.sqrt(dx*dx+dy*dy);
+
+if(dist<420){
+
+vx+=dx*0.00018;
+
+vy+=dy*0.00018;
+
+}
+
+x+=vx;
+
+y+=vy;
+
+meteor.style.left=x+"px";
+
+meteor.style.top=y+"px";
+
+meteor.style.transform=
+
+`rotate(${Math.atan2(vy,vx)*180/Math.PI+90}deg)`;
+
+if(x<-400||y>window.innerHeight+300){
 
 meteor.remove();
 
-},3000);
+return;
 
 }
 
-function meteorLoop(){
-
-createMeteor();
-
-const next=
-
-8000+
-
-Math.random()*7000;
-
-setTimeout(meteorLoop,next);
+requestAnimationFrame(animate);
 
 }
 
-meteorLoop();
-
-/* 🌠 Bonus: Nadir "Super Meteor" */
-function createSuperMeteor(){
-
-const meteor=document.createElement("div");
-
-meteor.className="meteor";
-
-meteor.style.width="6px";
-
-meteor.style.height="320px";
-
-meteor.style.left=Math.random()*window.innerWidth+"px";
-
-meteor.style.top="-250px";
-
-meteor.style.boxShadow=`
-
-0 0 20px #fff,
-
-0 0 50px #00e5ff,
-
-0 0 120px #7a5cff
-
-`;
-
-meteor.style.animationDuration="2.8s";
-
-document.body.appendChild(meteor);
-
-setTimeout(()=>meteor.remove(),3200);
+animate();
 
 }
 
-setInterval(createSuperMeteor,60000);
+setInterval(spawnMeteor,9000);
+
+// Super Meteor
+setInterval(()=>{
+
+if(Math.random()<0.25){
+
+spawnMeteor();
+
+}
+
+},18000);
+
+// Aurora Mouse Interactive Effect
+const aurora=document.querySelectorAll(".aurora span");
+
+window.addEventListener("mousemove",e=>{
+
+const x=e.clientX/window.innerWidth;
+
+const y=e.clientY/window.innerHeight;
+
+aurora.forEach((a,i)=>{
+
+a.style.transform=
+
+`translate(${x*120*(i+1)}px,${y*90*(i+1)}px)`;
+
+});
+
+});
 
 // Music Player Control
 const music=document.getElementById("music");
@@ -2204,36 +2396,6 @@ render(result);
 
 // Call scroll event once to apply initial state to sections
 window.dispatchEvent(new Event('scroll'));
-
-setInterval(()=>{
-
-document.querySelector(".blackHoleCenter").animate([
-
-{
-
-filter:"brightness(1)"
-
-},
-
-{
-
-filter:"brightness(1.5)"
-
-},
-
-{
-
-filter:"brightness(1)"
-
-}
-
-],{
-
-duration:1800
-
-});
-
-},2500);
 
 </script>
 
