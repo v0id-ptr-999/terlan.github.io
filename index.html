@@ -1603,6 +1603,164 @@ box-shadow:
 
 }
 
+/*==========================
+AI Universe Button
+===========================*/
+
+#aiUniverseButton{
+
+position:fixed;
+
+right:35px;
+
+bottom:35px;
+
+width:230px;
+
+height:72px;
+
+display:flex;
+
+align-items:center;
+
+gap:18px;
+
+padding:0 22px;
+
+border-radius:22px;
+
+background:rgba(255,255,255,.07);
+
+backdrop-filter:blur(20px);
+
+border:1px solid rgba(255,255,255,.12);
+
+text-decoration:none;
+
+transition:.35s;
+
+box-shadow:
+
+0 0 35px rgba(0,229,255,.15);
+
+z-index:999999999;
+
+overflow:hidden;
+
+}
+
+#aiUniverseButton::before{
+
+content:"";
+
+position:absolute;
+
+left:-120%;
+
+top:0;
+
+width:100%;
+
+height:100%;
+
+background:linear-gradient(
+
+90deg,
+
+transparent,
+
+rgba(255,255,255,.2),
+
+transparent
+
+);
+
+transition:.7s;
+
+}
+
+#aiUniverseButton:hover::before{
+
+left:120%;
+
+}
+
+#aiUniverseButton:hover{
+
+transform:translateY(-6px);
+
+box-shadow:
+
+0 0 45px rgba(0,229,255,.4);
+
+}
+
+.ai-icon{
+
+width:50px;
+
+height:50px;
+
+border-radius:50%;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:28px;
+
+background:linear-gradient(
+
+135deg,
+
+#00E5FF,
+
+#8A2BE2
+
+);
+
+box-shadow:
+
+0 0 20px rgba(0,229,255,.45);
+
+flex-shrink:0;
+
+}
+
+.ai-text{
+
+display:flex;
+
+flex-direction:column;
+
+}
+
+.ai-text span{
+
+font-size:18px;
+
+font-weight:700;
+
+color:white;
+
+font-family:Inter,sans-serif;
+
+}
+
+.ai-text small{
+
+color:#9fdfff;
+
+font-size:13px;
+
+margin-top:3px;
+
+font-family:Inter,sans-serif;
+
+}
+
 </style>
 
 </head>
@@ -1715,7 +1873,7 @@ AI Universe Pro
 
 Dünyanın ən böyük Süni İntellekt kataloqu.
 
-100+ AI aləti.
+65+ AI aləti.
 
 Premium dizayn.
 
@@ -1789,11 +1947,6 @@ Göndər
 <p class="subtitle">İstədiyin AI növünü seç.</p>
 <div class="categoryGrid">
 
-<div class="cat" onclick="showCategory('Mətn AI')">
-<div class="emoji">💬</div>
-<h2>Mətn AI</h2>
-</div>
-
 <div class="cat" onclick="showCategory('Kod AI')">
 <div class="emoji">💻</div>
 <h2>Kod AI</h2>
@@ -1814,19 +1967,14 @@ Göndər
 <h2>Səs AI</h2>
 </div>
 
-<div class="cat" onclick="showCategory('Research AI')">
-<div class="emoji">🔬</div>
-<h2>Research AI</h2>
-</div>
-
 <div class="cat" onclick="showCategory('Business AI')">
 <div class="emoji">📈</div>
 <h2>Business AI</h2>
 </div>
 
-<div class="cat" onclick="showCategory('Robot AI')">
-<div class="emoji">🤖</div>
-<h2>Robot AI</h2>
+<div class="cat" onclick="showCategory('Research AI')">
+<div class="emoji">🔬</div>
+<h2>Research AI</h2>
 </div>
 
 </div>
@@ -1858,11 +2006,11 @@ Göndər
 <p class="subtitle">Rəqəmlərlə AI Universe</p>
 <div class="stats-grid">
 <div class="stat-card">
-<div class="stat-number">120+</div>
-<div class="stat-label">AI</div>
+<div class="stat-number">65+</div>
+<div class="stat-label">AI Aləti</div>
 </div>
 <div class="stat-card">
-<div class="stat-number">40+</div>
+<div class="stat-number">6+</div>
 <div class="stat-label">Kateqoriya</div>
 </div>
 <div class="stat-card">
@@ -1905,7 +2053,7 @@ Göndər
 
 <section class="grid reveal" id="grid">
 
-<!-- 100 AI kartları dinamik yüklənir -->
+<!-- AI kartları dinamik yüklənir -->
 
 </section>
 
@@ -1992,7 +2140,7 @@ Made by Tərlan
 
 <script>
 
-// URL-dən #baki və ya digər hash-ləri təmizləmək
+// URL-dən hash-ləri təmizləmək
 if(window.location.hash){
 history.replaceState(null, null, window.location.pathname + window.location.search);
 }
@@ -2094,13 +2242,7 @@ cursor.style.top=e.clientY+"px";
 
 // Stars Generator
 const stars=document.getElementById("stars");
-const starCount=
-
-window.innerWidth<768
-
-?80
-
-:140;
+const starCount=window.innerWidth<768?80:140;
 
 for(let i=0;i<starCount;i++){
 
@@ -2179,7 +2321,7 @@ particles.forEach(p=>{
 
 p.angle+=p.speed;
 
-p.distance-=0.18; // Daha güclü qravitasiya (0.18)
+p.distance-=0.18;
 
 if(p.distance<90){
 
@@ -2189,35 +2331,15 @@ p.angle=Math.random()*Math.PI*2;
 
 }
 
-const x=
+const x=holeX+Math.cos(p.angle)*p.distance;
 
-holeX+
-
-Math.cos(p.angle)*p.distance;
-
-const y=
-
-holeY+
-
-Math.sin(p.angle)*p.distance;
+const y=holeY+Math.sin(p.angle)*p.distance;
 
 ctx.beginPath();
 
 ctx.fillStyle=p.color;
 
-ctx.arc(
-
-x,
-
-y,
-
-p.size,
-
-0,
-
-Math.PI*2
-
-);
+ctx.arc(x,y,p.size,0,Math.PI*2);
 
 ctx.fill();
 
@@ -2289,9 +2411,7 @@ meteor.style.left=x+"px";
 
 meteor.style.top=y+"px";
 
-meteor.style.transform=
-
-`rotate(${Math.atan2(vy,vx)*180/Math.PI+90}deg)`;
+meteor.style.transform=`rotate(${Math.atan2(vy,vx)*180/Math.PI+90}deg)`;
 
 if(x<-400||y>window.innerHeight+300){
 
@@ -2311,7 +2431,6 @@ animate();
 
 setInterval(spawnMeteor,9000);
 
-// Super Meteor
 setInterval(()=>{
 
 if(Math.random()<0.25){
@@ -2322,7 +2441,6 @@ spawnMeteor();
 
 },18000);
 
-// Aurora Mouse Interactive Effect
 const aurora=document.querySelectorAll(".aurora span");
 
 window.addEventListener("mousemove",e=>{
@@ -2333,15 +2451,12 @@ const y=e.clientY/window.innerHeight;
 
 aurora.forEach((a,i)=>{
 
-a.style.transform=
-
-`translate(${x*120*(i+1)}px,${y*90*(i+1)}px)`;
+a.style.transform=`translate(${x*120*(i+1)}px,${y*90*(i+1)}px)`;
 
 });
 
 });
 
-// BlackSea AI Chat Demo Script
 function sendMessage(){
 
 const input=document.getElementById("userInput");
@@ -2350,13 +2465,9 @@ const messages=document.getElementById("messages");
 
 if(input.value==="") return;
 
-messages.innerHTML+=`
-<p><b>Sən:</b> ${input.value}</p>
-`;
+messages.innerHTML+=`<p><b>Sən:</b> ${input.value}</p>`;
 
-messages.innerHTML+=`
-<p><b>BlackSea AI:</b> Bu hələ demo versiyadır. Gələcəkdə əsl AI modeli qoşulacaq.</p>
-`;
+messages.innerHTML+=`<p><b>BlackSea AI:</b> Bu hələ demo versiyadır. Gələcəkdə əsl AI modeli qoşulacaq.</p>`;
 
 input.value="";
 
@@ -2364,7 +2475,6 @@ messages.scrollTop=messages.scrollHeight;
 
 }
 
-// Music Player Control
 const music=document.getElementById("music");
 
 const musicBtn=document.getElementById("musicBtn");
@@ -2393,36 +2503,8 @@ playing=false;
 
 };
 
-// 100 Real AI Tools Database
+// Real AI Tools Database
 const tools=[
-/* Mətn AI (20) */
-{name:"ChatGPT", category:"Mətn AI", desc:"Kod yazmaq, məqalə hazırlamaq və sualları cavablandırmaq üçün güclü AI.", url:"https://chatgpt.com"},
-{name:"Claude", category:"Mətn AI", desc:"Uzun sənədləri analiz edən və proqramlaşdırmada qabaqcıl AI modeli.", url:"https://claude.ai"},
-{name:"Gemini", category:"Mətn AI", desc:"Google tərəfindən hazırlanmış çoxfunksiyalı süni intellekt modeli.", url:"https://gemini.google.com"},
-{name:"DeepSeek", category:"Mətn AI", desc:"Yüksək sürətli məntiqi mühakimə və kodlaşdırma qabiliyyətinə malik AI.", url:"https://chat.deepseek.com"},
-{name:"Grok", category:"Mətn AI", desc:"xAI tərəfindən hazırlanmış real vaxt məlumat erişimi olan chatbot.", url:"https://grok.x.ai"},
-{name:"Perplexity", category:"Mətn AI", desc:"İnternetdən canlı məlumat toplayan AI axtarış köməkçisi.", url:"https://perplexity.ai"},
-{name:"Microsoft Copilot", category:"Mətn AI", desc:"Windows və Office inteqrasiyalı süni intellekt köməkçisi.", url:"https://copilot.microsoft.com"},
-{name:"Meta AI", category:"Mətn AI", desc:"Meta tərəfindən sosial şəbəkələr və tətbiqlər üçün AI.", url:"https://www.meta.ai"},
-{name:"Pi AI", category:"Mətn AI", desc:"İnsan kimi səmimi ünsiyyət quran emosional dəstək və söhbət AI.", url:"https://pi.ai"},
-{name:"Mistral Le Chat", category:"Mətn AI", desc:"Avropa mənşəli qabaqcıl dil modeli və söhbət sistemi.", url:"https://chat.mistral.ai"},
-{name:"Qwen Chat", category:"Mətn AI", desc:"Alibaba tərəfindən yaradılmış güclü dil və məntiq modeli.", url:"https://chat.qwenlm.ai"},
-{name:"Poe", category:"Mətn AI", desc:"Quora tərəfindən yaradılmış müxtəlif AI botlarını bir araya gətirən platforma.", url:"https://poe.com"},
-{name:"You.com AI", category:"Mətn AI", desc:"Fərdiləşdirilmiş AI axtarış və söhbət mühiti.", url:"https://you.com"},
-{name:"Character.AI", category:"Mətn AI", desc:"Fərqli personajlar və tarixi şəxsiyyətlərlə söhbət etmə imkanı.", url:"https://character.ai"},
-{name:"Jasper", category:"Mətn AI", desc:"Marketinq və reklam mətnləri üçün xüsusi AI yaradıcısı.", url:"https://www.jasper.ai"},
-{name:"Writesonic", category:"Mətn AI", desc:"SEO uyğun məqalələr və kontentlər hazırlayan AI.", url:"https://writesonic.com"},
-{name:"Rytr", category:"Mətn AI", desc:"Sürətli və keyfiyyətli mətn generasiya vasitəsi.", url:"https://rytr.me"},
-{name:"Notion AI", category:"Mətn AI", desc:"Qeydləriniz və sənədləriniz içində birbaşa işləyən köməkçi.", url:"https://www.notion.so"},
-{name:"QuillBot", category:"Mətn AI", desc:"Mətnləri parafraz edən, yoxlayan və təkmilləşdirən alət.", url:"https://quillbot.com"},
-{name:"Copy.ai", category:"Mətn AI", desc:"Satış və kopiraytinq üçün avtomatlaşdırılmış mətn yaradıcısı.", url:"https://www.copy.ai"},
-
-/* Kod AI (15) */
-{name:"GitHub Copilot", category:"Kod AI", desc:"Visual Studio Code və GitHub üçün AI proqramlaşdırma köməkçisi.", url:"https://github.com/features/copilot"},
-{name:"Cursor", category:"Kod AI", desc:"AI ilə işləyən müasir və sürətli kod redaktoru.", url:"https://cursor.com"},
-{name:"Windsurf", category:"Kod AI", desc:"Cascade AI texnologiyalı qabaqcıl proqramlaşdırma mühiti.", url:"https://windsurf.com"},
-{name:"Blackbox AI", category:"Kod AI", desc:"Kod yazmaq, izah etmək və tapmaq üçün sürətli AI.", url:"https://www.blackbox.ai"},
-{name:"Bolt.new", category:"Kod AI", desc:"Brauzerdə tam veb tətbiqlər yaradan və icra edən AI.", url:"https://bolt.new"},
 {name:"Lovable", category:"Kod AI", desc:"Promptlar vasitəsilə tam veb tətbiqləri hazırlayan platforma.", url:"https://lovable.dev"},
 {name:"Replit AI", category:"Kod AI", desc:"Bulud əsaslı interaktiv AI proqramlaşdırma mühiti.", url:"https://replit.com"},
 {name:"Codeium", category:"Kod AI", desc:"Sürətli və pulsuz AI kod tamamlama köməkçisi.", url:"https://codeium.com"},
@@ -2434,7 +2516,7 @@ const tools=[
 {name:"Devin", category:"Kod AI", desc:"Tam funksional ilk müstəqil AI proqram mühəndisi.", url:"https://devin.ai"},
 {name:"Aider", category:"Kod AI", desc:"Terminal üzərindən Git layihələrində AI ilə kod yazma sistemi.", url:"https://aider.chat"},
 
-/* Şəkil AI (20) */
+/* Şəkil AI */
 {name:"Midjourney", category:"Şəkil AI", desc:"Bədii və foto-realistik yüksək keyfiyyətli AI şəkilləri yaradır.", url:"https://midjourney.com"},
 {name:"Leonardo AI", category:"Şəkil AI", desc:"Oyun assetləri və dizayn üçün peşəkar şəkil generatoru.", url:"https://leonardo.ai"},
 {name:"FLUX", category:"Şəkil AI", desc:"Müasir dövrün ən realistik şəkil yaradan modellərindən biri.", url:"https://fluxai.imagegenerator.com"},
@@ -2456,7 +2538,7 @@ const tools=[
 {name:"Imagine AI", category:"Şəkil AI", desc:"Mobil və web üçün yaradıcı şəkil generatoru.", url:"https://www.imagine.art"},
 {name:"Tensor.Art", category:"Şəkil AI", desc:"AI modellərini paylaşmaq və işlətmək üçün platforma.", url:"https://tensor.art"},
 
-/* Video AI (15) */
+/* Video AI */
 {name:"Runway", category:"Video AI", desc:"Kinematik keyfiyyətdə video yaratmaq və montaj etmək üçün AI.", url:"https://runwayml.com"},
 {name:"Pika", category:"Video AI", desc:"Mətn və şəkillərdən hərəkətli animasiya videoları yaradır.", url:"https://pika.art"},
 {name:"Kling AI", category:"Video AI", desc:"Yüksək fiziki dəqiqliyə malik realistik video generatoru.", url:"https://klingai.com"},
@@ -2473,7 +2555,7 @@ const tools=[
 {name:"Vidu", category:"Video AI", desc:"Sürətli və hekayəvi videolar yaradan video AI modeli.", url:"https://www.vidu.studio"},
 {name:"Colossyan", category:"Video AI", desc:"Təlim və korporativ videolar üçün süni intellekt avatarları.", url:"https://www.colossyan.com"},
 
-/* Səs AI (10) */
+/* Səs AI */
 {name:"ElevenLabs", category:"Səs AI", desc:"Ultra realistik və emosional süni intellekt səsləri.", url:"https://elevenlabs.io"},
 {name:"Suno", category:"Səs AI", desc:"Mətn təsvirlərindən tam musiqi və mahnılar bəstələyən AI.", url:"https://suno.com"},
 {name:"Udio", category:"Səs AI", desc:"Peşəkar səviyyədə musiqi və trekər yaradan platforma.", url:"https://www.udio.com"},
@@ -2485,8 +2567,8 @@ const tools=[
 {name:"LOVO AI", category:"Səs AI", desc:"Oyun və reklamlar üçün süni intellekt səs studiyası.", url:"https://lovo.ai"},
 {name:"Descript", category:"Səs AI", desc:"Audio və videoları mətn kimi redaktə edən səs AI aləti.", url:"https://www.descript.com"},
 
-/* Business AI (10) */
-{name:"Gamma", category:"Səs AI", desc:"Təqdimat, sənəd və səhifələri saniyələr içində dizayn edən AI.", url:"https://gamma.app"},
+/* Business AI */
+{name:"Gamma", category:"Business AI", desc:"Təqdimat, sənəd və səhifələri saniyələr içində dizayn edən AI.", url:"https://gamma.app"},
 {name:"Tome", category:"Business AI", desc:"Süni intellekt ilə hekayə və təqdimatlar yaradan platforma.", url:"https://tome.app"},
 {name:"Beautiful.ai", category:"Business AI", desc:"Avtomatik dizayn olunan peşəkar təqdimat slaydları.", url:"https://www.beautiful.ai"},
 {name:"Napkin AI", category:"Business AI", desc:"Mətnləri avtomatik vizual diaqramlara çevirən alət.", url:"https://www.napkin.ai"},
@@ -2497,7 +2579,7 @@ const tools=[
 {name:"HubSpot AI", category:"Business AI", desc:"Satış və müştəri xidmətləri üçün marketinq AI aləti.", url:"https://www.hubspot.com"},
 {name:"Salesforce Einstein", category:"Business AI", desc:"Müştəri münasibətləri və satış analitikası üçün biznes AI.", url:"https://www.salesforce.com/artificial-intelligence"},
 
-/* Research AI (10) */
+/* Research AI */
 {name:"Elicit", category:"Research AI", desc:"Elmi məqalələri oxuyan və tədqiqatlara kömək edən AI.", url:"https://elicit.com"},
 {name:"Consensus", category:"Research AI", desc:"Elmi araşdırmalardan cavablar tapan süni intellekt.", url:"https://consensus.app"},
 {name:"Scite", category:"Research AI", desc:"Elmi sitatları və mənbələrin etibarlılığını yoxlayan AI.", url:"https://scite.ai"},
@@ -2511,120 +2593,84 @@ const tools=[
 ];
 
 const grid=document.getElementById("grid");
+const searchInput=document.getElementById("searchInput");
 
 function render(list){
-
 grid.innerHTML="";
-
 list.forEach(tool=>{
-
 grid.innerHTML+=`
-
 <div class="card">
-
-<div class="icon">
-
-${tool.name.charAt(0)}
-
-</div>
-
+<div class="icon">${tool.name.charAt(0)}</div>
 <h2>${tool.name}</h2>
-
 <p>${tool.desc}</p>
-
 <div class="tag">${tool.category}</div>
-
 <br>
-
-<a
-class="button"
-target="_blank"
-href="${tool.url}">
-
-Aç
-
-</a>
-
+<a class="button" target="_blank" href="${tool.url}">Aç</a>
 </div>
-
 `;
-
 });
 
-// 3D Tilt Effect Initialization for dynamic cards
+// 3D Tilt Effect
 document.querySelectorAll(".card").forEach(card=>{
-
 card.addEventListener("mousemove",e=>{
-
 const rect=card.getBoundingClientRect();
-
 const x=e.clientX-rect.left;
-
 const y=e.clientY-rect.top;
-
 const rotateY=(x-rect.width/2)/18;
-
 const rotateX=(rect.height/2-y)/18;
-
 card.style.transform=`
-
 perspective(1200px)
-
 rotateX(${rotateX}deg)
-
 rotateY(${rotateY}deg)
-
 scale(1.04)
-
 `;
-
 });
-
 card.addEventListener("mouseleave",()=>{
-
 card.style.transform="";
-
 });
-
 });
-
 }
 
 render(tools);
 
 function showCategory(category){
-
 const result=tools.filter(t=>t.category.toLowerCase()===category.toLowerCase());
-
 render(result);
-
 document.getElementById("grid").scrollIntoView({behavior:"smooth"});
-
 }
 
 searchInput.addEventListener("input",()=>{
-
 const value=searchInput.value.toLowerCase();
-
 const result=tools.filter(t=>
-
 t.name.toLowerCase().includes(value)||
-
 t.category.toLowerCase().includes(value)||
-
 t.desc.toLowerCase().includes(value)
-
 );
-
 render(result);
-
 });
 
-// Call scroll event once to apply initial state to sections
 window.dispatchEvent(new Event('scroll'));
 
 </script>
 
-</body>
+<!-- AI Universe -->
+<a href="3d.html" id="aiUniverseButton">
 
+    <div class="ai-icon">
+
+        🤖
+
+    </div>
+
+    <div class="ai-text">
+
+        <span>AI Universe</span>
+
+        <small>Open Assistant</small>
+
+    </div>
+
+</a>
+
+</body>
 </html>
