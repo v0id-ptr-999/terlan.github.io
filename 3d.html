@@ -1241,7 +1241,9 @@ async function askAI(message) {
 
     if (!response.ok) {
         throw new Error(
-            data.error || "AI server xətası"
+            typeof data.error === "string"
+                ? data.error
+                : JSON.stringify(data.error)
         );
     }
 
