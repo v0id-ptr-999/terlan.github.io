@@ -706,6 +706,14 @@ overflow:auto;
 
 }
 
+.history-title {
+    font-size: 13px;
+    font-weight: 600;
+    opacity: 0.7;
+    margin-bottom: 8px;
+    padding-left: 4px;
+}
+
 .history-item{
 
 padding:12px;
@@ -1300,13 +1308,13 @@ NEXT GENERATION AI
 
 <div class="side-btn">⚙ Settings</div>
 
-<div class="history">
+<div class="history" id="chatHistory">
 
-<div class="history-item">
+    <div class="history-title">
+        🕘 Chat History
+    </div>
 
-AI Universe
-
-</div>
+    <div id="historyList"></div>
 
 </div>
 
@@ -1423,123 +1431,109 @@ function getUserId() {
 
 async function askAI(message) {
 
-    const userId =
-        getUserId();
+    const userId = getUserId();
 
-    const response =
-        await fetch(
-            AI_API_URL,
-            {
-                method: "POST",
+    const response = await fetch(
+        AI_API_URL,
+        {
+            method: "POST",
 
-                headers: {
-                    "Content-Type":
-                        "application/json"
-                },
+            headers: {
+                "Content-Type": "application/json"
+            },
 
-                body: JSON.stringify({
-                    message: message,
-                    userId: userId
-                })
-            }
-        );
+            body: JSON.stringify({
+                message: message,
+                userId: userId
+            })
+        }
+    );
 
-
-    let data = null;
+    let data;
 
     try {
 
-        data =
-            await response.json();
+        data = await response.json();
 
     } catch {
 
         throw new Error(
-            "Serverdən düzgün cavab gəlmədi."
+            "Server JSON cavabı qaytarmadı."
         );
 
     }
 
-
-    // =====================================
-    // 429 — FREE TIER LIMIT
-    // =====================================
+    /* ==============================
+       FREE LIMIT / 429
+    ============================== */
 
     if (response.status === 429) {
 
-        const retryAfter =
-            data?.retryAfter ||
-            null;
+        const error = new Error(
+            data?.message ||
+            "Pulsuz AI limiti dolub."
+        );
 
-        const error =
-            new Error(
-                data?.message ||
-                "Pulsuz AI limiti dolub."
-            );
-
-        error.code =
-            "RATE_LIMIT";
+        error.code = "RATE_LIMIT";
 
         error.retryAfter =
-            retryAfter;
+            data?.retryAfter || null;
 
         throw error;
     }
 
-
-    // =====================================
-    // OTHER ERRORS
-    // =====================================
+    /* ==============================
+       OTHER SERVER ERRORS
+    ============================== */
 
     if (!response.ok) {
 
-        const message =
+        throw new Error(
             data?.message ||
             data?.error ||
-            "AI server xətası baş verdi.";
-
-        throw new Error(
-            typeof message === "string"
-                ? message
-                : JSON.stringify(message)
+            "AI server xətası baş verdi."
         );
 
     }
 
-
-    // =====================================
-    // NEW WORKER RESPONSE
-    // =====================================
+    /* ==============================
+       WORKER SUCCESS RESPONSE
+    ============================== */
 
     if (
         data?.success === true &&
-        typeof data.answer === "string"
+        typeof data?.answer === "string"
     ) {
 
         return data.answer;
 
     }
 
+    /* ==============================
+       BACKUP: GEMINI DIRECT FORMAT
+    ============================== */
 
-    // =====================================
-    // OLD GEMINI RESPONSE FALLBACK
-    // =====================================
-
-    const oldAnswer =
+    const fallbackAnswer =
         data?.candidates?.[0]
-            ?.content?.parts?.[0]
-            ?.text;
+            ?.content?.parts
+            ?.map(part => part?.text || "")
+            ?.join("")
+            ?.trim();
 
-    if (oldAnswer) {
+    if (fallbackAnswer) {
 
-        return oldAnswer;
+        return fallbackAnswer;
 
     }
 
+    /* ==============================
+       EMPTY RESPONSE
+    ============================== */
 
     throw new Error(
-        "AI-dan cavab gəlmədi."
+        "AI-dan düzgün cavab gəlmədi."
     );
+
 }
 
 async function reply(message) {
@@ -1724,6 +1718,29 @@ sendMessage();
 }
 
 });
+
+function updateLoginUI() {
+
+    const loggedIn =
+        localStorage.getItem("ai_universe_logged_in") === "true";
+
+    const history =
+        document.getElementById("chatHistory");
+
+    if (!history) return;
+
+    if (loggedIn) {
+
+        history.style.display = "block";
+
+    } else {
+
+        history.style.display = "none";
+
+    }
+}
+
+updateLoginUI();
 
 </script>
 
