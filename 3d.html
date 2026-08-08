@@ -1271,12 +1271,16 @@ async function reply(message){
 
         const aiMessages = chatBox.querySelectorAll(".message.ai");
         const lastMessage = aiMessages[aiMessages.length - 1];
-        if(lastMessage && lastMessage.textContent === "AI düşünür...") {
+
+        if (
+            lastMessage &&
+            lastMessage.textContent === "AI düşünür..."
+        ) {
             lastMessage.remove();
         }
 
         addAIMessage(
-            "Bağlantıda problem oldu 😕"
+            "XƏTA: " + (error.message || "Naməlum xəta")
         );
 
     }
