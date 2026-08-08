@@ -734,7 +734,7 @@ transition:.3s;
 
 .history-item:hover{
 
-background:rgba(255,255,255,.08);
+background:rgba(255,255,258,.08);
 
 }
 
@@ -792,6 +792,8 @@ border-radius:18px;
 
 line-height:1.6;
 
+word-break: break-word;
+
 }
 
 .user{
@@ -804,7 +806,7 @@ background:#2b4cff;
 
 .ai{
 
-background:rgba(255,255,258,.08);
+background:rgba(255,255,255,.08);
 
 }
 
@@ -1060,26 +1062,6 @@ padding:12px;
 
 }
 
-.tools{
-
-display:grid;
-
-grid-template-columns:repeat(3,1fr);
-
-gap:8px;
-
-}
-
-.tool{
-
-text-align:center;
-
-font-size:13px;
-
-padding:10px;
-
-}
-
 .input-bar{
 
 gap:8px;
@@ -1200,17 +1182,17 @@ NEXT GENERATION AI
 
 <div class="sidebar">
 
-<div class="side-btn">➕ New Chat</div>
+<div class="side-btn" onclick="newChat()">➕ New Chat</div>
 
-<div class="side-btn">📄 PDF</div>
+<div class="side-btn" onclick="quickPrompt('PDF haqqında məlumat ver')">📄 PDF</div>
 
-<div class="side-btn">💻 Code</div>
+<div class="side-btn" onclick="quickPrompt('Mənə JavaScript kodu yaz')">💻 Code</div>
 
-<div class="side-btn">🖼 Images</div>
+<div class="side-btn" onclick="quickPrompt('Şəkil yaratmaq üçün prompt yaz')">🖼 Images</div>
 
-<div class="side-btn">🌍 Translate</div>
+<div class="side-btn" onclick="quickPrompt('Azərbaycan dilindən İngilis dilinə tərcümə et')">🌍 Translate</div>
 
-<div class="side-btn">⚙ Settings</div>
+<div class="side-btn" onclick="openLogin()">⚙ Settings</div>
 
 <div class="history" id="chatHistory">
 
@@ -1288,7 +1270,7 @@ const div=document.createElement("div");
 
 div.className="message ai";
 
-div.textContent=text;
+div.innerHTML=text.replace(/\n/g, '<br>');
 
 chatBox.appendChild(div);
 
@@ -1310,28 +1292,23 @@ reply(text);
 
 }
 
-const AI_API_URL =
-    "https://ai-universe.nigarhaciyeva106.workers.dev";
+const AI_API_URL = "https://ai-universe.nigarhaciyeva106.workers.dev";
 
 function getUserId() {
 
-    let userId =
-        localStorage.getItem("ai_universe_user_id");
+    let userId = localStorage.getItem("ai_universe_user_id");
 
     if (!userId) {
 
-        userId =
-            crypto.randomUUID();
+        userId = crypto.randomUUID();
 
-        localStorage.setItem(
-            "ai_universe_user_id",
-            userId
-        );
+        localStorage.setItem("ai_universe_user_id", userId);
+
     }
 
     return userId;
-}
 
+}
 
 async function askAI(message) {
 
@@ -1367,23 +1344,16 @@ async function askAI(message) {
 
     }
 
-    /* ==============================
-       OTHER SERVER ERRORS
-    ============================== */
-
     if (!response.ok) {
 
         throw new Error(
             data?.message ||
             data?.error ||
+            data?.modelError ||
             "AI server xətası baş verdi."
         );
 
     }
-
-    /* ==============================
-       WORKER SUCCESS RESPONSE
-    ============================== */
 
     if (
         data?.success === true &&
@@ -1393,10 +1363,6 @@ async function askAI(message) {
         return data.answer;
 
     }
-
-    /* ==============================
-       BACKUP: GEMINI DIRECT FORMAT
-    ============================== */
 
     const fallbackAnswer =
         data?.candidates?.[0]
@@ -1411,72 +1377,46 @@ async function askAI(message) {
 
     }
 
-    /* ==============================
-       EMPTY RESPONSE
-    ============================== */
-
     throw new Error(
-        "AI-dan düzgün cavab gəlmədi."
+        data?.error || data?.message || "AI-dan düzgün cavab gəlmədi."
     );
 
 }
 
 async function reply(message) {
 
-    const loaderDiv =
-        document.createElement("div");
+    const loaderDiv = document.createElement("div");
 
-    loaderDiv.className =
-        "message ai";
+    loaderDiv.className = "message ai";
 
-    loaderDiv.innerHTML =
-        `
+    loaderDiv.innerHTML = `
         <span class="loading-dots">
             AI düşünür<span>.</span><span>.</span><span>.</span>
         </span>
-        
-        `;
+    `;
 
-    chatBox.appendChild(
-        loaderDiv
-    );
+    chatBox.appendChild(loaderDiv);
 
-    chatBox.scrollTop =
-        chatBox.scrollHeight;
-
+    chatBox.scrollTop = chatBox.scrollHeight;
 
     try {
 
-        const answer =
-            await askAI(message);
-
+        const answer = await askAI(message);
 
         loaderDiv.remove();
 
+        addAIMessage(answer);
 
-        addAIMessage(
-            answer
-        );
-
+    } sol (error) { // Düzəliş olundu
 
     } catch (error) {
 
-        console.error(
-            "AI Universe:",
-            error
-        );
-
+        console.error("AI Universe:", error);
 
         loaderDiv.remove();
 
-
-        // =================================
-        // NORMAL ERROR
-        // =================================
-
         addAIMessage(
-            "⚠️ " +
-            (
+            "⚠️ " + (
                 error.modelError || 
                 error.message ||
                 "Naməlum xəta baş verdi."
@@ -1494,15 +1434,28 @@ function openLogin() {
 
 }
 
-send.onclick=sendMessage;
-
-input.addEventListener("keydown",e=>{
-
-if(e.key==="Enter"){
-
-sendMessage();
-
+function newChat() {
+    chatBox.innerHTML = `
+        <div class="message ai">
+            👋 Yeni söhbət başladı!<br>Sənə necə kömək edə bilərəm?
+        </div>
+    `;
 }
+
+function quickPrompt(text) {
+    input.value = text;
+    input.focus();
+}
+
+send.onclick = sendMessage;
+
+input.addEventListener("keydown", e => {
+
+    if(e.key === "Enter"){
+
+        sendMessage();
+
+    }
 
 });
 
