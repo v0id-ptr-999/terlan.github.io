@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>AI Universe Pro</title>
+<title>AI Universe Pro - 120+ AI Tools</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1296,7 +1296,7 @@ opacity:.28;
 }
 
 /*=========================
-   GLASS REFLECTION PRO
+    GLASS REFLECTION PRO
 =========================*/
 
 .card{
@@ -1346,7 +1346,7 @@ left:160%;
 }
 
 /*=========================
-     BLACK HOLE PRO
+      BLACK HOLE PRO
 =========================*/
 
 #blackHoleCanvas{
@@ -1603,10 +1603,7 @@ box-shadow:
 
 }
 
-/*==========================
-AI Universe Button
-===========================*/
-
+/* AI Universe Button */
 #aiUniverseButton{
 
 position:fixed;
@@ -1793,7 +1790,7 @@ font-family:Inter,sans-serif;
 <div class="loadingFill"></div>
 </div>
 
-<p>Loading AI Systems...</p>
+<p>Loading 120+ AI Systems...</p>
 
 </div>
 
@@ -1836,13 +1833,13 @@ AI Universe
 
 <li><a href="#parallax">Parallax</a></li>
 
-<li><a href="#showcase">Showcase</a></li>
+<li><a href="#showcase">Bakı</a></li>
 
 <li><a href="#gence1">Gəncə 1</a></li>
 
 <li><a href="#gence2">Gəncə 2</a></li>
 
-<li><a href="#baki">Bakı</a></li>
+<li><a href="#baki">Bakı Mərkəzi</a></li>
 
 <li><a href="#contact">Əlaqə</a></li>
 
@@ -1872,18 +1869,10 @@ AI Universe Pro
 <p>
 
 Dünyanın ən böyük Süni İntellekt kataloqu.
-
-65+ AI aləti.
-
+120+ AI aləti.
 Premium dizayn.
-
 Neon effektlər.
-
 Canlı axtarış.
-
-Kateqoriyalar.
-
-Animasiyalar.
 
 </p>
 
@@ -1892,7 +1881,7 @@ Animasiyalar.
 <input
 type="text"
 id="searchInput"
-placeholder="AI axtar...">
+placeholder="120+ AI arasında axtar...">
 
 </div>
 
@@ -1947,6 +1936,11 @@ Göndər
 <p class="subtitle">İstədiyin AI növünü seç.</p>
 <div class="categoryGrid">
 
+<div class="cat" onclick="showCategory('Əsas Modellər')">
+<div class="emoji">🌟</div>
+<h2>Əsas Modellər</h2>
+</div>
+
 <div class="cat" onclick="showCategory('Kod AI')">
 <div class="emoji">💻</div>
 <h2>Kod AI</h2>
@@ -1990,12 +1984,12 @@ Göndər
 <div class="chip">Claude</div>
 <div class="chip">Gemini</div>
 <div class="chip">DeepSeek</div>
-<div class="chip">Cursor</div>
-<div class="chip">Copilot</div>
-<div class="chip">Perplexity</div>
+<div class="chip">Grok</div>
+<div class="chip">Llama</div>
 <div class="chip">Midjourney</div>
 <div class="chip">Runway</div>
-<div class="chip">Leonardo</div>
+<div class="chip">ElevenLabs</div>
+<div class="chip">Suno</div>
 </div>
 </div>
 </section>
@@ -2006,11 +2000,11 @@ Göndər
 <p class="subtitle">Rəqəmlərlə AI Universe</p>
 <div class="stats-grid">
 <div class="stat-card">
-<div class="stat-number">65+</div>
+<div class="stat-number">120+</div>
 <div class="stat-label">AI Aləti</div>
 </div>
 <div class="stat-card">
-<div class="stat-number">6+</div>
+<div class="stat-number">7+</div>
 <div class="stat-label">Kateqoriya</div>
 </div>
 <div class="stat-card">
@@ -2053,7 +2047,7 @@ Göndər
 
 <section class="grid reveal" id="grid">
 
-<!-- AI kartları dinamik yüklənir -->
+<!-- 120+ AI kartları dinamik yüklənir -->
 
 </section>
 
@@ -2140,133 +2134,74 @@ Made by Tərlan
 
 <script>
 
-// URL-dən hash-ləri təmizləmək
 if(window.location.hash){
 history.replaceState(null, null, window.location.pathname + window.location.search);
 }
 
 const canvas=document.getElementById("blackHoleCanvas");
-
 const ctx=canvas.getContext("2d");
 
 function resizeBH(){
-
 canvas.width=window.innerWidth;
-
 canvas.height=window.innerHeight;
-
 }
 
 resizeBH();
-
 window.addEventListener("resize",resizeBH);
 
-// Loading Screen Logic
 window.onload=()=>{
-
-window.scrollTo({
-top:0,
-left:0,
-behavior:"instant"
-});
-
+window.scrollTo({top:0,left:0,behavior:"instant"});
 setTimeout(()=>{
-
 loader.style.opacity="0";
-
-setTimeout(()=>{
-
-loader.remove();
-
-},700);
-
+setTimeout(()=>{loader.remove();},700);
 },2300);
-
 }
 
-// Scroll Progress Bar
 window.addEventListener("scroll",()=>{
-
 const h=document.documentElement;
-
 const p=(h.scrollTop/(h.scrollHeight-h.clientHeight))*100;
-
 progress.style.width=p+"%";
-
 });
 
-// Reveal Animation
 const reveals=document.querySelectorAll("section");
-
 window.addEventListener("scroll",()=>{
-
 reveals.forEach(r=>{
-
 const top=r.getBoundingClientRect().top;
-
 if(top<window.innerHeight-120){
-
 r.classList.add("active");
-
 }
-
+});
 });
 
-});
-
-// Glass Navbar Scroll Toggle
 window.addEventListener("scroll",()=>{
-
 if(window.scrollY>60){
-
 document.querySelector("nav").classList.add("scrolled");
-
 }else{
-
 document.querySelector("nav").classList.remove("scrolled");
-
 }
-
 });
 
-// Neon Mouse Trail
 const cursor=document.querySelector(".cursor");
-
 window.addEventListener("mousemove",e=>{
-
 cursor.style.left=e.clientX+"px";
-
 cursor.style.top=e.clientY+"px";
-
 });
 
-// Stars Generator
 const stars=document.getElementById("stars");
 const starCount=window.innerWidth<768?80:140;
 
 for(let i=0;i<starCount;i++){
-
 const s=document.createElement("span");
-
 s.className="star";
-
 const size=Math.random()*3+1;
-
 s.style.width=size+"px";
-
 s.style.height=size+"px";
-
 s.style.left=Math.random()*100+"%";
-
 s.style.top=Math.random()*100+"%";
-
 s.style.animationDuration=(Math.random()*4+2)+"s";
-
 stars.appendChild(s);
-
 }
 
-// Parallax Mouse Effect
 window.addEventListener("mousemove", (e) => {
 const x = (e.clientX / window.innerWidth) * 100;
 const y = (e.clientY / window.innerHeight) * 100;
@@ -2274,237 +2209,140 @@ document.body.style.setProperty('--x', x + '%');
 document.body.style.setProperty('--y', y + '%');
 });
 
-// Neon Orb Cursor Follower
 const glow=document.querySelector(".cursorGlow");
-
 document.addEventListener("mousemove",(e)=>{
-
 glow.style.left=e.clientX+"px";
-
 glow.style.top=e.clientY+"px";
-
 });
-
-/*=========================
- BLACK HOLE PARTICLES
-=========================*/
 
 const particles=[];
-
 for(let i=0;i<350;i++){
-
 particles.push({
-
 angle:Math.random()*Math.PI*2,
-
 distance:120+Math.random()*500,
-
 speed:0.002+Math.random()*0.004,
-
 size:1+Math.random()*2,
-
 color:`hsl(${180+Math.random()*120},100%,70%)`
-
 });
-
 }
 
 function drawBlackHoleParticles(){
-
 ctx.clearRect(0,0,canvas.width,canvas.height);
-
 const holeX=canvas.width*0.90;
-
 const holeY=canvas.height*0.50;
 
 particles.forEach(p=>{
-
 p.angle+=p.speed;
-
 p.distance-=0.18;
-
 if(p.distance<90){
-
 p.distance=450+Math.random()*250;
-
 p.angle=Math.random()*Math.PI*2;
-
 }
-
 const x=holeX+Math.cos(p.angle)*p.distance;
-
 const y=holeY+Math.sin(p.angle)*p.distance;
-
 ctx.beginPath();
-
 ctx.fillStyle=p.color;
-
 ctx.arc(x,y,p.size,0,Math.PI*2);
-
 ctx.fill();
 
 if(p.distance<180){
-
 ctx.beginPath();
-
 ctx.arc(x,y,p.size*4,0,Math.PI*2);
-
 ctx.fillStyle="rgba(255,255,255,.08)";
-
 ctx.fill();
-
 }
-
 });
-
 requestAnimationFrame(drawBlackHoleParticles);
-
 }
-
 drawBlackHoleParticles();
 
-/*=========================
-      METEOR X PRO
-=========================*/
-
 function spawnMeteor(){
-
 const meteor=document.createElement("div");
-
 meteor.className="meteor";
-
 document.body.appendChild(meteor);
 
 let x=window.innerWidth+200;
-
 let y=Math.random()*250;
-
 let vx=-14;
-
 let vy=6;
-
 const holeX=window.innerWidth*0.90;
-
 const holeY=window.innerHeight*0.50;
 
 function animate(){
-
 const dx=holeX-x;
-
 const dy=holeY-y;
-
 const dist=Math.sqrt(dx*dx+dy*dy);
-
 if(dist<420){
-
 vx+=dx*0.00018;
-
 vy+=dy*0.00018;
-
 }
-
 x+=vx;
-
 y+=vy;
-
 meteor.style.left=x+"px";
-
 meteor.style.top=y+"px";
-
 meteor.style.transform=`rotate(${Math.atan2(vy,vx)*180/Math.PI+90}deg)`;
 
 if(x<-400||y>window.innerHeight+300){
-
 meteor.remove();
-
 return;
-
 }
-
 requestAnimationFrame(animate);
-
 }
-
 animate();
-
 }
 
 setInterval(spawnMeteor,9000);
 
-setInterval(()=>{
-
-if(Math.random()<0.25){
-
-spawnMeteor();
-
-}
-
-},18000);
-
 const aurora=document.querySelectorAll(".aurora span");
-
 window.addEventListener("mousemove",e=>{
-
 const x=e.clientX/window.innerWidth;
-
 const y=e.clientY/window.innerHeight;
-
 aurora.forEach((a,i)=>{
-
 a.style.transform=`translate(${x*120*(i+1)}px,${y*90*(i+1)}px)`;
-
 });
-
 });
 
 function sendMessage(){
-
 const input=document.getElementById("userInput");
-
 const messages=document.getElementById("messages");
-
 if(input.value==="") return;
-
 messages.innerHTML+=`<p><b>Sən:</b> ${input.value}</p>`;
-
 messages.innerHTML+=`<p><b>BlackSea AI:</b> Bu hələ demo versiyadır. Gələcəkdə əsl AI modeli qoşulacaq.</p>`;
-
 input.value="";
-
 messages.scrollTop=messages.scrollHeight;
-
 }
 
 const music=document.getElementById("music");
-
 const musicBtn=document.getElementById("musicBtn");
-
 let playing=false;
 
 musicBtn.onclick=()=>{
-
 if(!playing){
-
 music.play();
-
 musicBtn.innerHTML="⏸";
-
 playing=true;
-
 }else{
-
 music.pause();
-
 musicBtn.innerHTML="🎵";
-
 playing=false;
-
 }
-
 };
 
-// Real AI Tools Database
+// 120+ Real AI Tools Database
 const tools=[
+/* Əsas Modellər */
+{name:"ChatGPT (OpenAI)", category:"Əsas Modellər", desc:"Dünyanın ən məşhur və qabaqcıl ümumi təyinatlı süni intellekt modeli.", url:"https://chatgpt.com"},
+{name:"Claude (Anthropic)", category:"Əsas Modellər", desc:"Uzun mətnləri anlayan, təhlükəsiz və dərin analitik qabiliyyətli AI.", url:"https://claude.ai"},
+{name:"Google Gemini", category:"Əsas Modellər", desc:"Google-un ekosisteminə inteqrasiya olunmuş çoxməqsədli AI modeli.", url:"https://gemini.google.com"},
+{name:"DeepSeek", category:"Əsas Modellər", desc:"Sürətli, yüksək məntiqi hesablama və kodlaşdırma qabiliyyətli model.", url:"https://chat.deepseek.com"},
+{name:"xAI Grok", category:"Əsas Modellər", desc:"Real vaxt X (Twitter) məlumatlarına çıxışı olan yumorlu və güclü AI.", url:"https://grok.x.ai"},
+{name:"Meta Llama", category:"Əsas Modellər", desc:"Meta tərəfindən hazırlanmış qlobal açıq mənbəli böyük dil modeli.", url:"https://www.llama.com"},
+{name:"Microsoft Copilot", category:"Əsas Modellər", desc:"Windows və Office proqramlarına quraşdırılmış rəsmi AI köməkçi.", url:"https://copilot.microsoft.com"},
+{name:"Perplexity AI", category:"Əsas Modellər", desc:"İnternetdə canlı mənbələrə əsaslanaraq cavab verən AI Axtarış sistemi.", url:"https://www.perplexity.ai"},
+{name:"Mistral AI", category:"Əsas Modellər", desc:"Avropanın qabaqcıl və yüksək performanslı açıq ağırlıqlı AI modeli.", url:"https://mistral.ai"},
+{name:"Qwen (Alibaba)", category:"Əsas Modellər", desc:"Çoxdilli dəstəyə və güclü riyazi hesablama bacarığına malik AI.", url:"https://chat.qwenlm.ai"},
+
+/* Kod AI */
 {name:"Lovable", category:"Kod AI", desc:"Promptlar vasitəsilə tam veb tətbiqləri hazırlayan platforma.", url:"https://lovable.dev"},
 {name:"Replit AI", category:"Kod AI", desc:"Bulud əsaslı interaktiv AI proqramlaşdırma mühiti.", url:"https://replit.com"},
 {name:"Codeium", category:"Kod AI", desc:"Sürətli və pulsuz AI kod tamamlama köməkçisi.", url:"https://codeium.com"},
@@ -2515,6 +2353,8 @@ const tools=[
 {name:"Sourcegraph Cody", category:"Kod AI", desc:"Böyük kod bazalarını anlayan və dəyişən AI köməkçisi.", url:"https://sourcegraph.com/cody"},
 {name:"Devin", category:"Kod AI", desc:"Tam funksional ilk müstəqil AI proqram mühəndisi.", url:"https://devin.ai"},
 {name:"Aider", category:"Kod AI", desc:"Terminal üzərindən Git layihələrində AI ilə kod yazma sistemi.", url:"https://aider.chat"},
+{name:"Cursor", category:"Kod AI", desc:"Süni intellekt üçün xüsusi olaraq qurulmuş qabaqcıl kod redaktoru.", url:"https://www.cursor.com"},
+{name:"GitHub Copilot", category:"Kod AI", desc:"Proqramçılar üçün rəsmi süni intellekt cüt-proqramlaşdırma aləti.", url:"https://github.com/features/copilot"},
 
 /* Şəkil AI */
 {name:"Midjourney", category:"Şəkil AI", desc:"Bədii və foto-realistik yüksək keyfiyyətli AI şəkilləri yaradır.", url:"https://midjourney.com"},
@@ -2610,7 +2450,6 @@ grid.innerHTML+=`
 `;
 });
 
-// 3D Tilt Effect
 document.querySelectorAll(".card").forEach(card=>{
 card.addEventListener("mousemove",e=>{
 const rect=card.getBoundingClientRect();
@@ -2655,21 +2494,13 @@ window.dispatchEvent(new Event('scroll'));
 
 <!-- AI Universe -->
 <a href="3d.html" id="aiUniverseButton">
-
     <div class="ai-icon">
-
         🤖
-
     </div>
-
     <div class="ai-text">
-
         <span>AI Universe</span>
-
         <small>Open Assistant</small>
-
     </div>
-
 </a>
 
 </body>
