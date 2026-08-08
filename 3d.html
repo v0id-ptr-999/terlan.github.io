@@ -1,1057 +1,1211 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="az">
 <head>
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-content="width=device-width,initial-scale=1.0">
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+>
 
-<meta name="theme-color"
-content="#050505">
+<meta name="theme-color" content="#050505">
 
 <title>AI Universe</title>
 
 <meta
-name="description"
-content="AI Universe - Next Generation Artificial Intelligence">
+  name="description"
+  content="AI Universe - Next Generation Artificial Intelligence"
+>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
 
 <link
-rel="preconnect"
-href="https://fonts.googleapis.com">
+  rel="preconnect"
+  href="https://fonts.gstatic.com"
+  crossorigin
+>
 
 <link
-rel="preconnect"
-href="https://fonts.gstatic.com"
-crossorigin>
-
-<link
-href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-rel="stylesheet">
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+  rel="stylesheet"
+>
 
 <style>
 
-/*==============================
-RESET
-==============================*/
+/* ========================================
+   RESET
+======================================== */
 
-*{
-
-margin:0;
-
-padding:0;
-
-box-sizing:border-box;
-
-font-family:"Inter",sans-serif;
-
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
 }
-
-html{
 
-scroll-behavior:smooth;
-
+html {
+  scroll-behavior: smooth;
 }
-
-body{
 
-overflow:hidden;
-
-background:#050505;
-
-color:white;
-
-width:100vw;
-
-height:100vh;
-
+body {
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #050505;
+  color: white;
 }
-
-/*==============================
-BACKGROUND
-==============================*/
 
-.background{
+/* ========================================
+   BACKGROUND
+======================================== */
 
-position:fixed;
+.background {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: -10;
 
-left:0;
-
-top:0;
+  background:
+    radial-gradient(
+      circle at center,
+      #0d0d16 0%,
+      #050505 65%,
+      #000 100%
+    );
+}
 
-width:100%;
+/* ========================================
+   BLACK HOLE
+======================================== */
 
-height:100%;
+.blackhole {
+  position: absolute;
 
-overflow:hidden;
+  left: 50%;
+  top: 50%;
 
-z-index:-999;
+  width: 380px;
+  height: 380px;
 
-background:
+  transform: translate(-50%, -50%);
 
-radial-gradient(circle at center,
+  border-radius: 50%;
 
-#0d0d16 0%,
+  background:
+    radial-gradient(
+      circle,
+      #000 18%,
+      #120029 36%,
+      #4400ff 58%,
+      #00d9ff 82%,
+      transparent 100%
+    );
 
-#050505 65%,
+  filter: blur(1px);
 
-black 100%);
+  animation: rotateHole 22s linear infinite;
 
+  box-shadow:
+    0 0 70px #4d00ff,
+    0 0 160px #00c3ff;
 }
 
-/*==============================
-BLACK HOLE
-==============================*/
+@keyframes rotateHole {
 
-.blackhole{
+  0% {
+    transform:
+      translate(-50%, -50%)
+      rotate(0deg);
+  }
 
-position:absolute;
+  100% {
+    transform:
+      translate(-50%, -50%)
+      rotate(360deg);
+  }
 
-left:50%;
-
-top:50%;
-
-transform:translate(-50%,-50%);
-
-width:380px;
-
-height:380px;
+}
 
-border-radius:50%;
+/* ========================================
+   AURORA
+======================================== */
 
-background:
+.aurora {
+  position: absolute;
 
-radial-gradient(
+  width: 1800px;
+  height: 1800px;
 
-circle,
+  left: -500px;
+  top: -500px;
 
-black 18%,
+  background:
+    radial-gradient(
+      circle,
+      rgba(0,229,255,.08),
+      transparent 70%
+    );
 
-#120029 36%,
+  animation:
+    auroraMove 20s ease-in-out infinite alternate;
+}
 
-#4400ff 58%,
+@keyframes auroraMove {
 
-#00d9ff 82%,
+  0% {
+    transform: translate(0,0);
+  }
 
-transparent 100%
+  100% {
+    transform: translate(250px,180px);
+  }
 
-);
+}
 
-filter:blur(1px);
+/* ========================================
+   METEORS
+======================================== */
 
-animation:
+.meteor {
+  position: absolute;
 
-rotateHole 22s linear infinite;
+  width: 2px;
+  height: 140px;
 
-box-shadow:
+  background:
+    linear-gradient(
+      to bottom,
+      white,
+      #00d9ff,
+      transparent
+    );
 
-0 0 70px #4d00ff,
+  opacity: .9;
 
-0 0 160px #00c3ff;
+  transform: rotate(35deg);
 
+  animation:
+    meteorFall linear infinite;
 }
-
-@keyframes rotateHole{
 
-0%{
-
-transform:
-
-translate(-50%,-50%)
-
-rotate(0deg);
-
+.m1 {
+  left: 15%;
+  top: -180px;
+  animation-duration: 6s;
 }
-
-100%{
-
-transform:
-
-translate(-50%,-50%)
-
-rotate(360deg);
 
+.m2 {
+  left: 35%;
+  top: -350px;
+  animation-duration: 7s;
+  animation-delay: 2s;
 }
 
+.m3 {
+  left: 60%;
+  top: -250px;
+  animation-duration: 5.5s;
+  animation-delay: 1s;
 }
 
-/*==============================
-AURORA
-==============================*/
-
-.aurora{
-
-position:absolute;
+.m4 {
+  left: 80%;
+  top: -420px;
+  animation-duration: 8s;
+  animation-delay: 4s;
+}
 
-width:1800px;
+@keyframes meteorFall {
 
-height:1800px;
+  0% {
+    transform:
+      translateY(0)
+      translateX(0)
+      rotate(35deg);
 
-left:-500px;
+    opacity: 1;
+  }
 
-top:-500px;
+  100% {
+    transform:
+      translateY(1400px)
+      translateX(700px)
+      rotate(35deg);
 
-background:
+    opacity: 0;
+  }
 
-radial-gradient(
+}
 
-circle,
+/* ========================================
+   STARS
+======================================== */
 
-rgba(0,229,255,.08),
+.star {
+  position: absolute;
 
-transparent 70%
+  width: 2px;
+  height: 2px;
 
-);
+  background: white;
 
-animation:
+  border-radius: 50%;
 
-auroraMove 20s ease-in-out infinite alternate;
+  box-shadow:
+    0 0 10px white;
 
+  animation:
+    twinkle 3s infinite;
 }
 
-@keyframes auroraMove{
+@keyframes twinkle {
 
-0%{
+  0% {
+    opacity: .2;
+    transform: scale(.6);
+  }
 
-transform:
+  50% {
+    opacity: 1;
+    transform: scale(1.4);
+  }
 
-translate(0,0);
+  100% {
+    opacity: .2;
+    transform: scale(.6);
+  }
 
 }
 
-100%{
+/* ========================================
+   PLANETS
+======================================== */
 
-transform:
+.planet {
+  position: absolute;
 
-translate(250px,180px);
+  border-radius: 50%;
 
+  animation:
+    planetRotate linear infinite;
 }
-
-}
-
-/*==============================
-GLASS PANEL
-==============================*/
-
-.glass{
 
-position:absolute;
+.planet1 {
 
-left:50%;
+  width: 90px;
+  height: 90px;
 
-top:50%;
+  right: 120px;
+  top: 130px;
 
-transform:translate(-50%,-50%);
+  background:
+    radial-gradient(
+      circle at 30% 30%,
+      #00d9ff,
+      #003cff,
+      #000822
+    );
 
-width:min(1100px,94vw);
+  animation-duration: 60s;
 
-height:84vh;
-
-border-radius:35px;
-
-background:
-
-rgba(255,255,255,.05);
-
-backdrop-filter:blur(22px);
+  box-shadow:
+    0 0 35px rgba(0,229,255,.5);
+}
 
-border:
+.planet2 {
 
-1px solid rgba(255,255,255,.12);
+  width: 55px;
+  height: 55px;
 
-box-shadow:
+  left: 120px;
+  bottom: 120px;
 
-0 0 50px rgba(0,229,255,.10);
+  background:
+    radial-gradient(
+      circle at 30% 30%,
+      #ffb347,
+      #ff5500,
+      #441400
+    );
 
+  animation-duration: 40s;
 }
-
-/*==============================
-TITLE
-==============================*/
 
-.logo{
+@keyframes planetRotate {
 
-position:absolute;
+  0% {
+    transform: rotate(0deg);
+  }
 
-left:50%;
+  100% {
+    transform: rotate(360deg);
+  }
 
-top:25px;
+}
 
-transform:translateX(-50%);
+/* ========================================
+   MAIN GLASS
+======================================== */
 
-font-size:32px;
+.glass {
 
-font-weight:800;
+  position: fixed;
 
-letter-spacing:3px;
+  left: 50%;
+  top: 50%;
 
-background:
+  transform:
+    translate(-50%, -50%);
 
-linear-gradient(
+  width: min(1100px, 94vw);
+  height: 84vh;
 
-90deg,
+  min-height: 500px;
 
-#00d9ff,
+  border-radius: 35px;
 
-#8c4cff,
+  background:
+    rgba(255,255,255,.05);
 
-white
+  backdrop-filter:
+    blur(22px);
 
-);
+  -webkit-backdrop-filter:
+    blur(22px);
 
--webkit-background-clip:text;
+  border:
+    1px solid rgba(255,255,255,.12);
 
--webkit-text-fill-color:transparent;
+  box-shadow:
+    0 0 50px rgba(0,229,255,.10);
 
+  overflow: hidden;
 }
-
-.subtitle{
 
-position:absolute;
+/* ========================================
+   LOGO
+======================================== */
 
-left:50%;
+.logo {
 
-top:68px;
+  position: absolute;
 
-transform:translateX(-50%);
+  left: 50%;
+  top: 22px;
 
-font-size:12px;
+  transform:
+    translateX(-50%);
 
-opacity:.8;
+  font-size: 32px;
 
-letter-spacing:2px;
+  font-weight: 800;
 
-}
-
-/*==============================
-METEORS
-==============================*/
-
-.meteor{
-
-position:absolute;
+  letter-spacing: 3px;
 
-width:2px;
+  white-space: nowrap;
 
-height:140px;
+  background:
+    linear-gradient(
+      90deg,
+      #00d9ff,
+      #8c4cff,
+      white
+    );
 
-background:linear-gradient(
+  -webkit-background-clip: text;
+  background-clip: text;
 
-to bottom,
+  -webkit-text-fill-color: transparent;
+}
 
-white,
+.subtitle {
 
-#00d9ff,
+  position: absolute;
 
-transparent
+  left: 50%;
+  top: 65px;
 
-);
+  transform:
+    translateX(-50%);
 
-opacity:.9;
+  font-size: 11px;
 
-transform:rotate(35deg);
+  opacity: .8;
 
-animation:meteorFall linear infinite;
+  letter-spacing: 2px;
 
+  white-space: nowrap;
 }
-
-.m1{
-
-left:15%;
-
-top:-180px;
 
-animation-duration:6s;
+/* ========================================
+   SIDEBAR
+======================================== */
 
-animation-delay:0s;
+.sidebar {
 
-}
+  position: absolute;
 
-.m2{
+  left: 20px;
+  top: 105px;
 
-left:35%;
+  width: 230px;
 
-top:-350px;
+  height:
+    calc(100% - 125px);
 
-animation-duration:7s;
+  border-radius: 25px;
 
-animation-delay:2s;
+  background:
+    rgba(255,255,255,.05);
 
-}
+  backdrop-filter:
+    blur(20px);
 
-.m3{
+  -webkit-backdrop-filter:
+    blur(20px);
 
-left:60%;
+  border:
+    1px solid rgba(255,255,255,.08);
 
-top:-250px;
+  padding: 18px;
 
-animation-duration:5.5s;
+  display: flex;
 
-animation-delay:1s;
+  flex-direction: column;
 
+  gap: 10px;
 }
 
-.m4{
+/* ========================================
+   SIDEBAR BUTTONS
+======================================== */
 
-left:80%;
+.side-btn {
 
-top:-420px;
+  min-height: 46px;
 
-animation-duration:8s;
+  border-radius: 14px;
 
-animation-delay:4s;
+  display: flex;
 
-}
+  align-items: center;
 
-@keyframes meteorFall{
+  padding: 0 15px;
 
-0%{
+  cursor: pointer;
 
-transform:
+  user-select: none;
 
-translateY(0)
+  transition:
+    transform .25s ease,
+    background .25s ease,
+    border .25s ease;
 
-translateX(0)
+  background:
+    rgba(255,255,255,.05);
 
-rotate(35deg);
+  border:
+    1px solid transparent;
 
-opacity:1;
+  font-size: 13px;
 
+  font-weight: 500;
 }
-
-100%{
 
-transform:
+.side-btn:hover {
 
-translateY(1400px)
+  background:
+    rgba(0,217,255,.12);
 
-translateX(700px)
+  border-color:
+    rgba(0,217,255,.25);
 
-rotate(35deg);
-
-opacity:0;
-
+  transform:
+    translateX(4px);
 }
 
-}
+.side-btn.active {
 
-/*==============================
-STARS
-==============================*/
+  background:
+    linear-gradient(
+      135deg,
+      rgba(0,217,255,.18),
+      rgba(122,60,255,.18)
+    );
 
-.star{
+  border-color:
+    rgba(0,217,255,.3);
+}
 
-position:absolute;
+/* ========================================
+   HISTORY
+======================================== */
 
-width:2px;
+.history {
 
-height:2px;
+  margin-top: 8px;
 
-background:white;
+  flex: 1;
 
-border-radius:50%;
+  overflow-y: auto;
+}
 
-box-shadow:
+.history-title {
 
-0 0 10px white;
+  font-size: 11px;
 
-animation:twinkle 3s infinite;
+  opacity: .5;
 
+  margin:
+    5px 5px 10px;
 }
 
-@keyframes twinkle{
+.history-item {
 
-0%{
+  padding: 11px;
 
-opacity:.2;
+  margin-bottom: 8px;
 
-transform:scale(.6);
+  border-radius: 12px;
 
-}
-
-50%{
+  background:
+    rgba(255,255,255,.04);
 
-opacity:1;
+  cursor: pointer;
 
-transform:scale(1.4);
+  font-size: 12px;
 
+  transition:
+    background .25s ease;
 }
-
-100%{
-
-opacity:.2;
 
-transform:scale(.6);
+.history-item:hover {
 
+  background:
+    rgba(255,255,255,.08);
 }
 
-}
+/* ========================================
+   AI PANEL
+======================================== */
 
-/*==============================
-PLANETS
-==============================*/
+.ai-panel {
 
-.planet{
+  position: absolute;
 
-position:absolute;
+  left: 270px;
+  right: 20px;
 
-border-radius:50%;
+  top: 105px;
+  bottom: 20px;
 
-animation:planetRotate linear infinite;
+  display: flex;
 
+  flex-direction: column;
 }
-
-.planet1{
-
-width:90px;
-
-height:90px;
 
-right:120px;
+/* ========================================
+   CHAT BOX
+======================================== */
 
-top:130px;
+.chat-box {
 
-background:
+  flex: 1;
 
-radial-gradient(
+  min-height: 0;
 
-circle at 30% 30%,
+  overflow-y: auto;
 
-#00d9ff,
+  padding: 22px;
 
-#003cff,
+  border-radius: 22px;
 
-#000822
+  background:
+    rgba(255,255,255,.05);
 
-);
+  border:
+    1px solid rgba(255,255,255,.08);
 
-animation-duration:60s;
+  box-shadow:
+    0 0 30px rgba(0,229,255,.08);
 
-box-shadow:
-
-0 0 35px rgba(0,229,255,.5);
-
+  scrollbar-width: thin;
 }
-
-.planet2{
-
-width:55px;
 
-height:55px;
+/* ========================================
+   MESSAGE
+======================================== */
 
-left:120px;
+.message {
 
-bottom:120px;
+  margin-bottom: 16px;
 
-background:
+  max-width: 82%;
 
-radial-gradient(
+  padding: 14px 18px;
 
-circle at 30% 30%,
+  border-radius: 18px;
 
-#ffb347,
+  line-height: 1.6;
 
-#ff5500,
+  font-size: 14px;
 
-#441400
-
-);
-
-animation-duration:40s;
-
+  word-wrap: break-word;
 }
-
-@keyframes planetRotate{
 
-0%{
+.message.user {
 
-transform:rotate(0deg);
+  margin-left: auto;
 
+  background:
+    linear-gradient(
+      135deg,
+      #2b4cff,
+      #713cff
+    );
 }
 
-100%{
+.message.ai {
 
-transform:rotate(360deg);
-
+  background:
+    rgba(255,255,255,.08);
 }
 
-}
+/* ========================================
+   INPUT
+======================================== */
 
-/*==============================
-GLASS REFLECTION
-==============================*/
+.input-bar {
 
-.glass::before{
+  display: flex;
 
-content:"";
+  gap: 10px;
 
-position:absolute;
+  margin-top: 12px;
+}
 
-left:-120%;
+.input-bar input {
 
-top:0;
+  flex: 1;
 
-width:70%;
+  min-width: 0;
 
-height:100%;
+  height: 56px;
 
-background:linear-gradient(
+  border:
+    1px solid rgba(255,255,255,.08);
 
-90deg,
+  outline: none;
 
-transparent,
+  padding:
+    0 18px;
 
-rgba(255,255,255,.15),
+  border-radius: 17px;
 
-transparent
+  background:
+    rgba(255,255,255,.08);
 
-);
+  color: white;
 
-transform:skewX(-25deg);
+  font-size: 15px;
+}
 
-animation:glassMove 8s infinite;
+.input-bar input::placeholder {
 
+  color:
+    rgba(255,255,255,.5);
 }
 
-@keyframes glassMove{
+.send {
 
-0%{
+  flex: 0 0 65px;
 
-left:-120%;
+  height: 56px;
 
-}
+  border: none;
 
-100%{
+  cursor: pointer;
 
-left:170%;
+  border-radius: 17px;
 
-}
+  font-size: 22px;
 
-}
+  background:
+    linear-gradient(
+      135deg,
+      #00d9ff,
+      #7a3cff
+    );
 
-/*==============================
-LEFT SIDEBAR
-==============================*/
+  color: white;
 
-.sidebar{
+  transition:
+    transform .2s ease;
+}
 
-position:absolute;
+.send:hover {
 
-left:25px;
+  transform:
+    scale(1.05);
+}
 
-top:110px;
+/* ========================================
+   MODAL
+======================================== */
 
-width:240px;
+.modal {
 
-height:calc(84vh - 135px);
+  position: fixed;
 
-border-radius:25px;
+  inset: 0;
 
-background:rgba(255,255,255,.05);
+  display: none;
 
-backdrop-filter:blur(20px);
+  align-items: center;
 
-border:1px solid rgba(255,255,255,.08);
+  justify-content: center;
 
-padding:20px;
+  padding: 20px;
 
-display:flex;
+  background:
+    rgba(0,0,0,.72);
 
-flex-direction:column;
+  backdrop-filter:
+    blur(12px);
 
-gap:12px;
+  -webkit-backdrop-filter:
+    blur(12px);
 
+  z-index: 1000;
 }
 
-.side-btn{
+.modal.active {
 
-height:48px;
+  display: flex;
+}
 
-border-radius:14px;
+.modal-card {
 
-display:flex;
+  width: min(520px, 100%);
 
-align-items:center;
+  max-height: 90vh;
 
-padding-left:18px;
+  overflow-y: auto;
 
-cursor:pointer;
+  padding: 30px;
 
-transition:.3s;
+  border-radius: 28px;
 
-background:rgba(255,255,255,.05);
+  background:
+    rgba(18,18,28,.94);
 
-font-size:14px;
+  border:
+    1px solid rgba(255,255,255,.12);
 
-font-weight:500;
+  box-shadow:
+    0 0 70px rgba(0,217,255,.15);
 
+  text-align: center;
 }
 
-.side-btn:hover{
+.modal-card h2 {
 
-background:#00d9ff33;
+  font-size: 25px;
 
-transform:translateX(5px);
-
+  margin-bottom: 10px;
 }
-
-.history{
 
-margin-top:15px;
+.modal-card p {
 
-flex:1;
+  color:
+    rgba(255,255,255,.7);
 
-overflow:auto;
+  line-height: 1.6;
 
+  font-size: 14px;
 }
 
-.history-item{
+.modal-close {
 
-padding:12px;
+  margin-top: 20px;
 
-margin-bottom:10px;
+  width: 100%;
 
-border-radius:12px;
+  height: 48px;
 
-background:rgba(255,255,255,.04);
+  border: none;
 
-cursor:pointer;
+  border-radius: 14px;
 
-font-size:14px;
+  cursor: pointer;
 
-transition:.3s;
+  color: white;
 
+  background:
+    rgba(255,255,255,.08);
 }
 
-.history-item:hover{
+.premium-btn {
 
-background:rgba(255,255,255,.08);
+  margin-top: 20px;
 
-}
-
-/*==============================
-AI CHAT PANEL
-==============================*/
+  width: 100%;
 
-.ai-panel{
+  height: 52px;
 
-position:absolute;
+  border: none;
 
-left:285px;
+  border-radius: 15px;
 
-top:110px;
+  cursor: pointer;
 
-width:calc(100% - 310px);
+  color: white;
 
-height:calc(84vh - 135px);
+  font-weight: 700;
 
-display:flex;
+  font-size: 15px;
 
-flex-direction:column;
-
-padding-right:25px;
-
+  background:
+    linear-gradient(
+      135deg,
+      #00d9ff,
+      #7a3cff
+    );
 }
-
-.chat-box{
 
-flex:1;
+/* ========================================
+   SETTINGS
+======================================== */
 
-overflow-y:auto;
+.setting-row {
 
-padding:25px;
+  margin-top: 18px;
 
-border-radius:22px;
+  padding: 15px;
 
-background:rgba(255,255,255,.05);
+  border-radius: 14px;
 
-border:1px solid rgba(255,255,255,.08);
+  background:
+    rgba(255,255,255,.05);
 
-box-shadow:0 0 30px rgba(0,229,255,.08);
-
+  text-align: left;
 }
-
-.message{
-
-margin-bottom:18px;
-
-max-width:80%;
 
-padding:15px 20px;
+.setting-row strong {
 
-border-radius:18px;
+  display: block;
 
-line-height:1.6;
-
+  margin-bottom: 5px;
 }
-
-.user{
 
-margin-left:auto;
+.setting-row span {
 
-background:#2b4cff;
+  opacity: .65;
 
+  font-size: 13px;
 }
-
-.ai{
-
-background:rgba(255,255,255,.08);
 
-}
+/* ========================================
+   MOBILE
+======================================== */
 
-.input-bar{
+@media (max-width: 768px) {
 
-display:flex;
+  body {
 
-gap:15px;
+    overflow: hidden;
 
-margin-top:18px;
+    min-height:
+      100dvh;
+  }
 
-}
+  .background {
 
-.input-bar input{
+    position: fixed;
 
-flex:1;
+    inset: 0;
+  }
 
-height:60px;
+  .blackhole {
 
-border:none;
+    width: 220px;
+    height: 220px;
 
-outline:none;
+    opacity: .65;
+  }
 
-padding:0 20px;
+  .planet1 {
 
-border-radius:18px;
+    width: 48px;
+    height: 48px;
 
-background:rgba(255,255,255,.08);
+    right: 15px;
+    top: 105px;
+  }
 
-color:white;
+  .planet2 {
 
-font-size:16px;
+    width: 32px;
+    height: 32px;
 
-}
+    left: 12px;
+    bottom: 80px;
+  }
 
-.send{
+  .meteor {
 
-width:70px;
+    opacity: .5;
+  }
 
-border:none;
+  .glass {
 
-cursor:pointer;
+    position: fixed;
 
-border-radius:18px;
+    inset: 0;
 
-font-size:24px;
+    transform: none;
 
-background:linear-gradient(135deg,#00d9ff,#7a3cff);
+    width: 100%;
 
-color:white;
+    height: 100dvh;
 
-transition:.3s;
+    min-height: 0;
 
-}
+    border-radius: 0;
 
-.send:hover{
+    border: none;
 
-transform:scale(1.08);
+    background:
+      rgba(5,5,8,.45);
 
-}
+    padding:
+      env(safe-area-inset-top)
+      10px
+      env(safe-area-inset-bottom);
+  }
 
-/*==============================
-MOBILE RESPONSIVE
-==============================*/
+  .logo {
 
-@media (max-width:768px){
+    position: absolute;
 
-body{
-overflow:auto;
-}
+    top: 15px;
 
-.glass{
+    font-size: 25px;
 
-width:100vw;
-height:100vh;
+    letter-spacing: 2px;
+  }
 
-border-radius:0;
+  .subtitle {
 
-padding:15px;
+    top: 48px;
 
-}
+    font-size: 9px;
 
-.logo{
+    letter-spacing: 1.5px;
+  }
 
-font-size:30px;
+  .sidebar {
 
-top:20px;
+    position: absolute;
 
-}
+    left: 10px;
+    right: 10px;
 
-.subtitle{
+    top: 78px;
 
-top:60px;
+    width: auto;
 
-font-size:12px;
+    height: auto;
 
-letter-spacing:1px;
+    padding: 0;
 
-}
+    display: grid;
 
-.sidebar{
+    grid-template-columns:
+      repeat(3, 1fr);
 
-position:relative;
+    gap: 7px;
 
-left:0;
+    background: none;
 
-top:90px;
+    border: none;
 
-width:100%;
+    backdrop-filter: none;
 
-height:auto;
+  }
 
-display:grid;
+  .side-btn {
 
-grid-template-columns:repeat(2,1fr);
+    min-height: 42px;
 
-gap:10px;
+    justify-content: center;
 
-padding:0;
+    padding: 5px;
 
-background:none;
+    border-radius: 12px;
 
-border:none;
+    font-size: 11px;
 
-backdrop-filter:none;
+    text-align: center;
+  }
 
-}
+  .side-btn:hover {
 
-.side-btn{
+    transform: none;
+  }
 
-justify-content:center;
+  .history {
 
-padding:12px;
+    display: none;
+  }
 
-font-size:14px;
+  .ai-panel {
 
-}
+    position: absolute;
 
-.history{
+    left: 10px;
+    right: 10px;
 
-display:none;
+    top: 225px;
+    bottom: 12px;
 
-}
+    width: auto;
 
-.ai-panel{
+    height: auto;
+  }
 
-position:relative;
+  .chat-box {
 
-left:0;
+    padding: 14px;
 
-top:110px;
+    border-radius: 17px;
+  }
 
-transform:none;
+  .message {
 
-width:100%;
+    max-width: 94%;
 
-height:calc(100vh - 180px);
+    padding:
+      11px 13px;
 
-}
+    font-size: 13px;
 
-.chat-box{
+    border-radius: 15px;
+  }
 
-height:100%;
+  .input-bar {
 
-padding:15px;
+    gap: 7px;
 
-font-size:14px;
+    margin-top: 8px;
+  }
 
-}
+  .input-bar input {
 
-.message{
+    height: 49px;
 
-max-width:95%;
+    font-size: 14px;
 
-font-size:14px;
+    border-radius: 14px;
 
-padding:12px;
+    padding:
+      0 13px;
+  }
 
-}
+  .send {
 
-.tools{
+    flex-basis: 54px;
 
-display:grid;
+    height: 49px;
 
-grid-template-columns:repeat(3,1fr);
+    border-radius: 14px;
 
-gap:8px;
+    font-size: 19px;
+  }
 
 }
-
-.tool{
 
-text-align:center;
+/* ========================================
+   VERY SMALL PHONES
+======================================== */
 
-font-size:13px;
+@media (max-width: 380px) {
 
-padding:10px;
+  .logo {
 
-}
-
-.input-bar{
+    font-size: 22px;
+  }
 
-gap:8px;
-
-}
+  .subtitle {
 
-.input-bar input{
+    display: none;
+  }
 
-height:50px;
+  .sidebar {
 
-font-size:15px;
+    top: 65px;
+  }
 
-}
+  .side-btn {
 
-.send{
+    min-height: 38px;
 
-width:55px;
+    font-size: 10px;
+  }
 
-height:50px;
+  .ai-panel {
 
-font-size:20px;
+    top: 185px;
+  }
 
 }
-
-.blackhole{
 
-width:220px;
+/* ========================================
+   LANDSCAPE MOBILE
+======================================== */
 
-height:220px;
+@media (
+  max-width: 900px
+) and (
+  orientation: landscape
+) {
 
-}
+  .sidebar {
 
-.planet1{
+    top: 65px;
 
-width:55px;
+    grid-template-columns:
+      repeat(6, 1fr);
+  }
 
-height:55px;
+  .ai-panel {
 
-right:20px;
+    top: 120px;
+  }
 
-top:120px;
-
 }
 
-.planet2{
+/* ========================================
+   REDUCED MOTION
+======================================== */
 
-width:35px;
+@media (
+  prefers-reduced-motion: reduce
+) {
 
-height:35px;
+  *,
+  *::before,
+  *::after {
 
-left:15px;
+    animation-duration:
+      .01ms !important;
 
-bottom:120px;
+    animation-iteration-count:
+      1 !important;
 
-}
+    scroll-behavior: auto !important;
+  }
 
 }
 
@@ -1061,255 +1215,847 @@ bottom:120px;
 
 <body>
 
+<!-- =====================================
+     BACKGROUND
+===================================== -->
+
 <div class="background">
 
-<div class="aurora"></div>
+  <div class="aurora"></div>
 
-<div class="blackhole"></div>
+  <div class="blackhole"></div>
 
-<div class="planet planet1"></div>
+  <div class="planet planet1"></div>
 
-<div class="planet planet2"></div>
+  <div class="planet planet2"></div>
 
-<div class="meteor m1"></div>
+  <div class="meteor m1"></div>
+  <div class="meteor m2"></div>
+  <div class="meteor m3"></div>
+  <div class="meteor m4"></div>
 
-<div class="meteor m2"></div>
-
-<div class="meteor m3"></div>
-
-<div class="meteor m4"></div>
-
-<div class="star" style="left:10%;top:15%;"></div>
-
-<div class="star" style="left:20%;top:70%;"></div>
-
-<div class="star" style="left:45%;top:20%;"></div>
-
-<div class="star" style="left:65%;top:80%;"></div>
-
-<div class="star" style="left:80%;top:25%;"></div>
-
-<div class="star" style="left:92%;top:65%;"></div>
+  <div class="star" style="left:10%;top:15%;"></div>
+  <div class="star" style="left:20%;top:70%;"></div>
+  <div class="star" style="left:45%;top:20%;"></div>
+  <div class="star" style="left:65%;top:80%;"></div>
+  <div class="star" style="left:80%;top:25%;"></div>
+  <div class="star" style="left:92%;top:65%;"></div>
 
 </div>
+
+<!-- =====================================
+     MAIN GLASS
+===================================== -->
 
 <div class="glass">
 
-<div class="logo">
+  <div class="logo">
+    AI Universe
+  </div>
 
-AI Universe
+  <div class="subtitle">
+    NEXT GENERATION AI
+  </div>
+
+  <!-- ===================================
+       SIDEBAR
+  ==================================== -->
+
+  <div class="sidebar">
+
+    <div
+      class="side-btn active"
+      data-action="new"
+    >
+      ➕ New Chat
+    </div>
+
+    <div
+      class="side-btn"
+      data-action="pdf"
+    >
+      📄 PDF
+    </div>
+
+    <div
+      class="side-btn"
+      data-action="code"
+    >
+      💻 Code
+    </div>
+
+    <div
+      class="side-btn"
+      data-action="image"
+    >
+      🖼 Images
+    </div>
+
+    <div
+      class="side-btn"
+      data-action="translate"
+    >
+      🌍 Translate
+    </div>
+
+    <div
+      class="side-btn"
+      data-action="settings"
+    >
+      ⚙ Settings
+    </div>
+
+    <div class="history">
+
+      <div class="history-title">
+        CHAT HISTORY
+      </div>
+
+      <div class="history-item">
+        AI Universe
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       AI PANEL
+  ==================================== -->
+
+  <div class="ai-panel">
+
+    <div class="chat-box">
+
+      <div class="message ai">
+
+        👋 Salam!
+
+        <br>
+
+        Mən
+        <b>AI Universe</b>.
+
+        <br>
+
+        Sənə necə kömək edə bilərəm?
+
+      </div>
+
+    </div>
+
+    <div class="input-bar">
+
+      <input
+        type="text"
+        placeholder="Mesaj yaz..."
+        autocomplete="off"
+      >
+
+      <button
+        class="send"
+        type="button"
+      >
+        ➜
+      </button>
+
+    </div>
+
+  </div>
 
 </div>
 
-<div class="subtitle">
-
-NEXT GENERATION AI
-
-</div>
-
-<div class="sidebar">
-
-<div class="side-btn">➕ New Chat</div>
-
-<div class="side-btn">📄 PDF</div>
-
-<div class="side-btn">💻 Code</div>
-
-<div class="side-btn">🖼 Images</div>
-
-<div class="side-btn">🌍 Translate</div>
-
-<div class="side-btn">⚙ Settings</div>
-
-<div class="history">
-
-<div class="history-item">
-
-AI Universe
-
-</div>
-
-</div>
-
-</div>
-
-<div class="ai-panel">
-
-<div class="chat-box">
-
-<div class="message ai">
-
-👋 Salam!<br>
-
-Mən <b>AI Universe</b>.<br>
-
-Sənə necə kömək edə bilərəm?
-
-</div>
-
-</div>
-
-<div class="input-bar">
+<!-- =====================================
+     FILE INPUTS
+===================================== -->
 
 <input
+  type="file"
+  id="pdfInput"
+  accept=".pdf,application/pdf"
+  hidden
+>
 
-type="text"
+<input
+  type="file"
+  id="imageInput"
+  accept="image/*"
+  hidden
+>
 
-placeholder="Mesaj yaz...">
+<!-- =====================================
+     MODAL
+===================================== -->
 
-<button class="send">
+<div
+  class="modal"
+  id="modal"
+>
 
-➜
+  <div class="modal-card">
 
-</button>
+    <h2 id="modalTitle">
+      AI Universe
+    </h2>
 
-</div>
+    <p id="modalText">
+      AI Universe
+    </p>
 
-</div>
+    <div id="modalExtra"></div>
+
+    <button
+      class="modal-close"
+      id="modalClose"
+    >
+      Bağla
+    </button>
+
+  </div>
 
 </div>
 
 <script>
 
-const chatBox=document.querySelector(".chat-box");
+/* ========================================
+   ELEMENTS
+======================================== */
 
-const input=document.querySelector(".input-bar input");
+const chatBox =
+  document.querySelector(".chat-box");
 
-const send=document.querySelector(".send");
+const input =
+  document.querySelector(".input-bar input");
 
-function addUserMessage(text){
+const send =
+  document.querySelector(".send");
 
-const div=document.createElement("div");
+const modal =
+  document.getElementById("modal");
 
-div.className="message user";
+const modalTitle =
+  document.getElementById("modalTitle");
 
-div.textContent=text;
+const modalText =
+  document.getElementById("modalText");
 
-chatBox.appendChild(div);
+const modalExtra =
+  document.getElementById("modalExtra");
 
-chatBox.scrollTop=chatBox.scrollHeight;
+const modalClose =
+  document.getElementById("modalClose");
+
+const pdfInput =
+  document.getElementById("pdfInput");
+
+const imageInput =
+  document.getElementById("imageInput");
+
+/* ========================================
+   API
+======================================== */
+
+const AI_API_URL =
+  "https://ai-universe.nigarhaciyeva106.workers.dev";
+
+/* ========================================
+   USER ID / MEMORY
+======================================== */
+
+let userId =
+  localStorage.getItem(
+    "ai_universe_user_id"
+  );
+
+if (!userId) {
+
+  userId =
+    crypto.randomUUID();
+
+  localStorage.setItem(
+    "ai_universe_user_id",
+    userId
+  );
+}
+
+/* ========================================
+   MODAL
+======================================== */
+
+function openModal(
+  title,
+  text,
+  extra = ""
+) {
+
+  modalTitle.textContent =
+    title;
+
+  modalText.textContent =
+    text;
+
+  modalExtra.innerHTML =
+    extra;
+
+  modal.classList.add(
+    "active"
+  );
+}
+
+function closeModal() {
+
+  modal.classList.remove(
+    "active"
+  );
 
 }
 
-function addAIMessage(text){
+modalClose.onclick =
+  closeModal;
 
-const div=document.createElement("div");
+modal.addEventListener(
+  "click",
+  event => {
 
-div.className="message ai";
+    if (
+      event.target === modal
+    ) {
+      closeModal();
+    }
 
-div.textContent=text;
+  }
+);
 
-chatBox.appendChild(div);
+/* ========================================
+   ADD USER MESSAGE
+======================================== */
 
-chatBox.scrollTop=chatBox.scrollHeight;
+function addUserMessage(text) {
 
+  const div =
+    document.createElement("div");
+
+  div.className =
+    "message user";
+
+  div.textContent =
+    text;
+
+  chatBox.appendChild(div);
+
+  chatBox.scrollTop =
+    chatBox.scrollHeight;
 }
 
-function sendMessage(){
+/* ========================================
+   ADD AI MESSAGE
+======================================== */
 
-const text=input.value.trim();
+function addAIMessage(text) {
 
-if(text==="") return;
+  const div =
+    document.createElement("div");
 
-addUserMessage(text);
+  div.className =
+    "message ai";
 
-input.value="";
+  div.textContent =
+    text;
 
-reply(text);
+  chatBox.appendChild(div);
 
+  chatBox.scrollTop =
+    chatBox.scrollHeight;
 }
 
-const AI_API_URL = "https://ai-universe.nigarhaciyeva106.workers.dev";
+/* ========================================
+   ASK AI
+======================================== */
 
 async function askAI(message) {
 
-    let userId = localStorage.getItem("ai_universe_user_id");
-
-    if (!userId) {
-        userId = crypto.randomUUID();
-        localStorage.setItem("ai_universe_user_id", userId);
-    }
-
-    const response = await fetch(AI_API_URL, {
-
+  const response =
+    await fetch(
+      AI_API_URL,
+      {
         method: "POST",
 
         headers: {
-            "Content-Type": "application/json"
+          "Content-Type":
+            "application/json"
         },
 
         body: JSON.stringify({
-            message: message,
-            userId: userId
+          message: message,
+          userId: userId
         })
+      }
+    );
 
-    });
+  let data;
 
-    const data = await response.json();
+  try {
 
-    if (!response.ok) {
-        throw new Error(
-            typeof data.error === "string"
-                ? data.error
-                : JSON.stringify(data.error)
-        );
-    }
+    data =
+      await response.json();
 
-    return data.candidates?.[0]?.content?.parts?.[0]?.text
-        || "AI-dan cavab gəlmədi.";
+  } catch {
+
+    throw new Error(
+      "Server JSON cavabı qaytarmadı."
+    );
+
+  }
+
+  /* ==============================
+     FREE LIMIT
+  ============================== */
+
+  if (
+    response.status === 429
+  ) {
+
+    const errorMessage =
+      data.message ||
+      "Pulsuz AI limitin bitib.";
+
+    openSubscription(
+      errorMessage
+    );
+
+    throw new Error(
+      "FREE_LIMIT"
+    );
+  }
+
+  /* ==============================
+     OTHER ERROR
+  ============================== */
+
+  if (!response.ok) {
+
+    throw new Error(
+      data.error ||
+      data.message ||
+      "AI server xətası"
+    );
+
+  }
+
+  /* ==============================
+     AI ANSWER
+  ============================== */
+
+  return (
+    data.candidates
+      ?.[0]
+      ?.content
+      ?.parts
+      ?.map(part => part.text || "")
+      ?.join("") ||
+
+    "AI-dan cavab gəlmədi."
+  );
+
 }
 
-async function reply(message){
+/* ========================================
+   REPLY
+======================================== */
 
-    try {
+async function reply(message) {
 
-        const loaderDiv = document.createElement("div");
-        loaderDiv.className = "message ai";
-        loaderDiv.textContent = "AI düşünür...";
-        chatBox.appendChild(loaderDiv);
-        chatBox.scrollTop = chatBox.scrollHeight;
+  const loaderDiv =
+    document.createElement("div");
 
-        const answer = await askAI(message);
+  loaderDiv.className =
+    "message ai";
 
-        loaderDiv.remove();
+  loaderDiv.textContent =
+    "AI düşünür...";
 
-        addAIMessage(answer);
+  chatBox.appendChild(
+    loaderDiv
+  );
 
-    } catch (error) {
+  chatBox.scrollTop =
+    chatBox.scrollHeight;
 
-        console.error(error);
+  try {
 
-        const aiMessages = chatBox.querySelectorAll(".message.ai");
-        const lastMessage = aiMessages[aiMessages.length - 1];
+    const answer =
+      await askAI(message);
+
+    loaderDiv.remove();
+
+    addAIMessage(
+      answer
+    );
+
+  } catch (error) {
+
+    loaderDiv.remove();
+
+    if (
+      error.message ===
+      "FREE_LIMIT"
+    ) {
+      return;
+    }
+
+    console.error(error);
+
+    addAIMessage(
+      "Bağlantıda problem oldu 😕"
+    );
+
+  }
+
+}
+
+/* ========================================
+   SEND MESSAGE
+======================================== */
+
+function sendMessage() {
+
+  const text =
+    input.value.trim();
+
+  if (!text) {
+    return;
+  }
+
+  addUserMessage(
+    text
+  );
+
+  input.value = "";
+
+  reply(text);
+
+}
+
+/* ========================================
+   SEND BUTTON
+======================================== */
+
+send.onclick =
+  sendMessage;
+
+/* ========================================
+   ENTER
+======================================== */
+
+input.addEventListener(
+  "keydown",
+  event => {
+
+    if (
+      event.key === "Enter"
+    ) {
+
+      event.preventDefault();
+
+      sendMessage();
+
+    }
+
+  }
+);
+
+/* ========================================
+   NEW CHAT
+======================================== */
+
+function newChat() {
+
+  chatBox.innerHTML = `
+    <div class="message ai">
+      👋 Yeni söhbət başladı!
+      <br>
+      Mən AI Universe.
+      <br>
+      Sənə necə kömək edə bilərəm?
+    </div>
+  `;
+
+  input.focus();
+
+}
+
+/* ========================================
+   CODE MODE
+======================================== */
+
+function codeMode() {
+
+  input.placeholder =
+    "Kod haqqında sual yaz...";
+
+  openModal(
+    "💻 Code Mode",
+    "Kod rejimi aktivdir. İndi kodla bağlı sualını yaza bilərsən."
+  );
+
+  input.focus();
+
+}
+
+/* ========================================
+   TRANSLATE MODE
+======================================== */
+
+function translateMode() {
+
+  input.placeholder =
+    "Tərcümə etmək istədiyin mətni yaz...";
+
+  openModal(
+    "🌍 Translate",
+    "Mətni göndər. AI Universe onu tərcümə etməyə kömək edəcək."
+  );
+
+  input.focus();
+
+}
+
+/* ========================================
+   SETTINGS
+======================================== */
+
+function settingsMode() {
+
+  openModal(
+    "⚙ Settings",
+    "AI Universe ayarları",
+    `
+      <div class="setting-row">
+        <strong>🧠 Memory</strong>
+        <span>Cloudflare KV yaddaşı aktivdir.</span>
+      </div>
+
+      <div class="setting-row">
+        <strong>🤖 AI</strong>
+        <span>Gemini API bağlantısı aktivdir.</span>
+      </div>
+
+      <div class="setting-row">
+        <strong>👤 User ID</strong>
+        <span>${userId}</span>
+      </div>
+    `
+  );
+
+}
+
+/* ========================================
+   PDF
+======================================== */
+
+function pdfMode() {
+
+  pdfInput.click();
+
+}
+
+pdfInput.addEventListener(
+  "change",
+  () => {
+
+    const file =
+      pdfInput.files[0];
+
+    if (!file) {
+      return;
+    }
+
+    openModal(
+      "📄 PDF",
+      `"${file.name}" seçildi.`
+    );
+
+  }
+);
+
+/* ========================================
+   IMAGE
+======================================== */
+
+function imageMode() {
+
+  imageInput.click();
+
+}
+
+imageInput.addEventListener(
+  "change",
+  () => {
+
+    const file =
+      imageInput.files[0];
+
+    if (!file) {
+      return;
+    }
+
+    openModal(
+      "🖼 Images",
+      `"${file.name}" seçildi.`
+    );
+
+  }
+);
+
+/* ========================================
+   PREMIUM / SUBSCRIPTION
+======================================== */
+
+function openSubscription(
+  errorMessage
+) {
+
+  openModal(
+    "⚡ AI Universe Premium",
+
+    "Pulsuz AI limitin hazırda dolub. Premium bölməsindən daha geniş istifadə imkanlarına baxa bilərsən.",
+
+    `
+      <div class="setting-row">
+        <strong>🚀 Premium</strong>
+        <span>
+          Daha çox AI istifadəsi
+        </span>
+      </div>
+
+      <div class="setting-row">
+        <strong>🧠 Memory</strong>
+        <span>
+          Daha uzun söhbət yaddaşı
+        </span>
+      </div>
+
+      <div class="setting-row">
+        <strong>💻 Code</strong>
+        <span>
+          Kodlaşdırma imkanları
+        </span>
+      </div>
+
+      <button
+        class="premium-btn"
+        onclick="showComingSoon()"
+      >
+        Abunəliklərə bax
+      </button>
+    `
+  );
+
+}
+
+/* ========================================
+   PREMIUM BUTTON
+======================================== */
+
+function showComingSoon() {
+
+  openModal(
+    "🚀 Tezliklə",
+
+    "AI Universe Premium sistemi hazırlanır."
+  );
+
+}
+
+/* ========================================
+   SIDEBAR BUTTONS
+======================================== */
+
+document
+  .querySelectorAll(".side-btn")
+  .forEach(button => {
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        document
+          .querySelectorAll(
+            ".side-btn"
+          )
+          .forEach(btn => {
+            btn.classList.remove(
+              "active"
+            );
+          });
+
+        button.classList.add(
+          "active"
+        );
+
+        const action =
+          button.dataset.action;
 
         if (
-            lastMessage &&
-            lastMessage.textContent === "AI düşünür..."
+          action === "new"
         ) {
-            lastMessage.remove();
+
+          newChat();
+
         }
 
-        addAIMessage(
-            "XƏTA: " + (error.message || "Naməlum xəta")
-        );
+        else if (
+          action === "pdf"
+        ) {
 
-    }
-}
+          pdfMode();
 
-send.onclick=sendMessage;
+        }
 
-input.addEventListener("keydown",e=>{
+        else if (
+          action === "code"
+        ) {
 
-if(e.key==="Enter"){
+          codeMode();
 
-sendMessage();
+        }
 
-}
+        else if (
+          action === "image"
+        ) {
 
-});
+          imageMode();
+
+        }
+
+        else if (
+          action === "translate"
+        ) {
+
+          translateMode();
+
+        }
+
+        else if (
+          action === "settings"
+        ) {
+
+          settingsMode();
+
+        }
+
+      }
+    );
+
+  });
+
+/* ========================================
+   INITIAL FOCUS
+======================================== */
+
+input.focus();
 
 </script>
 
 </body>
-
 </html>
