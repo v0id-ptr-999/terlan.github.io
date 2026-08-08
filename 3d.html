@@ -1,1211 +1,1224 @@
 <!DOCTYPE html>
-<html lang="az">
+<html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
 
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0, viewport-fit=cover"
->
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0">
 
-<meta name="theme-color" content="#050505">
+<meta name="theme-color"
+content="#050505">
 
 <title>AI Universe</title>
 
 <meta
-  name="description"
-  content="AI Universe - Next Generation Artificial Intelligence"
->
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
+name="description"
+content="AI Universe - Next Generation Artificial Intelligence">
 
 <link
-  rel="preconnect"
-  href="https://fonts.gstatic.com"
-  crossorigin
->
+rel="preconnect"
+href="https://fonts.googleapis.com">
 
 <link
-  href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-  rel="stylesheet"
->
+rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
 
 <style>
 
-/* ========================================
-   RESET
-======================================== */
+/*==============================
+RESET
+==============================*/
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Inter", sans-serif;
+*{
+
+margin:0;
+
+padding:0;
+
+box-sizing:border-box;
+
+font-family:"Inter",sans-serif;
+
 }
 
-html {
-  scroll-behavior: smooth;
+html{
+
+scroll-behavior:smooth;
+
 }
 
-body {
-  width: 100%;
-  min-height: 100vh;
-  overflow: hidden;
-  background: #050505;
-  color: white;
+body{
+
+overflow:hidden;
+
+background:#050505;
+
+color:white;
+
+width:100vw;
+
+height:100vh;
+
 }
 
-/* ========================================
-   BACKGROUND
-======================================== */
+/*==============================
+BACKGROUND
+==============================*/
 
-.background {
-  position: fixed;
-  inset: 0;
-  overflow: hidden;
-  z-index: -10;
+.background{
 
-  background:
-    radial-gradient(
-      circle at center,
-      #0d0d16 0%,
-      #050505 65%,
-      #000 100%
-    );
+position:fixed;
+
+left:0;
+
+top:0;
+
+width:100%;
+
+height:100%;
+
+overflow:hidden;
+
+z-index:-999;
+
+background:
+
+radial-gradient(circle at center,
+
+#0d0d16 0%,
+
+#050505 65%,
+
+black 100%);
+
 }
 
-/* ========================================
-   BLACK HOLE
-======================================== */
+/*==============================
+BLACK HOLE
+==============================*/
 
-.blackhole {
-  position: absolute;
+.blackhole{
 
-  left: 50%;
-  top: 50%;
+position:absolute;
 
-  width: 380px;
-  height: 380px;
+left:50%;
 
-  transform: translate(-50%, -50%);
+top:50%;
 
-  border-radius: 50%;
+transform:translate(-50%,-50%);
 
-  background:
-    radial-gradient(
-      circle,
-      #000 18%,
-      #120029 36%,
-      #4400ff 58%,
-      #00d9ff 82%,
-      transparent 100%
-    );
+width:380px;
 
-  filter: blur(1px);
+height:380px;
 
-  animation: rotateHole 22s linear infinite;
+border-radius:50%;
 
-  box-shadow:
-    0 0 70px #4d00ff,
-    0 0 160px #00c3ff;
+background:
+
+radial-gradient(
+
+circle,
+
+black 18%,
+
+#120029 36%,
+
+#4400ff 58%,
+
+#00d9ff 82%,
+
+transparent 100%
+
+);
+
+filter:blur(1px);
+
+animation:
+
+rotateHole 22s linear infinite;
+
+box-shadow:
+
+0 0 70px #4d00ff,
+
+0 0 160px #00c3ff;
+
 }
 
-@keyframes rotateHole {
+@keyframes rotateHole{
 
-  0% {
+0%{
+
+transform:
+
+translate(-50%,-50%)
+
+rotate(0deg);
+
+}
+
+100%{
+
+transform:
+
+translate(-50%,-50%)
+
+rotate(360deg);
+
+}
+
+}
+
+/*==============================
+AURORA
+==============================*/
+
+.aurora{
+
+position:absolute;
+
+width:1800px;
+
+height:1800px;
+
+left:-500px;
+
+top:-500px;
+
+background:
+
+radial-gradient(
+
+circle,
+
+rgba(0,229,255,.08),
+
+transparent 70%
+
+);
+
+animation:
+
+auroraMove 20s ease-in-out infinite alternate;
+
+}
+
+@keyframes auroraMove{
+
+0%{
+
+transform:
+
+translate(0,0);
+
+}
+
+100%{
+
+transform:
+
+translate(250px,180px);
+
+}
+
+}
+
+/*==============================
+GLASS PANEL
+==============================*/
+
+.glass{
+
+position:absolute;
+
+left:50%;
+
+top:50%;
+
+transform:translate(-50%,-50%);
+
+width:min(1100px,94vw);
+
+height:84vh;
+
+border-radius:35px;
+
+background:
+
+rgba(255,255,255,.05);
+
+backdrop-filter:blur(22px);
+
+border:
+
+1px solid rgba(255,255,255,.12);
+
+box-shadow:
+
+0 0 50px rgba(0,229,255,.10);
+
+}
+
+/*==============================
+TITLE
+==============================*/
+
+.logo{
+
+position:absolute;
+
+left:50%;
+
+top:25px;
+
+transform:translateX(-50%);
+
+font-size:32px;
+
+font-weight:800;
+
+letter-spacing:3px;
+
+background:
+
+linear-gradient(
+
+90deg,
+
+#00d9ff,
+
+#8c4cff,
+
+white
+
+);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+}
+
+.subtitle{
+
+position:absolute;
+
+left:50%;
+
+top:68px;
+
+transform:translateX(-50%);
+
+font-size:12px;
+
+opacity:.8;
+
+letter-spacing:2px;
+
+}
+
+/*==============================
+METEORS
+==============================*/
+
+.meteor{
+
+position:absolute;
+
+width:2px;
+
+height:140px;
+
+background:linear-gradient(
+
+to bottom,
+
+white,
+
+#00d9ff,
+
+transparent
+
+);
+
+opacity:.9;
+
+transform:rotate(35deg);
+
+animation:meteorFall linear infinite;
+
+}
+
+.m1{
+
+left:15%;
+
+top:-180px;
+
+animation-duration:6s;
+
+animation-delay:0s;
+
+}
+
+.m2{
+
+left:35%;
+
+top:-350px;
+
+animation-duration:7s;
+
+animation-delay:2s;
+
+}
+
+.m3{
+
+left:60%;
+
+top:-250px;
+
+animation-duration:5.5s;
+
+animation-delay:1s;
+
+}
+
+.m4{
+
+left:80%;
+
+top:-420px;
+
+animation-duration:8s;
+
+animation-delay:4s;
+
+}
+
+@keyframes meteorFall{
+
+0%{
+
+transform:
+
+translateY(0)
+
+translateX(0)
+
+rotate(35deg);
+
+opacity:1;
+
+}
+
+100%{
+
+transform:
+
+translateY(1400px)
+
+translateX(700px)
+
+rotate(35deg);
+
+opacity:0;
+
+}
+
+}
+
+/*==============================
+STARS
+==============================*/
+
+.star{
+
+position:absolute;
+
+width:2px;
+
+height:2px;
+
+background:white;
+
+border-radius:50%;
+
+box-shadow:
+
+0 0 10px white;
+
+animation:twinkle 3s infinite;
+
+}
+
+@keyframes twinkle{
+
+0%{
+
+opacity:.2;
+
+transform:scale(.6);
+
+}
+
+50%{
+
+opacity:1;
+
+transform:scale(1.4);
+
+}
+
+100%{
+
+opacity:.2;
+
+transform:scale(.6);
+
+}
+
+}
+
+/*==============================
+PLANETS
+==============================*/
+
+.planet{
+
+position:absolute;
+
+border-radius:50%;
+
+animation:planetRotate linear infinite;
+
+}
+
+.planet1{
+
+width:90px;
+
+height:90px;
+
+right:120px;
+
+top:130px;
+
+background:
+
+radial-gradient(
+
+circle at 30% 30%,
+
+#00d9ff,
+
+#003cff,
+
+#000822
+
+);
+
+animation-duration:60s;
+
+box-shadow:
+
+0 0 35px rgba(0,229,255,.5);
+
+}
+
+.planet2{
+
+width:55px;
+
+height:55px;
+
+left:120px;
+
+bottom:120px;
+
+background:
+
+radial-gradient(
+
+circle at 30% 30%,
+
+#ffb347,
+
+#ff5500,
+
+#441400
+
+);
+
+animation-duration:40s;
+
+}
+
+@keyframes planetRotate{
+
+0%{
+
+transform:rotate(0deg);
+
+}
+
+100%{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+/*==============================
+GLASS REFLECTION
+==============================*/
+
+.glass::before{
+
+content:"";
+
+position:absolute;
+
+left:-120%;
+
+top:0;
+
+width:70%;
+
+height:100%;
+
+background:linear-gradient(
+
+90deg,
+
+transparent,
+
+rgba(255,255,255,.15),
+
+transparent
+
+);
+
+transform:skewX(-25deg);
+
+animation:glassMove 8s infinite;
+
+}
+
+@keyframes glassMove{
+
+0%{
+
+left:-120%;
+
+}
+
+100%{
+
+left:170%;
+
+}
+
+}
+
+/*==============================
+LEFT SIDEBAR
+==============================*/
+
+.sidebar{
+
+position:absolute;
+
+left:25px;
+
+top:110px;
+
+width:240px;
+
+height:calc(84vh - 135px);
+
+border-radius:25px;
+
+background:rgba(255,255,255,.05);
+
+backdrop-filter:blur(20px);
+
+border:1px solid rgba(255,255,255,.08);
+
+padding:20px;
+
+display:flex;
+
+flex-direction:column;
+
+gap:12px;
+
+}
+
+.side-btn{
+
+height:48px;
+
+border-radius:14px;
+
+display:flex;
+
+align-items:center;
+
+padding-left:18px;
+
+cursor:pointer;
+
+transition:.3s;
+
+background:rgba(255,255,255,.05);
+
+font-size:14px;
+
+font-weight:500;
+
+}
+
+.side-btn:hover{
+
+background:#00d9ff33;
+
+transform:translateX(5px);
+
+}
+
+.history{
+
+margin-top:15px;
+
+flex:1;
+
+overflow:auto;
+
+}
+
+.history-item{
+
+padding:12px;
+
+margin-bottom:10px;
+
+border-radius:12px;
+
+background:rgba(255,255,255,.04);
+
+cursor:pointer;
+
+font-size:14px;
+
+transition:.3s;
+
+}
+
+.history-item:hover{
+
+background:rgba(255,255,255,.08);
+
+}
+
+/*==============================
+AI CHAT PANEL
+==============================*/
+
+.ai-panel{
+
+position:absolute;
+
+left:285px;
+
+top:110px;
+
+width:calc(100% - 310px);
+
+height:calc(84vh - 135px);
+
+display:flex;
+
+flex-direction:column;
+
+padding-right:25px;
+
+}
+
+.chat-box{
+
+flex:1;
+
+overflow-y:auto;
+
+padding:25px;
+
+border-radius:22px;
+
+background:rgba(255,255,255,.05);
+
+border:1px solid rgba(255,255,255,.08);
+
+box-shadow:0 0 30px rgba(0,229,255,.08);
+
+}
+
+.message{
+
+margin-bottom:18px;
+
+max-width:80%;
+
+padding:15px 20px;
+
+border-radius:18px;
+
+line-height:1.6;
+
+}
+
+.user{
+
+margin-left:auto;
+
+background:#2b4cff;
+
+}
+
+.ai{
+
+background:rgba(255,255,255,.08);
+
+}
+
+.input-bar{
+
+display:flex;
+
+gap:15px;
+
+margin-top:18px;
+
+}
+
+.input-bar input{
+
+flex:1;
+
+height:60px;
+
+border:none;
+
+outline:none;
+
+padding:0 20px;
+
+border-radius:18px;
+
+background:rgba(255,255,255,.08);
+
+color:white;
+
+font-size:16px;
+
+}
+
+.send{
+
+width:70px;
+
+border:none;
+
+cursor:pointer;
+
+border-radius:18px;
+
+font-size:24px;
+
+background:linear-gradient(135deg,#00d9ff,#7a3cff);
+
+color:white;
+
+transition:.3s;
+
+}
+
+.send:hover{
+
+transform:scale(1.08);
+
+}
+
+/* =========================================
+   AI LOADING
+========================================= */
+.loading-dots span {
+    animation: loadingDot 1.4s infinite;
+    opacity:0;
+}
+.loading-dots span:nth-child(1) {
+    animation-delay:0s;
+}
+.loading-dots span:nth-child(2) {
+    animation-delay:.2s;
+}
+.loading-dots span:nth-child(3) {
+    animation-delay:.4s;
+}
+@keyframes loadingDot {
+    0% {
+        opacity:0;
+    }
+    50% {
+        opacity:1;
+    }
+    100% {
+        opacity:0;
+    }
+}
+
+/* =========================================
+   LIMIT CARD
+========================================= */
+.limit-card {
+    width:min(520px,90%);
+    margin:20px auto;
+    padding:25px;
+    border-radius:24px;
+    background:
+        rgba(255,255,255,.07);
+    border:
+        1px solid
+        rgba(0,217,255,.25);
+    backdrop-filter:
+        blur(20px);
+    box-shadow:
+        0 0 35px
+        rgba(0,217,255,.10);
+    text-align:center;
+}
+
+.limit-icon {
+    font-size:38px;
+    margin-bottom:10px;
+}
+
+.limit-title {
+    font-size:20px;
+    font-weight:700;
+    margin-bottom:10px;
+}
+
+.limit-text {
+    font-size:14px;
+    opacity:.85;
+    line-height:1.6;
+}
+
+.limit-retry {
+    margin-top:12px;
+    font-size:13px;
+    opacity:.65;
+}
+
+.limit-buttons {
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin-top:20px;
+    flex-wrap:wrap;
+}
+
+.limit-buttons button {
+    border:none;
+    border-radius:12px;
+    padding:12px 18px;
+    color:white;
+    cursor:pointer;
+    font-weight:600;
+    transition:.25s;
+}
+
+.retry-btn {
+    background:
+        rgba(255,255,255,.10);
+}
+
+.subscribe-btn {
+    background:
+        linear-gradient(
+            135deg,
+            #00d9ff,
+            #7a3cff
+        );
+}
+
+.limit-buttons button:hover {
     transform:
-      translate(-50%, -50%)
-      rotate(0deg);
-  }
-
-  100% {
-    transform:
-      translate(-50%, -50%)
-      rotate(360deg);
-  }
-
+        translateY(-2px);
+    filter:
+        brightness(1.15);
 }
 
-/* ========================================
-   AURORA
-======================================== */
-
-.aurora {
-  position: absolute;
-
-  width: 1800px;
-  height: 1800px;
-
-  left: -500px;
-  top: -500px;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(0,229,255,.08),
-      transparent 70%
-    );
-
-  animation:
-    auroraMove 20s ease-in-out infinite alternate;
+/* ==============================
+   TOP ACTIONS
+============================== */
+.top-actions {
+    position:absolute;
+    right:25px;
+    top:25px;
+    display:flex;
+    gap:10px;
+    z-index:20;
 }
 
-@keyframes auroraMove {
-
-  0% {
-    transform: translate(0,0);
-  }
-
-  100% {
-    transform: translate(250px,180px);
-  }
-
+.top-actions button {
+    border:none;
+    padding:11px 16px;
+    border-radius:13px;
+    color:white;
+    font-size:13px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.25s;
+    backdrop-filter:blur(15px);
 }
 
-/* ========================================
-   METEORS
-======================================== */
-
-.meteor {
-  position: absolute;
-
-  width: 2px;
-  height: 140px;
-
-  background:
-    linear-gradient(
-      to bottom,
-      white,
-      #00d9ff,
-      transparent
-    );
-
-  opacity: .9;
-
-  transform: rotate(35deg);
-
-  animation:
-    meteorFall linear infinite;
-}
-
-.m1 {
-  left: 15%;
-  top: -180px;
-  animation-duration: 6s;
-}
-
-.m2 {
-  left: 35%;
-  top: -350px;
-  animation-duration: 7s;
-  animation-delay: 2s;
-}
-
-.m3 {
-  left: 60%;
-  top: -250px;
-  animation-duration: 5.5s;
-  animation-delay: 1s;
-}
-
-.m4 {
-  left: 80%;
-  top: -420px;
-  animation-duration: 8s;
-  animation-delay: 4s;
-}
-
-@keyframes meteorFall {
-
-  0% {
-    transform:
-      translateY(0)
-      translateX(0)
-      rotate(35deg);
-
-    opacity: 1;
-  }
-
-  100% {
-    transform:
-      translateY(1400px)
-      translateX(700px)
-      rotate(35deg);
-
-    opacity: 0;
-  }
-
-}
-
-/* ========================================
-   STARS
-======================================== */
-
-.star {
-  position: absolute;
-
-  width: 2px;
-  height: 2px;
-
-  background: white;
-
-  border-radius: 50%;
-
-  box-shadow:
-    0 0 10px white;
-
-  animation:
-    twinkle 3s infinite;
-}
-
-@keyframes twinkle {
-
-  0% {
-    opacity: .2;
-    transform: scale(.6);
-  }
-
-  50% {
-    opacity: 1;
-    transform: scale(1.4);
-  }
-
-  100% {
-    opacity: .2;
-    transform: scale(.6);
-  }
-
-}
-
-/* ========================================
-   PLANETS
-======================================== */
-
-.planet {
-  position: absolute;
-
-  border-radius: 50%;
-
-  animation:
-    planetRotate linear infinite;
-}
-
-.planet1 {
-
-  width: 90px;
-  height: 90px;
-
-  right: 120px;
-  top: 130px;
-
-  background:
-    radial-gradient(
-      circle at 30% 30%,
-      #00d9ff,
-      #003cff,
-      #000822
-    );
-
-  animation-duration: 60s;
-
-  box-shadow:
-    0 0 35px rgba(0,229,255,.5);
-}
-
-.planet2 {
-
-  width: 55px;
-  height: 55px;
-
-  left: 120px;
-  bottom: 120px;
-
-  background:
-    radial-gradient(
-      circle at 30% 30%,
-      #ffb347,
-      #ff5500,
-      #441400
-    );
-
-  animation-duration: 40s;
-}
-
-@keyframes planetRotate {
-
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-
-}
-
-/* ========================================
-   MAIN GLASS
-======================================== */
-
-.glass {
-
-  position: fixed;
-
-  left: 50%;
-  top: 50%;
-
-  transform:
-    translate(-50%, -50%);
-
-  width: min(1100px, 94vw);
-  height: 84vh;
-
-  min-height: 500px;
-
-  border-radius: 35px;
-
-  background:
-    rgba(255,255,255,.05);
-
-  backdrop-filter:
-    blur(22px);
-
-  -webkit-backdrop-filter:
-    blur(22px);
-
-  border:
-    1px solid rgba(255,255,255,.12);
-
-  box-shadow:
-    0 0 50px rgba(0,229,255,.10);
-
-  overflow: hidden;
-}
-
-/* ========================================
-   LOGO
-======================================== */
-
-.logo {
-
-  position: absolute;
-
-  left: 50%;
-  top: 22px;
-
-  transform:
-    translateX(-50%);
-
-  font-size: 32px;
-
-  font-weight: 800;
-
-  letter-spacing: 3px;
-
-  white-space: nowrap;
-
-  background:
-    linear-gradient(
-      90deg,
-      #00d9ff,
-      #8c4cff,
-      white
-    );
-
-  -webkit-background-clip: text;
-  background-clip: text;
-
-  -webkit-text-fill-color: transparent;
-}
-
-.subtitle {
-
-  position: absolute;
-
-  left: 50%;
-  top: 65px;
-
-  transform:
-    translateX(-50%);
-
-  font-size: 11px;
-
-  opacity: .8;
-
-  letter-spacing: 2px;
-
-  white-space: nowrap;
-}
-
-/* ========================================
-   SIDEBAR
-======================================== */
-
-.sidebar {
-
-  position: absolute;
-
-  left: 20px;
-  top: 105px;
-
-  width: 230px;
-
-  height:
-    calc(100% - 125px);
-
-  border-radius: 25px;
-
-  background:
-    rgba(255,255,255,.05);
-
-  backdrop-filter:
-    blur(20px);
-
-  -webkit-backdrop-filter:
-    blur(20px);
-
-  border:
-    1px solid rgba(255,255,255,.08);
-
-  padding: 18px;
-
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 10px;
-}
-
-/* ========================================
-   SIDEBAR BUTTONS
-======================================== */
-
-.side-btn {
-
-  min-height: 46px;
-
-  border-radius: 14px;
-
-  display: flex;
-
-  align-items: center;
-
-  padding: 0 15px;
-
-  cursor: pointer;
-
-  user-select: none;
-
-  transition:
-    transform .25s ease,
-    background .25s ease,
-    border .25s ease;
-
-  background:
-    rgba(255,255,255,.05);
-
-  border:
-    1px solid transparent;
-
-  font-size: 13px;
-
-  font-weight: 500;
-}
-
-.side-btn:hover {
-
-  background:
-    rgba(0,217,255,.12);
-
-  border-color:
-    rgba(0,217,255,.25);
-
-  transform:
-    translateX(4px);
-}
-
-.side-btn.active {
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(0,217,255,.18),
-      rgba(122,60,255,.18)
-    );
-
-  border-color:
-    rgba(0,217,255,.3);
-}
-
-/* ========================================
-   HISTORY
-======================================== */
-
-.history {
-
-  margin-top: 8px;
-
-  flex: 1;
-
-  overflow-y: auto;
-}
-
-.history-title {
-
-  font-size: 11px;
-
-  opacity: .5;
-
-  margin:
-    5px 5px 10px;
-}
-
-.history-item {
-
-  padding: 11px;
-
-  margin-bottom: 8px;
-
-  border-radius: 12px;
-
-  background:
-    rgba(255,255,255,.04);
-
-  cursor: pointer;
-
-  font-size: 12px;
-
-  transition:
-    background .25s ease;
-}
-
-.history-item:hover {
-
-  background:
-    rgba(255,255,255,.08);
-}
-
-/* ========================================
-   AI PANEL
-======================================== */
-
-.ai-panel {
-
-  position: absolute;
-
-  left: 270px;
-  right: 20px;
-
-  top: 105px;
-  bottom: 20px;
-
-  display: flex;
-
-  flex-direction: column;
-}
-
-/* ========================================
-   CHAT BOX
-======================================== */
-
-.chat-box {
-
-  flex: 1;
-
-  min-height: 0;
-
-  overflow-y: auto;
-
-  padding: 22px;
-
-  border-radius: 22px;
-
-  background:
-    rgba(255,255,255,.05);
-
-  border:
-    1px solid rgba(255,255,255,.08);
-
-  box-shadow:
-    0 0 30px rgba(0,229,255,.08);
-
-  scrollbar-width: thin;
-}
-
-/* ========================================
-   MESSAGE
-======================================== */
-
-.message {
-
-  margin-bottom: 16px;
-
-  max-width: 82%;
-
-  padding: 14px 18px;
-
-  border-radius: 18px;
-
-  line-height: 1.6;
-
-  font-size: 14px;
-
-  word-wrap: break-word;
-}
-
-.message.user {
-
-  margin-left: auto;
-
-  background:
-    linear-gradient(
-      135deg,
-      #2b4cff,
-      #713cff
-    );
-}
-
-.message.ai {
-
-  background:
-    rgba(255,255,255,.08);
-}
-
-/* ========================================
-   INPUT
-======================================== */
-
-.input-bar {
-
-  display: flex;
-
-  gap: 10px;
-
-  margin-top: 12px;
-}
-
-.input-bar input {
-
-  flex: 1;
-
-  min-width: 0;
-
-  height: 56px;
-
-  border:
-    1px solid rgba(255,255,255,.08);
-
-  outline: none;
-
-  padding:
-    0 18px;
-
-  border-radius: 17px;
-
-  background:
-    rgba(255,255,255,.08);
-
-  color: white;
-
-  font-size: 15px;
-}
-
-.input-bar input::placeholder {
-
-  color:
-    rgba(255,255,255,.5);
-}
-
-.send {
-
-  flex: 0 0 65px;
-
-  height: 56px;
-
-  border: none;
-
-  cursor: pointer;
-
-  border-radius: 17px;
-
-  font-size: 22px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #00d9ff,
-      #7a3cff
-    );
-
-  color: white;
-
-  transition:
-    transform .2s ease;
-}
-
-.send:hover {
-
-  transform:
-    scale(1.05);
-}
-
-/* ========================================
-   MODAL
-======================================== */
-
-.modal {
-
-  position: fixed;
-
-  inset: 0;
-
-  display: none;
-
-  align-items: center;
-
-  justify-content: center;
-
-  padding: 20px;
-
-  background:
-    rgba(0,0,0,.72);
-
-  backdrop-filter:
-    blur(12px);
-
-  -webkit-backdrop-filter:
-    blur(12px);
-
-  z-index: 1000;
-}
-
-.modal.active {
-
-  display: flex;
-}
-
-.modal-card {
-
-  width: min(520px, 100%);
-
-  max-height: 90vh;
-
-  overflow-y: auto;
-
-  padding: 30px;
-
-  border-radius: 28px;
-
-  background:
-    rgba(18,18,28,.94);
-
-  border:
-    1px solid rgba(255,255,255,.12);
-
-  box-shadow:
-    0 0 70px rgba(0,217,255,.15);
-
-  text-align: center;
-}
-
-.modal-card h2 {
-
-  font-size: 25px;
-
-  margin-bottom: 10px;
-}
-
-.modal-card p {
-
-  color:
-    rgba(255,255,255,.7);
-
-  line-height: 1.6;
-
-  font-size: 14px;
-}
-
-.modal-close {
-
-  margin-top: 20px;
-
-  width: 100%;
-
-  height: 48px;
-
-  border: none;
-
-  border-radius: 14px;
-
-  cursor: pointer;
-
-  color: white;
-
-  background:
-    rgba(255,255,255,.08);
+.login-btn {
+    background:
+        rgba(255,255,255,.08);
+    border:
+        1px solid
+        rgba(255,255,255,.12) !important;
 }
 
 .premium-btn {
-
-  margin-top: 20px;
-
-  width: 100%;
-
-  height: 52px;
-
-  border: none;
-
-  border-radius: 15px;
-
-  cursor: pointer;
-
-  color: white;
-
-  font-weight: 700;
-
-  font-size: 15px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #00d9ff,
-      #7a3cff
-    );
-}
-
-/* ========================================
-   SETTINGS
-======================================== */
-
-.setting-row {
-
-  margin-top: 18px;
-
-  padding: 15px;
-
-  border-radius: 14px;
-
-  background:
-    rgba(255,255,255,.05);
-
-  text-align: left;
-}
-
-.setting-row strong {
-
-  display: block;
-
-  margin-bottom: 5px;
-}
-
-.setting-row span {
-
-  opacity: .65;
-
-  font-size: 13px;
-}
-
-/* ========================================
-   MOBILE
-======================================== */
-
-@media (max-width: 768px) {
-
-  body {
-
-    overflow: hidden;
-
-    min-height:
-      100dvh;
-  }
-
-  .background {
-
-    position: fixed;
-
-    inset: 0;
-  }
-
-  .blackhole {
-
-    width: 220px;
-    height: 220px;
-
-    opacity: .65;
-  }
-
-  .planet1 {
-
-    width: 48px;
-    height: 48px;
-
-    right: 15px;
-    top: 105px;
-  }
-
-  .planet2 {
-
-    width: 32px;
-    height: 32px;
-
-    left: 12px;
-    bottom: 80px;
-  }
-
-  .meteor {
-
-    opacity: .5;
-  }
-
-  .glass {
-
-    position: fixed;
-
-    inset: 0;
-
-    transform: none;
-
-    width: 100%;
-
-    height: 100dvh;
-
-    min-height: 0;
-
-    border-radius: 0;
-
-    border: none;
-
     background:
-      rgba(5,5,8,.45);
+        linear-gradient(
+            135deg,
+            #00d9ff,
+            #7a3cff
+        );
+}
 
-    padding:
-      env(safe-area-inset-top)
-      10px
-      env(safe-area-inset-bottom);
-  }
+.top-actions button:hover {
+    transform:translateY(-2px);
+    filter:brightness(1.15);
+}
 
-  .logo {
+/*==============================
+MOBILE RESPONSIVE
+==============================*/
 
-    position: absolute;
+@media (max-width:768px){
 
-    top: 15px;
+body{
+overflow:auto;
+}
 
-    font-size: 25px;
+.glass{
 
-    letter-spacing: 2px;
-  }
+width:100vw;
+height:100vh;
 
-  .subtitle {
+border-radius:0;
 
-    top: 48px;
-
-    font-size: 9px;
-
-    letter-spacing: 1.5px;
-  }
-
-  .sidebar {
-
-    position: absolute;
-
-    left: 10px;
-    right: 10px;
-
-    top: 78px;
-
-    width: auto;
-
-    height: auto;
-
-    padding: 0;
-
-    display: grid;
-
-    grid-template-columns:
-      repeat(3, 1fr);
-
-    gap: 7px;
-
-    background: none;
-
-    border: none;
-
-    backdrop-filter: none;
-
-  }
-
-  .side-btn {
-
-    min-height: 42px;
-
-    justify-content: center;
-
-    padding: 5px;
-
-    border-radius: 12px;
-
-    font-size: 11px;
-
-    text-align: center;
-  }
-
-  .side-btn:hover {
-
-    transform: none;
-  }
-
-  .history {
-
-    display: none;
-  }
-
-  .ai-panel {
-
-    position: absolute;
-
-    left: 10px;
-    right: 10px;
-
-    top: 225px;
-    bottom: 12px;
-
-    width: auto;
-
-    height: auto;
-  }
-
-  .chat-box {
-
-    padding: 14px;
-
-    border-radius: 17px;
-  }
-
-  .message {
-
-    max-width: 94%;
-
-    padding:
-      11px 13px;
-
-    font-size: 13px;
-
-    border-radius: 15px;
-  }
-
-  .input-bar {
-
-    gap: 7px;
-
-    margin-top: 8px;
-  }
-
-  .input-bar input {
-
-    height: 49px;
-
-    font-size: 14px;
-
-    border-radius: 14px;
-
-    padding:
-      0 13px;
-  }
-
-  .send {
-
-    flex-basis: 54px;
-
-    height: 49px;
-
-    border-radius: 14px;
-
-    font-size: 19px;
-  }
+padding:15px;
 
 }
 
-/* ========================================
-   VERY SMALL PHONES
-======================================== */
+.logo{
 
-@media (max-width: 380px) {
+font-size:30px;
 
-  .logo {
-
-    font-size: 22px;
-  }
-
-  .subtitle {
-
-    display: none;
-  }
-
-  .sidebar {
-
-    top: 65px;
-  }
-
-  .side-btn {
-
-    min-height: 38px;
-
-    font-size: 10px;
-  }
-
-  .ai-panel {
-
-    top: 185px;
-  }
+top:20px;
 
 }
 
-/* ========================================
-   LANDSCAPE MOBILE
-======================================== */
+.subtitle{
 
-@media (
-  max-width: 900px
-) and (
-  orientation: landscape
-) {
+top:60px;
 
-  .sidebar {
+font-size:12px;
 
-    top: 65px;
-
-    grid-template-columns:
-      repeat(6, 1fr);
-  }
-
-  .ai-panel {
-
-    top: 120px;
-  }
+letter-spacing:1px;
 
 }
 
-/* ========================================
-   REDUCED MOTION
-======================================== */
+.top-actions {
+    right:15px;
+    top:18px;
+}
 
-@media (
-  prefers-reduced-motion: reduce
-) {
+.top-actions button {
+    padding:9px 11px;
+    font-size:12px;
+}
 
-  *,
-  *::before,
-  *::after {
+.sidebar{
 
-    animation-duration:
-      .01ms !important;
+position:relative;
 
-    animation-iteration-count:
-      1 !important;
+left:0;
 
-    scroll-behavior: auto !important;
-  }
+top:90px;
+
+width:100%;
+
+height:auto;
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:10px;
+
+padding:0;
+
+background:none;
+
+border:none;
+
+backdrop-filter:none;
+
+}
+
+.side-btn{
+
+justify-content:center;
+
+padding:12px;
+
+font-size:14px;
+
+}
+
+.history{
+
+display:none;
+
+}
+
+.ai-panel{
+
+position:relative;
+
+left:0;
+
+top:110px;
+
+transform:none;
+
+width:100%;
+
+height:calc(100vh - 180px);
+
+}
+
+.chat-box{
+
+height:100%;
+
+padding:15px;
+
+font-size:14px;
+
+}
+
+.message{
+
+max-width:95%;
+
+font-size:14px;
+
+padding:12px;
+
+}
+
+.tools{
+
+display:grid;
+
+grid-template-columns:repeat(3,1fr);
+
+gap:8px;
+
+}
+
+.tool{
+
+text-align:center;
+
+font-size:13px;
+
+padding:10px;
+
+}
+
+.input-bar{
+
+gap:8px;
+
+}
+
+.input-bar input{
+
+height:50px;
+
+font-size:15px;
+
+}
+
+.send{
+
+width:55px;
+
+height:50px;
+
+font-size:20px;
+
+}
+
+.blackhole{
+
+width:220px;
+
+height:220px;
+
+}
+
+.planet1{
+
+width:55px;
+
+height:55px;
+
+right:20px;
+
+top:120px;
+
+}
+
+.planet2{
+
+width:35px;
+
+height:35px;
+
+left:15px;
+
+bottom:120px;
+
+}
 
 }
 
@@ -1215,847 +1228,505 @@ body {
 
 <body>
 
-<!-- =====================================
-     BACKGROUND
-===================================== -->
-
 <div class="background">
 
-  <div class="aurora"></div>
+<div class="aurora"></div>
 
-  <div class="blackhole"></div>
+<div class="blackhole"></div>
 
-  <div class="planet planet1"></div>
+<div class="planet planet1"></div>
 
-  <div class="planet planet2"></div>
+<div class="planet planet2"></div>
 
-  <div class="meteor m1"></div>
-  <div class="meteor m2"></div>
-  <div class="meteor m3"></div>
-  <div class="meteor m4"></div>
+<div class="meteor m1"></div>
 
-  <div class="star" style="left:10%;top:15%;"></div>
-  <div class="star" style="left:20%;top:70%;"></div>
-  <div class="star" style="left:45%;top:20%;"></div>
-  <div class="star" style="left:65%;top:80%;"></div>
-  <div class="star" style="left:80%;top:25%;"></div>
-  <div class="star" style="left:92%;top:65%;"></div>
+<div class="meteor m2"></div>
+
+<div class="meteor m3"></div>
+
+<div class="meteor m4"></div>
+
+<div class="star" style="left:10%;top:15%;"></div>
+
+<div class="star" style="left:20%;top:70%;"></div>
+
+<div class="star" style="left:45%;top:20%;"></div>
+
+<div class="star" style="left:65%;top:80%;"></div>
+
+<div class="star" style="left:80%;top:25%;"></div>
+
+<div class="star" style="left:92%;top:65%;"></div>
 
 </div>
-
-<!-- =====================================
-     MAIN GLASS
-===================================== -->
 
 <div class="glass">
 
-  <div class="logo">
-    AI Universe
-  </div>
+<div class="logo">
 
-  <div class="subtitle">
-    NEXT GENERATION AI
-  </div>
-
-  <!-- ===================================
-       SIDEBAR
-  ==================================== -->
-
-  <div class="sidebar">
-
-    <div
-      class="side-btn active"
-      data-action="new"
-    >
-      ➕ New Chat
-    </div>
-
-    <div
-      class="side-btn"
-      data-action="pdf"
-    >
-      📄 PDF
-    </div>
-
-    <div
-      class="side-btn"
-      data-action="code"
-    >
-      💻 Code
-    </div>
-
-    <div
-      class="side-btn"
-      data-action="image"
-    >
-      🖼 Images
-    </div>
-
-    <div
-      class="side-btn"
-      data-action="translate"
-    >
-      🌍 Translate
-    </div>
-
-    <div
-      class="side-btn"
-      data-action="settings"
-    >
-      ⚙ Settings
-    </div>
-
-    <div class="history">
-
-      <div class="history-title">
-        CHAT HISTORY
-      </div>
-
-      <div class="history-item">
-        AI Universe
-      </div>
-
-    </div>
-
-  </div>
-
-  <!-- ===================================
-       AI PANEL
-  ==================================== -->
-
-  <div class="ai-panel">
-
-    <div class="chat-box">
-
-      <div class="message ai">
-
-        👋 Salam!
-
-        <br>
-
-        Mən
-        <b>AI Universe</b>.
-
-        <br>
-
-        Sənə necə kömək edə bilərəm?
-
-      </div>
-
-    </div>
-
-    <div class="input-bar">
-
-      <input
-        type="text"
-        placeholder="Mesaj yaz..."
-        autocomplete="off"
-      >
-
-      <button
-        class="send"
-        type="button"
-      >
-        ➜
-      </button>
-
-    </div>
-
-  </div>
+AI Universe
 
 </div>
 
-<!-- =====================================
-     FILE INPUTS
-===================================== -->
+<div class="subtitle">
 
-<input
-  type="file"
-  id="pdfInput"
-  accept=".pdf,application/pdf"
-  hidden
->
+NEXT GENERATION AI
 
-<input
-  type="file"
-  id="imageInput"
-  accept="image/*"
-  hidden
->
+</div>
 
-<!-- =====================================
-     MODAL
-===================================== -->
+<div class="top-actions">
 
-<div
-  class="modal"
-  id="modal"
->
-
-  <div class="modal-card">
-
-    <h2 id="modalTitle">
-      AI Universe
-    </h2>
-
-    <p id="modalText">
-      AI Universe
-    </p>
-
-    <div id="modalExtra"></div>
-
-    <button
-      class="modal-close"
-      id="modalClose"
-    >
-      Bağla
+    <button class="login-btn" onclick="openLogin()">
+        👤 Login
     </button>
 
-  </div>
+    <button class="premium-btn" onclick="openSubscription()">
+        ⭐ Abunəlik
+    </button>
+
+</div>
+
+<div class="sidebar">
+
+<div class="side-btn">➕ New Chat</div>
+
+<div class="side-btn">📄 PDF</div>
+
+<div class="side-btn">💻 Code</div>
+
+<div class="side-btn">🖼 Images</div>
+
+<div class="side-btn">🌍 Translate</div>
+
+<div class="side-btn">⚙ Settings</div>
+
+<div class="history">
+
+<div class="history-item">
+
+AI Universe
+
+</div>
+
+</div>
+
+</div>
+
+<div class="ai-panel">
+
+<div class="chat-box">
+
+<div class="message ai">
+
+👋 Salam!<br>
+
+Mən <b>AI Universe</b>.<br>
+
+Sənə necə kömək edə bilərəm?
+
+</div>
+
+</div>
+
+<div class="input-bar">
+
+<input
+
+type="text"
+
+placeholder="Mesaj yaz...">
+
+<button class="send">
+
+➜
+
+</button>
+
+</div>
+
+</div>
 
 </div>
 
 <script>
 
-/* ========================================
-   ELEMENTS
-======================================== */
+const chatBox=document.querySelector(".chat-box");
 
-const chatBox =
-  document.querySelector(".chat-box");
+const input=document.querySelector(".input-bar input");
 
-const input =
-  document.querySelector(".input-bar input");
+const send=document.querySelector(".send");
 
-const send =
-  document.querySelector(".send");
+function addUserMessage(text){
 
-const modal =
-  document.getElementById("modal");
+const div=document.createElement("div");
 
-const modalTitle =
-  document.getElementById("modalTitle");
+div.className="message user";
 
-const modalText =
-  document.getElementById("modalText");
+div.textContent=text;
 
-const modalExtra =
-  document.getElementById("modalExtra");
+chatBox.appendChild(div);
 
-const modalClose =
-  document.getElementById("modalClose");
+chatBox.scrollTop=chatBox.scrollHeight;
 
-const pdfInput =
-  document.getElementById("pdfInput");
+}
 
-const imageInput =
-  document.getElementById("imageInput");
+function addAIMessage(text){
 
-/* ========================================
-   API
-======================================== */
+const div=document.createElement("div");
+
+div.className="message ai";
+
+div.textContent=text;
+
+chatBox.appendChild(div);
+
+chatBox.scrollTop=chatBox.scrollHeight;
+
+}
+
+function sendMessage(){
+
+const text=input.value.trim();
+
+if(text==="") return;
+
+addUserMessage(text);
+
+input.value="";
+
+reply(text);
+
+}
 
 const AI_API_URL =
-  "https://ai-universe.nigarhaciyeva106.workers.dev";
+    "https://ai-universe.nigarhaciyeva106.workers.dev";
 
-/* ========================================
-   USER ID / MEMORY
-======================================== */
+function getUserId() {
 
-let userId =
-  localStorage.getItem(
-    "ai_universe_user_id"
-  );
+    let userId =
+        localStorage.getItem("ai_universe_user_id");
 
-if (!userId) {
+    if (!userId) {
 
-  userId =
-    crypto.randomUUID();
+        userId =
+            crypto.randomUUID();
 
-  localStorage.setItem(
-    "ai_universe_user_id",
-    userId
-  );
-}
-
-/* ========================================
-   MODAL
-======================================== */
-
-function openModal(
-  title,
-  text,
-  extra = ""
-) {
-
-  modalTitle.textContent =
-    title;
-
-  modalText.textContent =
-    text;
-
-  modalExtra.innerHTML =
-    extra;
-
-  modal.classList.add(
-    "active"
-  );
-}
-
-function closeModal() {
-
-  modal.classList.remove(
-    "active"
-  );
-
-}
-
-modalClose.onclick =
-  closeModal;
-
-modal.addEventListener(
-  "click",
-  event => {
-
-    if (
-      event.target === modal
-    ) {
-      closeModal();
+        localStorage.setItem(
+            "ai_universe_user_id",
+            userId
+        );
     }
 
-  }
-);
-
-/* ========================================
-   ADD USER MESSAGE
-======================================== */
-
-function addUserMessage(text) {
-
-  const div =
-    document.createElement("div");
-
-  div.className =
-    "message user";
-
-  div.textContent =
-    text;
-
-  chatBox.appendChild(div);
-
-  chatBox.scrollTop =
-    chatBox.scrollHeight;
+    return userId;
 }
 
-/* ========================================
-   ADD AI MESSAGE
-======================================== */
-
-function addAIMessage(text) {
-
-  const div =
-    document.createElement("div");
-
-  div.className =
-    "message ai";
-
-  div.textContent =
-    text;
-
-  chatBox.appendChild(div);
-
-  chatBox.scrollTop =
-    chatBox.scrollHeight;
-}
-
-/* ========================================
-   ASK AI
-======================================== */
 
 async function askAI(message) {
 
-  const response =
-    await fetch(
-      AI_API_URL,
-      {
-        method: "POST",
+    const userId =
+        getUserId();
 
-        headers: {
-          "Content-Type":
-            "application/json"
-        },
+    const response =
+        await fetch(
+            AI_API_URL,
+            {
+                method: "POST",
 
-        body: JSON.stringify({
-          message: message,
-          userId: userId
-        })
-      }
-    );
+                headers: {
+                    "Content-Type":
+                        "application/json"
+                },
 
-  let data;
+                body: JSON.stringify({
+                    message: message,
+                    userId: userId
+                })
+            }
+        );
 
-  try {
 
-    data =
-      await response.json();
+    let data = null;
 
-  } catch {
+    try {
+
+        data =
+            await response.json();
+
+    } catch {
+
+        throw new Error(
+            "Serverdən düzgün cavab gəlmədi."
+        );
+
+    }
+
+
+    // =====================================
+    // 429 — FREE TIER LIMIT
+    // =====================================
+
+    if (response.status === 429) {
+
+        const retryAfter =
+            data?.retryAfter ||
+            null;
+
+        const error =
+            new Error(
+                data?.message ||
+                "Pulsuz AI limiti dolub."
+            );
+
+        error.code =
+            "RATE_LIMIT";
+
+        error.retryAfter =
+            retryAfter;
+
+        throw error;
+    }
+
+
+    // =====================================
+    // OTHER ERRORS
+    // =====================================
+
+    if (!response.ok) {
+
+        const message =
+            data?.message ||
+            data?.error ||
+            "AI server xətası baş verdi.";
+
+        throw new Error(
+            typeof message === "string"
+                ? message
+                : JSON.stringify(message)
+        );
+
+    }
+
+
+    // =====================================
+    // NEW WORKER RESPONSE
+    // =====================================
+
+    if (
+        data?.success === true &&
+        typeof data.answer === "string"
+    ) {
+
+        return data.answer;
+
+    }
+
+
+    // =====================================
+    // OLD GEMINI RESPONSE FALLBACK
+    // =====================================
+
+    const oldAnswer =
+        data?.candidates?.[0]
+            ?.content?.parts?.[0]
+            ?.text;
+
+    if (oldAnswer) {
+
+        return oldAnswer;
+
+    }
+
 
     throw new Error(
-      "Server JSON cavabı qaytarmadı."
+        "AI-dan cavab gəlmədi."
     );
-
-  }
-
-  /* ==============================
-     FREE LIMIT
-  ============================== */
-
-  if (
-    response.status === 429
-  ) {
-
-    const errorMessage =
-      data.message ||
-      "Pulsuz AI limitin bitib.";
-
-    openSubscription(
-      errorMessage
-    );
-
-    throw new Error(
-      "FREE_LIMIT"
-    );
-  }
-
-  /* ==============================
-     OTHER ERROR
-  ============================== */
-
-  if (!response.ok) {
-
-    throw new Error(
-      data.error ||
-      data.message ||
-      "AI server xətası"
-    );
-
-  }
-
-  /* ==============================
-     AI ANSWER
-  ============================== */
-
-  return (
-    data.candidates
-      ?.[0]
-      ?.content
-      ?.parts
-      ?.map(part => part.text || "")
-      ?.join("") ||
-
-    "AI-dan cavab gəlmədi."
-  );
-
 }
-
-/* ========================================
-   REPLY
-======================================== */
 
 async function reply(message) {
 
-  const loaderDiv =
-    document.createElement("div");
-
-  loaderDiv.className =
-    "message ai";
-
-  loaderDiv.textContent =
-    "AI düşünür...";
-
-  chatBox.appendChild(
-    loaderDiv
-  );
-
-  chatBox.scrollTop =
-    chatBox.scrollHeight;
-
-  try {
-
-    const answer =
-      await askAI(message);
-
-    loaderDiv.remove();
-
-    addAIMessage(
-      answer
-    );
-
-  } catch (error) {
-
-    loaderDiv.remove();
-
-    if (
-      error.message ===
-      "FREE_LIMIT"
-    ) {
-      return;
-    }
-
-    console.error(error);
-
-    addAIMessage(
-      "Bağlantıda problem oldu 😕"
-    );
-
-  }
-
-}
-
-/* ========================================
-   SEND MESSAGE
-======================================== */
-
-function sendMessage() {
-
-  const text =
-    input.value.trim();
-
-  if (!text) {
-    return;
-  }
-
-  addUserMessage(
-    text
-  );
-
-  input.value = "";
-
-  reply(text);
-
-}
-
-/* ========================================
-   SEND BUTTON
-======================================== */
-
-send.onclick =
-  sendMessage;
-
-/* ========================================
-   ENTER
-======================================== */
-
-input.addEventListener(
-  "keydown",
-  event => {
-
-    if (
-      event.key === "Enter"
-    ) {
-
-      event.preventDefault();
-
-      sendMessage();
-
-    }
-
-  }
-);
-
-/* ========================================
-   NEW CHAT
-======================================== */
-
-function newChat() {
-
-  chatBox.innerHTML = `
-    <div class="message ai">
-      👋 Yeni söhbət başladı!
-      <br>
-      Mən AI Universe.
-      <br>
-      Sənə necə kömək edə bilərəm?
-    </div>
-  `;
-
-  input.focus();
-
-}
-
-/* ========================================
-   CODE MODE
-======================================== */
-
-function codeMode() {
-
-  input.placeholder =
-    "Kod haqqında sual yaz...";
-
-  openModal(
-    "💻 Code Mode",
-    "Kod rejimi aktivdir. İndi kodla bağlı sualını yaza bilərsən."
-  );
-
-  input.focus();
-
-}
-
-/* ========================================
-   TRANSLATE MODE
-======================================== */
-
-function translateMode() {
-
-  input.placeholder =
-    "Tərcümə etmək istədiyin mətni yaz...";
-
-  openModal(
-    "🌍 Translate",
-    "Mətni göndər. AI Universe onu tərcümə etməyə kömək edəcək."
-  );
-
-  input.focus();
-
-}
-
-/* ========================================
-   SETTINGS
-======================================== */
-
-function settingsMode() {
-
-  openModal(
-    "⚙ Settings",
-    "AI Universe ayarları",
-    `
-      <div class="setting-row">
-        <strong>🧠 Memory</strong>
-        <span>Cloudflare KV yaddaşı aktivdir.</span>
-      </div>
-
-      <div class="setting-row">
-        <strong>🤖 AI</strong>
-        <span>Gemini API bağlantısı aktivdir.</span>
-      </div>
-
-      <div class="setting-row">
-        <strong>👤 User ID</strong>
-        <span>${userId}</span>
-      </div>
-    `
-  );
-
-}
-
-/* ========================================
-   PDF
-======================================== */
-
-function pdfMode() {
-
-  pdfInput.click();
-
-}
-
-pdfInput.addEventListener(
-  "change",
-  () => {
-
-    const file =
-      pdfInput.files[0];
-
-    if (!file) {
-      return;
-    }
-
-    openModal(
-      "📄 PDF",
-      `"${file.name}" seçildi.`
-    );
-
-  }
-);
-
-/* ========================================
-   IMAGE
-======================================== */
-
-function imageMode() {
-
-  imageInput.click();
-
-}
-
-imageInput.addEventListener(
-  "change",
-  () => {
-
-    const file =
-      imageInput.files[0];
-
-    if (!file) {
-      return;
-    }
-
-    openModal(
-      "🖼 Images",
-      `"${file.name}" seçildi.`
-    );
-
-  }
-);
-
-/* ========================================
-   PREMIUM / SUBSCRIPTION
-======================================== */
-
-function openSubscription(
-  errorMessage
-) {
-
-  openModal(
-    "⚡ AI Universe Premium",
-
-    "Pulsuz AI limitin hazırda dolub. Premium bölməsindən daha geniş istifadə imkanlarına baxa bilərsən.",
-
-    `
-      <div class="setting-row">
-        <strong>🚀 Premium</strong>
-        <span>
-          Daha çox AI istifadəsi
+    const loaderDiv =
+        document.createElement("div");
+
+    loaderDiv.className =
+        "message ai";
+
+    loaderDiv.innerHTML =
+        `
+        <span class="loading-dots">
+            AI düşünür<span>.</span><span>.</span><span>.</span>
         </span>
-      </div>
+        
+        `;
 
-      <div class="setting-row">
-        <strong>🧠 Memory</strong>
-        <span>
-          Daha uzun söhbət yaddaşı
-        </span>
-      </div>
+    chatBox.appendChild(
+        loaderDiv
+    );
 
-      <div class="setting-row">
-        <strong>💻 Code</strong>
-        <span>
-          Kodlaşdırma imkanları
-        </span>
-      </div>
+    chatBox.scrollTop =
+        chatBox.scrollHeight;
 
-      <button
-        class="premium-btn"
-        onclick="showComingSoon()"
-      >
-        Abunəliklərə bax
-      </button>
-    `
-  );
 
-}
+    try {
 
-/* ========================================
-   PREMIUM BUTTON
-======================================== */
+        const answer =
+            await askAI(message);
 
-function showComingSoon() {
 
-  openModal(
-    "🚀 Tezliklə",
+        loaderDiv.remove();
 
-    "AI Universe Premium sistemi hazırlanır."
-  );
 
-}
-
-/* ========================================
-   SIDEBAR BUTTONS
-======================================== */
-
-document
-  .querySelectorAll(".side-btn")
-  .forEach(button => {
-
-    button.addEventListener(
-      "click",
-      () => {
-
-        document
-          .querySelectorAll(
-            ".side-btn"
-          )
-          .forEach(btn => {
-            btn.classList.remove(
-              "active"
-            );
-          });
-
-        button.classList.add(
-          "active"
+        addAIMessage(
+            answer
         );
 
-        const action =
-          button.dataset.action;
+
+    } catch (error) {
+
+        console.error(
+            "AI Universe:",
+            error
+        );
+
+
+        loaderDiv.remove();
+
+
+        // =================================
+        // 429 LIMIT
+        // =================================
 
         if (
-          action === "new"
+            error.code ===
+            "RATE_LIMIT"
         ) {
 
-          newChat();
+            showLimitMessage(
+                error.message,
+                error.retryAfter
+            );
+
+            return;
 
         }
 
-        else if (
-          action === "pdf"
-        ) {
 
-          pdfMode();
+        // =================================
+        // NORMAL ERROR
+        // =================================
 
-        }
+        addAIMessage(
+            "⚠️ " +
+            (
+                error.message ||
+                "Naməlum xəta baş verdi."
+            )
+        );
 
-        else if (
-          action === "code"
-        ) {
+    }
+}
 
-          codeMode();
+function showLimitMessage(
+    message,
+    retryAfter
+) {
 
-        }
+    const div =
+        document.createElement("div");
 
-        else if (
-          action === "image"
-        ) {
+    div.className =
+        "limit-card";
 
-          imageMode();
 
-        }
+    const retryText =
+        retryAfter
+            ? `Google təxminən ${retryAfter} sonra yenidən cəhd etməyə icazə verə bilər.`
+            : "Bir az sonra yenidən cəhd edin.";
 
-        else if (
-          action === "translate"
-        ) {
 
-          translateMode();
+    div.innerHTML = `
 
-        }
+        <div class="limit-icon">
+            🔒
+        </div>
 
-        else if (
-          action === "settings"
-        ) {
+        <div class="limit-title">
+            Pulsuz AI limiti doldu
+        </div>
 
-          settingsMode();
+        <div class="limit-text">
+            ${message || "Pulsuz istifadə limitiniz hazırda doludur."}
+        </div>
 
-        }
+        <div class="limit-retry">
+            ${retryText}
+        </div>
 
-      }
+        <div class="limit-buttons">
+
+            <button
+                class="retry-btn"
+                onclick="retryAfterLimit()"
+            >
+                🔄 Yenidən yoxla
+            </button>
+
+            <button
+                class="subscribe-btn"
+                onclick="openSubscription()"
+            >
+                ⭐ Abunəlik
+            </button>
+
+        </div>
+
+    `;
+
+    chatBox.appendChild(
+        div
     );
 
-  });
+    chatBox.scrollTop =
+        chatBox.scrollHeight;
+}
 
-/* ========================================
-   INITIAL FOCUS
-======================================== */
+function retryAfterLimit() {
 
-input.focus();
+    addAIMessage(
+        "🔄 Yenidən yoxlanılır..."
+    );
+
+}
+
+function openSubscription() {
+
+    alert(
+        "⭐ Abunəlik sistemi tezliklə aktiv olacaq."
+    );
+
+}
+
+function openLogin() {
+
+    alert(
+        "👤 Login sistemi tezliklə aktiv olacaq."
+    );
+
+}
+
+send.onclick=sendMessage;
+
+input.addEventListener("keydown",e=>{
+
+if(e.key==="Enter"){
+
+sendMessage();
+
+}
+
+});
 
 </script>
 
 </body>
+
 </html>
