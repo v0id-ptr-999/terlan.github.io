@@ -2094,6 +2094,63 @@ font-family:Inter,sans-serif;
 
 }
 
+/* Mobil Menyu Üçün CSS */
+.menu-toggle{
+    display:none;
+    background:none;
+    border:none;
+    color:white;
+    font-size:28px;
+    cursor:pointer;
+    padding:6px;
+}
+
+@media (max-width:900px){
+
+    nav{
+        position:relative;
+    }
+
+    .menu-toggle{
+        display:block;
+    }
+
+    nav ul{
+        display:none;
+        position:absolute;
+        top:100%;
+        left:0;
+        right:0;
+
+        flex-direction:column;
+        gap:8px;
+
+        padding:18px;
+        margin:0;
+
+        background:rgba(5,3,15,.96);
+        border:1px solid rgba(255,255,255,.12);
+        border-radius:0 0 20px 20px;
+
+        backdrop-filter:blur(20px);
+        z-index:9999;
+    }
+
+    nav ul.active{
+        display:flex;
+    }
+
+    nav ul li{
+        width:100%;
+    }
+
+    nav ul li a{
+        display:block;
+        width:100%;
+        padding:10px 12px;
+    }
+}
+
 </style>
 
 </head>
@@ -2134,6 +2191,11 @@ font-family:Inter,sans-serif;
 <div class="logo">
 AI Universe
 </div>
+
+<button class="menu-toggle" id="menuToggle" aria-label="Menyunu aç">
+    ☰
+</button>
+
 <ul>
 <li><a href="#hero">Ana</a></li>
 <li><a href="#blacksea-ai">BlackSea AI</a></li>
@@ -3001,6 +3063,20 @@ render(result);
 });
 
 window.dispatchEvent(new Event('scroll'));
+
+// Mobil Menu JavaScript
+const menuToggle = document.getElementById("menuToggle");
+const navMenu = document.querySelector("nav ul");
+
+menuToggle.addEventListener("click", () => {
+    navMenu.classList.toggle("active");
+});
+
+document.querySelectorAll("nav ul a").forEach(link => {
+    link.addEventListener("click", () => {
+        navMenu.classList.remove("active");
+    });
+});
 </script>
 
 <a href="3d.html" id="aiUniverseButton">
