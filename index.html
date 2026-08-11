@@ -1140,6 +1140,110 @@ color: white;
 
 }
 
+/* Terms Section CSS */
+.terms-section {
+    max-width: 1200px;
+    margin: 120px auto;
+    padding: 30px;
+}
+
+.terms-shell {
+    padding: 60px;
+    border-radius: 32px;
+    background: linear-gradient(
+        145deg,
+        rgba(122, 92, 255, .08),
+        rgba(0, 229, 255, .04),
+        rgba(255, 0, 128, .04)
+    );
+    border: 1px solid rgba(255, 255, 255, .12);
+    backdrop-filter: blur(25px);
+}
+
+.terms-header {
+    max-width: 800px;
+    margin-bottom: 45px;
+}
+
+.terms-header h2 {
+    font-size: 48px;
+    margin: 14px 0 18px;
+}
+
+.terms-header p {
+    color: #b9c8d5;
+    line-height: 1.8;
+}
+
+.terms-list {
+    display: grid;
+    gap: 16px;
+}
+
+.terms-card {
+    display: flex;
+    gap: 25px;
+    align-items: flex-start;
+    padding: 28px;
+    border-radius: 20px;
+    background: rgba(0, 0, 0, .22);
+    border: 1px solid rgba(255, 255, 255, .08);
+    transition: .3s ease;
+}
+
+.terms-card:hover {
+    transform: translateX(5px);
+    border-color: rgba(122, 92, 255, .5);
+    box-shadow: 0 10px 35px rgba(122, 92, 255, .08);
+}
+
+.terms-card > span {
+    color: #8a6cff;
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.terms-card h3 {
+    margin: 0 0 8px;
+    font-size: 20px;
+}
+
+.terms-card p {
+    margin: 0;
+    color: #aebdca;
+    line-height: 1.7;
+}
+
+.terms-warning {
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 16px;
+    color: #d5dce3;
+    background: rgba(255, 255, 255, .04);
+    border: 1px solid rgba(255, 255, 255, .08);
+}
+
+@media (max-width: 700px) {
+    .terms-section {
+        padding: 15px;
+    }
+
+    .terms-shell {
+        padding: 30px 20px;
+    }
+
+    .terms-header h2 {
+        font-size: 34px;
+    }
+
+    .terms-card {
+        padding: 22px;
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
 /* Contact Section CSS */
 .contact-section{
     max-width:1100px;
@@ -2035,6 +2139,7 @@ AI Universe
 <li><a href="#blacksea-ai">BlackSea AI</a></li>
 <li><a href="#about">Haqqımızda</a></li>
 <li><a href="#privacy">Məxfilik</a></li>
+<li><a href="#terms">Şərtlər</a></li>
 <li><a href="#categories">Kateqoriyalar</a></li>
 <li><a href="#topai">Top AI</a></li>
 <li><a href="#stats">Statistika</a></li>
@@ -2133,6 +2238,7 @@ Göndər
 
 </section>
 
+<!-- Məxfilik -->
 <section id="privacy" class="privacy-section reveal">
 
     <div class="privacy-shell">
@@ -2196,7 +2302,7 @@ Göndər
                 <h3>Məlumat təhlükəsizliyi</h3>
                 <p>
                     Məlumatların icazəsiz girişdən, dəyişdirilmədən və
-                    itirilmədən قorunması üçün uyğun texniki tədbirlər
+                    itirilmədən qorunması üçün uyğun texniki tədbirlər
                     görülür. Lakin internet üzərindən heç bir sistem
                     tamamilə risksiz hesab edilə bilməz.
                 </p>
@@ -2234,10 +2340,139 @@ Göndər
 
 </section>
 
+<!-- İstifadə Şərtləri -->
+<section id="terms" class="terms-section reveal">
+    <div class="terms-shell">
+        <div class="terms-header">
+            <span class="section-tag">TERMS OF USE</span>
+            <h2>İstifadə Şərtləri</h2>
+            <p>
+                AI Universe-dən istifadə etməklə aşağıdakı şərtləri
+                qəbul etmiş olursunuz[cite: 1].
+            </p>
+        </div>
+
+        <div class="terms-list">
+            <article class="terms-card">
+                <span>01</span>
+                <div>
+                    <h3>Saytdan istifadə</h3>
+                    <p>
+                        AI Universe yalnız qanuni və məsuliyyətli məqsədlər
+                        üçün istifadə edilməlidir[cite: 1].
+                    </p>
+                </div>
+            </article>
+
+            <article class="terms-card">
+                <span>02</span>
+                <div>
+                    <h3>AI alətlərindən istifadə</h3>
+                    <p>
+                        Platformadakı AI alətlərinin yaratdığı nəticələr
+                        istifadə edilməzdən əvvəl istifadəçi tərəfindən
+                        yoxlanmalıdır[cite: 1].
+                    </p>
+                </div>
+            </article>
+
+            <article class="terms-card">
+                <span>03</span>
+                <div>
+                    <h3>Qadağan olunmuş fəaliyyətlər</h3>
+                    <p>
+                        Saytdan qanunsuz fəaliyyətlər, zərərli proqramlar,
+                        fırıldaqçılıq və digər zərərli məqsədlər üçün
+                        istifadə edilməsinə yol verilmir[cite: 1].
+                    </p>
+                </div>
+            </article>
+
+            <article class="terms-card">
+                <span>04</span>
+                <div>
+                    <h3>Məzmun və məsuliyyət</h3>
+                    <p>
+                        AI Universe-də təqdim olunan məlumatların və
+                        AI tərəfindən yaradılan nəticələrin hər vəziyyətdə
+                        tam dəqiq olacağına zəmanət verilmir[cite: 1].
+                    </p>
+                </div>
+            </article>
+
+            <article class="terms-card">
+                <span>05</span>
+                <div>
+                    <h3>Saytın dəyişdirilməsi</h3>
+                    <p>
+                        AI Universe funksiyaları, dizaynı və məzmunu
+                        gələcəkdə xəbərdarlıq edilmədən dəyişdirilə və
+                        yenilənə bilər[cite: 1].
+                    </p>
+                </div>
+            </article>
+
+            <article class="terms-card">
+                <span>06</span>
+                <div>
+                    <h3>Əlaqə</h3>
+                    <p>
+                        Şərtlərlə bağlı suallar üçün:
+                        terlanhacizada999@gmail.com[cite: 1]
+                    </p>
+                </div>
+            </article>
+        </div>
+
+        <div class="terms-warning">
+            ⚠️ AI Universe-dən istifadə etməzdən əvvəl bu şərtləri
+            oxumağınız tövsiyə olunur[cite: 1].
+        </div>
+    </div>
+</section>
+
+<!-- Əlaqə / Contact Info -->
+<section id="contact-info-section" class="contact-section reveal">
+
+    <div class="contact-content">
+
+        <span class="section-tag">CONTACT</span>
+
+        <h2>Bizimlə əlaqə</h2>
+
+        <p>
+            AI Universe haqqında sualınız, təklifiniz və ya
+            layihə ilə bağlı fikriniz varsa, bizimlə əlaqə saxlaya bilərsiniz[cite: 1].
+        </p>
+
+        <div class="contact-info">
+
+            <div class="contact-item">
+                <span>📧</span>
+                <div>
+                    <strong>Email</strong>
+                    <p>terlanhacizada999@gmail.com</p>
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <span>📍</span>
+                <div>
+                    <strong>Ünvan</strong>
+                    <p>Bakı şəhəri</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
 <section id="categories" class="reveal">
 <div class="section-box">
 <h1 class="title">AI Kateqoriyaları</h1>
-<p class="subtitle">İstədiyin AI növünü seç.</p>
+<p class="subtitle">İstədiyin AI növünü seç[cite: 1].</p>
 <div class="categoryGrid">
 <div class="cat" onclick="showCategory('Əsas Modellər')">
 <div class="emoji">🌟</div>
@@ -2274,7 +2509,7 @@ Göndər
 <section id="topai" class="reveal">
 <div class="section-box">
 <h1 class="title">Top AI Alətləri</h1>
-<p class="subtitle">Ən populyar və seçilən süni intellektlər</p>
+<p class="subtitle">Ən populyar və seçilən süni intellektlər[cite: 1]</p>
 <div class="showcase-chips">
 <div class="chip">ChatGPT</div>
 <div class="chip">Claude</div>
@@ -2293,7 +2528,7 @@ Göndər
 <section id="stats" class="reveal">
 <div class="section-box">
 <h1 class="title">Statistika</h1>
-<p class="subtitle">Rəqəmlərlə AI Universe</p>
+<p class="subtitle">Rəqəmlərlə AI Universe[cite: 1]</p>
 <div class="stats-grid">
 <div class="stat-card">
 <div class="stat-number">120+</div>
@@ -2318,14 +2553,14 @@ Göndər
 <section id="parallax" class="reveal">
 <div class="section-box">
 <h1 class="title">Parallax İşıq Effekti</h1>
-<p class="subtitle">Mouse hərəkəti ilə arxa fon işıqlarını idarə edin.</p>
+<p class="subtitle">Mouse hərəkəti ilə arxa fon işıqlarını idarə edin[cite: 1].</p>
 </div>
 </section>
 
 <section id="showcase" class="reveal">
 <div class="section-box">
 <h1 class="title">Bakı</h1>
-<p class="subtitle">Bakı komandası və iştirakçılar</p>
+<p class="subtitle">Bakı komandası və iştirakçılar[cite: 1]</p>
 <div class="showcase-chips">
 <div class="chip">Sabir</div>
 <div class="chip">Gülzar</div>
@@ -2348,7 +2583,7 @@ Göndər
 <section id="gence1" class="reveal">
 <div class="section-box">
 <h1 class="title">Gəncə 1</h1>
-<p class="subtitle">Gəncə 1 komandası</p>
+<p class="subtitle">Gəncə 1 komandası[cite: 1]</p>
 <div class="showcase-chips">
 <div class="chip">Əkbər</div>
 <div class="chip">Yaqut</div>
@@ -2367,7 +2602,7 @@ Göndər
 <section id="gence2" class="reveal">
 <div class="section-box">
 <h1 class="title">Gəncə 2</h1>
-<p class="subtitle">Gəncə 2 komandası</p>
+<p class="subtitle">Gəncə 2 komandası[cite: 1]</p>
 <div class="showcase-chips">
 <div class="chip">Məhəmməd</div>
 <div class="chip">Əsli</div>
@@ -2389,51 +2624,14 @@ Göndər
 <section id="baki" class="reveal">
 <div class="section-box">
 <h1 class="title">Bakı Mərkəzi</h1>
-<p class="subtitle">Paytaxt layihə mərkəzi bölməsi.</p>
+<p class="subtitle">Paytaxt layihə mərkəzi bölməsi[cite: 1].</p>
 </div>
-</section>
-
-<section id="contact-info-section" class="contact-section reveal">
-
-    <div class="contact-content">
-
-        <span class="section-tag">CONTACT</span>
-
-        <h2>Bizimlə əlaqə</h2>
-
-        <p>
-            AI Universe haqqında sualınız, təklifiniz və ya
-            layihə ilə bağlı fikriniz varsa, bizimlə əlaqə saxlaya bilərsiniz.
-        </p>
-
-        <div class="contact-info">
-
-            <div class="contact-item">
-                <span>📧</span>
-                <div>
-                    <strong>Email</strong>
-                    <p>terlanhacizada999@gmail.com</p>
-                </div>
-            </div>
-
-            <div class="contact-item">
-                <span>📍</span>
-                <div>
-                    <strong>Ünvan</strong>
-                    <p>Bakı şəhəri</p>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-
 </section>
 
 <section id="contact" class="reveal">
 <div class="section-box">
 <h1 class="title">Əlaqə Formu</h1>
-<p class="subtitle">Bizimlə əlaqə saxlayın.</p>
+<p class="subtitle">Bizimlə əlaqə saxlayın[cite: 1].</p>
 <form class="contact-form" onsubmit="event.preventDefault(); alert('Mesajınız göndərildi!');">
 <input type="text" placeholder="Ad" required>
 <input type="email" placeholder="E-mail" required>
@@ -2446,7 +2644,7 @@ Göndər
 <footer>
 AI Universe Pro<br>
 © 2026<br>
-Made by Tərlan
+Made by Tərlan[cite: 1]
 </footer>
 
 <button id="musicBtn">🎵</button>
@@ -2629,7 +2827,7 @@ const input=document.getElementById("userInput");
 const messages=document.getElementById("messages");
 if(input.value==="") return;
 messages.innerHTML+=`<p><b>Sən:</b> ${input.value}</p>`;
-messages.innerHTML+=`<p><b>BlackSea AI:</b> Bu hələ demo versiyadır. Gələcəkdə əsl AI modeli qoşulacaq.</p>`;
+messages.innerHTML+=`<p><b>BlackSea AI:</b> Bu hələ demo versiyadır. Gələcəkdə əsl AI modeli qoşulacaq[cite: 1].</p>`;
 input.value="";
 messages.scrollTop=messages.scrollHeight;
 }
