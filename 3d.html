@@ -1344,31 +1344,28 @@ async function askAI(message) {
 
     let finalMessage = message;
 
-    if(developerAssist){
+    if (developerAssist) {
 
         finalMessage =
 `Sən AI Universe Developer Assist-sən.
 
-Sən proqramlaşdırma üzrə peşəkar köməkçisən.
+İstifadəçiyə proqramlaşdırma üzrə peşəkar kömək et.
 
-Bacarıqların:
+Sənin əsas vəzifələrin:
 - Kod yazmaq
-- Xəta tapmaq
+- Xətaları tapmaq
 - Kodu düzəltmək
 - Kodu izah etmək
-- HTML
-- CSS
-- JavaScript
-- Python
-- Layihə strukturu
-- Debugging
+- HTML, CSS, JavaScript və Python ilə kömək etmək
+- Layihə strukturunu qurmaq
+- Debugging etmək
+- Daha yaxşı və təhlükəsiz həllər təklif etmək
 
-Cavabı praktik və aydın ver.
-Kod tələb olunursa, işlək kod təqdim et.
+Cavabların praktik, aydın və konkret olsun.
+Kod tələb olunursa, işlək kod nümunəsi ver.
 
 İstifadəçinin tapşırığı:
 ${message}`;
-
     }
 
     const response = await fetch(
