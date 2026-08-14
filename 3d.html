@@ -939,207 +939,183 @@ MOBILE RESPONSIVE
 
 @media (max-width:768px){
 
-/* ==============================
-   MOBILE PERFORMANCE / STABILITY
-   ============================== */
-
-html,
 body{
-    width:100%;
-    min-height:100%;
-    overflow:hidden;
-    overscroll-behavior:none;
-    touch-action:manipulation;
+overflow:auto;
 }
 
-body{
-    background:#050505;
-}
-
-/* Keep the glass panel locked to the phone viewport */
 .glass{
-    position:fixed;
-    inset:0;
-    width:100vw;
-    height:100dvh;
-    min-height:100dvh;
-    transform:none;
-    left:0;
-    top:0;
-    border-radius:0;
-    padding:15px;
-    overflow:hidden;
-}
 
-/* Smaller, FIXED black hole on phones.
-   No rotation on mobile, so the screen doesn't chase the animation. */
-.blackhole{
-    width:180px;
-    height:180px;
-    left:50%;
-    top:48%;
-    transform:translate(-50%,-50%);
-    animation:none;
-    filter:none;
-    opacity:.72;
-    box-shadow:
-        0 0 35px rgba(77,0,255,.55),
-        0 0 70px rgba(0,195,255,.30);
-}
+width:100vw;
+height:100vh;
 
-/* Lighter background effects on mobile */
-.aurora{
-    width:900px;
-    height:900px;
-    left:-250px;
-    top:-180px;
-    animation:none;
-    opacity:.55;
-}
+border-radius:0;
 
-.meteor{
-    opacity:.45;
-    animation-duration:12s;
-}
+padding:15px;
 
-.m3,
-.m4{
-    display:none;
-}
-
-.star{
-    animation:none;
-    opacity:.55;
-}
-
-/* Keep planets small and static on mobile */
-.planet{
-    animation:none;
-    opacity:.55;
-}
-
-.planet1{
-    width:45px;
-    height:45px;
-    right:18px;
-    top:105px;
-}
-
-.planet2{
-    width:30px;
-    height:30px;
-    left:15px;
-    bottom:90px;
 }
 
 .logo{
-    font-size:26px;
-    top:18px;
-    z-index:30;
+
+font-size:30px;
+
+top:20px;
+
 }
 
 .subtitle{
-    top:54px;
-    font-size:10px;
-    letter-spacing:1px;
+
+top:60px;
+
+font-size:12px;
+
+letter-spacing:1px;
+
 }
 
-.top-actions{
+.top-actions {
     right:15px;
-    top:15px;
-    z-index:40;
+    top:18px;
 }
 
-.top-actions button{
-    padding:8px 10px;
+.top-actions button {
+    padding:9px 11px;
     font-size:12px;
 }
 
-/* Sidebar becomes a compact touch-friendly grid */
 .sidebar{
-    position:absolute;
-    left:15px;
-    top:88px;
-    width:calc(100% - 30px);
-    height:auto;
-    display:grid;
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:8px;
-    padding:0;
-    background:none;
-    border:none;
-    backdrop-filter:none;
-    z-index:20;
+
+position:relative;
+
+left:0;
+
+top:90px;
+
+width:100%;
+
+height:auto;
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:10px;
+
+padding:0;
+
+background:none;
+
+border:none;
+
+backdrop-filter:none;
+
 }
 
 .side-btn{
-    min-height:44px;
-    height:44px;
-    justify-content:center;
-    padding:8px;
-    font-size:12px;
-    white-space:nowrap;
+
+justify-content:center;
+
+padding:12px;
+
+font-size:14px;
+
 }
 
 .history{
-    display:none;
+
+display:none;
+
 }
 
-/* Chat fills the remaining phone screen */
 .ai-panel{
-    position:absolute;
-    left:15px;
-    top:190px;
-    width:calc(100% - 30px);
-    height:calc(100dvh - 205px);
-    padding-right:0;
-    z-index:10;
+
+position:relative;
+
+left:0;
+
+top:110px;
+
+transform:none;
+
+width:100%;
+
+height:calc(100vh - 180px);
+
 }
 
 .chat-box{
-    min-height:0;
-    height:calc(100% - 68px);
-    padding:13px;
-    font-size:14px;
-    overflow-y:auto;
-    -webkit-overflow-scrolling:touch;
+
+height:100%;
+
+padding:15px;
+
+font-size:14px;
+
 }
 
 .message{
-    max-width:92%;
-    font-size:14px;
-    padding:11px 13px;
+
+max-width:95%;
+
+font-size:14px;
+
+padding:12px;
+
 }
 
 .input-bar{
-    gap:8px;
-    margin-top:10px;
+
+gap:8px;
+
 }
 
 .input-bar input{
-    min-width:0;
-    height:52px;
-    font-size:15px;
+
+height:50px;
+
+font-size:15px;
+
 }
 
 .send{
-    flex:0 0 54px;
-    width:54px;
-    height:52px;
-    font-size:20px;
+
+width:55px;
+
+height:50px;
+
+font-size:20px;
+
 }
 
-/* Disable the glass reflection animation on mobile */
-.glass::before{
-    animation:none;
-    display:none;
+.blackhole{
+
+width:220px;
+
+height:220px;
+
 }
 
-/* Reduce expensive blur on mobile */
-.glass,
-.chat-box{
-    backdrop-filter:blur(10px);
-    -webkit-backdrop-filter:blur(10px);
+.planet1{
+
+width:55px;
+
+height:55px;
+
+right:20px;
+
+top:120px;
+
+}
+
+.planet2{
+
+width:35px;
+
+height:35px;
+
+left:15px;
+
+bottom:120px;
+
 }
 
 }
@@ -1211,6 +1187,8 @@ NEXT GENERATION AI
 <div class="side-btn" onclick="quickPrompt('PDF haqqında məlumat ver')">📄 PDF</div>
 
 <div class="side-btn" onclick="quickPrompt('Mənə JavaScript kodu yaz')">💻 Code</div>
+
+<div class="side-btn" onclick="activateDeveloperAssist()">🧑‍💻 Developer Assist</div>
 
 <div class="side-btn" onclick="quickPrompt('Şəkil yaratmaq üçün prompt yaz')">🖼 Images</div>
 
@@ -1334,9 +1312,64 @@ function getUserId() {
 
 }
 
+let developerAssist = false;
+
+function activateDeveloperAssist(){
+
+    developerAssist = !developerAssist;
+
+    if(developerAssist){
+
+        addAIMessage(
+            "🧑‍💻 <b>Developer Assist aktivdir!</b><br>" +
+            "Kod yaz, xəta göndər, layihə strukturunu göstər və ya kodunu izah etdirməyimi istə."
+        );
+
+        input.placeholder = "Kodunu və ya tapşırığını yaz...";
+
+    }else{
+
+        addAIMessage("🤖 Normal AI rejiminə qayıtdıq.");
+
+        input.placeholder = "Mesaj yaz...";
+
+    }
+
+    input.focus();
+}
+
 async function askAI(message) {
 
     const userId = getUserId();
+
+    let finalMessage = message;
+
+    if(developerAssist){
+
+        finalMessage =
+`Sən AI Universe Developer Assist-sən.
+
+Sən proqramlaşdırma üzrə peşəkar köməkçisən.
+
+Bacarıqların:
+- Kod yazmaq
+- Xəta tapmaq
+- Kodu düzəltmək
+- Kodu izah etmək
+- HTML
+- CSS
+- JavaScript
+- Python
+- Layihə strukturu
+- Debugging
+
+Cavabı praktik və aydın ver.
+Kod tələb olunursa, işlək kod təqdim et.
+
+İstifadəçinin tapşırığı:
+${message}`;
+
+    }
 
     const response = await fetch(
         AI_API_URL,
@@ -1348,7 +1381,7 @@ async function askAI(message) {
             },
 
             body: JSON.stringify({
-                message: message,
+                message: finalMessage,
                 userId: userId
             })
         }
